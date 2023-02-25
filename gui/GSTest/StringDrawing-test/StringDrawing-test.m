@@ -180,8 +180,9 @@ NSObject
                             NSForegroundColorAttributeName,
                             nil];
 
-      attr = [[[NSAttributedString alloc] initWithString: string
-                                           attributes: dict] autorelease];
+      attr = [[NSAttributedString alloc] initWithString: string
+                                           attributes: dict];
+      AUTORELEASE(attr);
       [text setAttributedString: attr];
       [text sizeToFit];
       /* It is a bit exagerated to redisplay all the window but anyway. */

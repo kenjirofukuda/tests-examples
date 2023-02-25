@@ -63,21 +63,23 @@
   buttonCell = AUTORELEASE([NSButtonCell new]);
   [buttonCell setButtonType: NSPushOnPushOffButton];
 
-  matrix = [[[NSMatrix alloc] initWithFrame: matrixRect
+  matrix = [[NSMatrix alloc] initWithFrame: matrixRect
                                mode: NSRadioModeMatrix
                                prototype: buttonCell
                                numberOfRows: 30
-                               numberOfColumns: 5] autorelease];
+                               numberOfColumns: 5];
+  AUTORELEASE(matrix);
   [[window contentView] addSubview: matrix];
 
   [buttonCell setButtonType: NSRadioButton];
   [buttonCell setBordered: NO];
 
-  selectionMatrix = [[[NSMatrix alloc] initWithFrame: selectionMatrixRect
+  selectionMatrix = [[NSMatrix alloc] initWithFrame: selectionMatrixRect
                                         mode: NSRadioModeMatrix
                                         prototype: buttonCell
                                         numberOfRows: 4
-                                        numberOfColumns: 1] autorelease];
+                                        numberOfColumns: 1];
+  AUTORELEASE(matrix);
   [selectionMatrix setTarget: handler];
   [selectionMatrix setAction: @selector(setMatrixMode:)];
 
@@ -99,8 +101,9 @@
 
   [[window contentView] addSubview: selectionMatrix];
 
-  selectionByRectSwitch = [[[NSButton alloc]
-                            initWithFrame: selectionByRectSwitchRect] autorelease];
+  selectionByRectSwitch = [[NSButton alloc]
+                            initWithFrame: selectionByRectSwitchRect];
+  AUTORELEASE(selectionByRectSwitch);
   [selectionByRectSwitch setButtonType: NSSwitchButton];
   [selectionByRectSwitch setBordered: NO];
   [selectionByRectSwitch setTitle: @"Selection by rect"];

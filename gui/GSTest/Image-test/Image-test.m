@@ -220,8 +220,11 @@ static NSImage *ResizedIcon(NSImage *icon, int size, BOOL createBitmap)
 
 static NSImage *ImageFromBundle(NSString *name, NSString *type)
 {
-  return [[[NSImage alloc] initWithContentsOfFile:
-                            [[NSBundle bundleForClass: [ImageTestView class]] pathForResource: name ofType: type]] autorelease];
+  NSImage *image;
+
+  image = [[NSImage alloc] initWithContentsOfFile:
+                            [[NSBundle bundleForClass: [ImageTestView class]] pathForResource: name ofType: type]];
+  return AUTORELEASE(image);
 }
 
 - (id) initWithFrame: (NSRect)frame
@@ -345,17 +348,19 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   // Test drawing into an NSBitmapImageRep
   {
     NSImage *img;
-    NSBitmapImageRep *rep = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
-                                                        pixelsWide: 64
-                                                        pixelsHigh: 64
-                                                        bitsPerSample: 8
-                                                        samplesPerPixel: 4
-                                                        hasAlpha: YES
-                                                        isPlanar: NO
-                                                        colorSpaceName: NSCalibratedRGBColorSpace
-                                                        bitmapFormat: 0
-                                                        bytesPerRow: 0
-                                                        bitsPerPixel: 0] autorelease];
+    NSBitmapImageRep *rep;
+    rep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
+                                                  pixelsWide: 64
+                                                  pixelsHigh: 64
+                                                  bitsPerSample: 8
+                                                  samplesPerPixel: 4
+                                                  hasAlpha: YES
+                                                  isPlanar: NO
+                                                  colorSpaceName: NSCalibratedRGBColorSpace
+                                                  bitmapFormat: 0
+                                                  bytesPerRow: 0
+                                                  bitsPerPixel: 0];
+    AUTORELEASE(rep);                                                    
     [NSGraphicsContext saveGraphicsState];
     [NSGraphicsContext setCurrentContext:
                        [NSGraphicsContext graphicsContextWithBitmapImageRep: rep]];
@@ -597,7 +602,7 @@ NSObject
 + (NSImage *) testImage
 {
   NSImage *img = AUTORELEASE([[NSImage alloc] initWithSize: NSMakeSize(32, 32)]);
-  [img addRepresentation: [[[self alloc] init] autorelease]];
+  [img addRepresentation: AUTORELEASE([[self alloc] init])];
   return img;
 }
 

@@ -65,8 +65,12 @@
 
 static NSImage *ImageFromBundle(NSString *name, NSString *type)
 {
-  return [[[NSImage alloc] initWithContentsOfFile:
-                            [[NSBundle bundleForClass: [ImageSelectionTestView class]] pathForResource: name ofType: type]] autorelease];
+  NSImage *image;
+  image = [[NSImage alloc] initWithContentsOfFile:
+            [[NSBundle bundleForClass: [ImageSelectionTestView class]] 
+                      pathForResource: name 
+                               ofType: type]];
+  return AUTORELEASE(image);
 }
 
 - (id) initWithFrame: (NSRect)frame
@@ -314,7 +318,7 @@ NSObject
 + (NSImage *) testImage
 {
   NSImage *img = AUTORELEASE([[NSImage alloc] initWithSize: NSMakeSize(32, 32)]);
-  [img addRepresentation: [[[self alloc] init] autorelease]];
+  [img addRepresentation: AUTORELEASE([[self alloc] init])];
   return img;
 }
 

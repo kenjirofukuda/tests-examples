@@ -108,12 +108,12 @@
   [imageCell setImageScaling: NSScaleNone];
   [imageCell setImage: [NSImage imageNamed: @"NSRadioButton"]];
 
-  theMatrix = [[[NSMatrix alloc] initWithFrame: matrixRect
+  theMatrix = [[NSMatrix alloc] initWithFrame: matrixRect
                                   mode: NSRadioModeMatrix
                                   prototype: imageCell
                                   numberOfRows: 3
-                                  numberOfColumns: 4]
-                                 autorelease];
+                                  numberOfColumns: 4];
+  AUTORELEASE(theMatrix);
   [theMatrix setCellSize: cellSize];
 
   [self setMatrix: theMatrix];

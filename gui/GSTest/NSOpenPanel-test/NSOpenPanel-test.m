@@ -95,8 +95,8 @@ NSObject
   enablingYResizing: NO];
 
   // The little results table
-  resultsTable = [[[GSTable alloc] initWithNumberOfRows: 4
-                                    numberOfColumns: 2] autorelease];
+  resultsTable = AUTORELEASE([[GSTable alloc] initWithNumberOfRows: 4
+                                                   numberOfColumns: 2]);
   // Set resizing properties
   [resultsTable setXResizingEnabled: NO
                           forColumn: 0];

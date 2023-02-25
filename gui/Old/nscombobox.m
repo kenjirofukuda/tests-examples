@@ -68,10 +68,8 @@ main(int argc, char **argv, char **env)
 
   [window setFrame: winRect display: YES];
 
-  sourceCombo = [[[NSComboBox alloc] initWithFrame: sourceComboRect]
-                                     autorelease];
-  staticCombo = [[[NSComboBox alloc] initWithFrame: staticComboRect]
-                                     autorelease];
+  sourceCombo = AUTORELEASE([[NSComboBox alloc] initWithFrame: sourceComboRect]);
+  staticCombo = AUTORELEASE([[NSComboBox alloc] initWithFrame: staticComboRect]);
   [[window contentView] addSubview: sourceCombo];
   [[window contentView] addSubview: staticCombo];
   trigger = [[MyObject alloc] initWithSourceCombo: sourceCombo

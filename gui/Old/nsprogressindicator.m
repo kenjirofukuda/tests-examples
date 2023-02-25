@@ -71,10 +71,8 @@ main(int argc, char **argv, char **env)
 
   target = AUTORELEASE([MyObject new]);
 
-  horInd = [[[NSProgressIndicator alloc] initWithFrame: horIndRect]
-                                         autorelease];
-  verInd = [[[NSProgressIndicator alloc] initWithFrame: verIndRect]
-                                         autorelease];
+  horInd = AUTORELEASE([[NSProgressIndicator alloc] initWithFrame: horIndRect]);
+  verInd = AUTORELEASE([[NSProgressIndicator alloc] initWithFrame: verIndRect]);
   [[window contentView] addSubview: horInd];
   [[window contentView] addSubview: verInd];
   trigger = [[MyObject alloc] initWithHorIndicator: horInd

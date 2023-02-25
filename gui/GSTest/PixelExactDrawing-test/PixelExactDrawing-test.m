@@ -121,11 +121,12 @@ static void DrawCrosshair(NSPoint point)
 
         prototype = AUTORELEASE([[NSButtonCell alloc] init]);
         [prototype setButtonType: NSRadioButton];
-        matrix = [[[NSMatrix alloc] initWithFrame: NSMakeRect(0, 390, 150, 25)
+        matrix = [[NSMatrix alloc] initWithFrame: NSMakeRect(0, 390, 150, 25)
                                      mode: NSRadioModeMatrix
                                      prototype: prototype
                                      numberOfRows: 1
-                                     numberOfColumns: 2] autorelease];
+                                     numberOfColumns: 2];
+        AUTORELEASE(matrix);
         [self addSubview: matrix];
         [[[matrix cells] objectAtIndex: 0] setTitle: @"Actual"];
         [[[matrix cells] objectAtIndex: 1] setTitle: @"Expected"];
@@ -181,10 +182,12 @@ static void DrawCrosshair(NSPoint point)
       AddLabel(@"NSRectClip at (410.5, 340.5) size (10, 10)", NSMakeRect(430, 335, 400, 15), self);
 
       // Expected
-      expected1 = [[[NSImage alloc] initWithContentsOfFile:
-                                     [[NSBundle bundleForClass: [self class]] pathForResource: @"pixelExact1" ofType: @"tiff"]] autorelease];
-      expected2 = [[[NSImage alloc] initWithContentsOfFile:
-                                     [[NSBundle bundleForClass: [self class]] pathForResource: @"pixelExact2" ofType: @"tiff"]] autorelease];
+      expected1 = [[NSImage alloc] initWithContentsOfFile:
+                                     [[NSBundle bundleForClass: [self class]] pathForResource: @"pixelExact1" ofType: @"tiff"]];
+      AUTORELEASE(expected1);
+      expected2 = [[NSImage alloc] initWithContentsOfFile:
+                                     [[NSBundle bundleForClass: [self class]] pathForResource: @"pixelExact2" ofType: @"tiff"]];
+      AUTORELEASE(expected2);
       expected1view = AUTORELEASE([[NSImageView alloc] initWithFrame: NSMakeRect(0, 0, [expected1 size].width, [expected1 size].height)]);
       [expected1view setImage: expected1];
       expected2view = AUTORELEASE([[NSImageView alloc] initWithFrame: NSMakeRect(399, 0, [expected2 size].width, [expected2 size].height)]);

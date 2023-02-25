@@ -66,8 +66,7 @@
   NSArray *files = [fm directoryContentsAtPath: @"/"];
   int count = [files count];
   BOOL exists = NO, is_dir = NO;
-  NSMutableString *s = [[[NSMutableString alloc] initWithCString: "/"]
-                                                 autorelease];
+  NSMutableString *s = [NSMutableString stringWithString: @"/"];
 
   if (row >= count)
     return;
@@ -175,8 +174,7 @@
     {
       id cell;
       BOOL exists = NO, is_dir = NO;
-      NSMutableString *s = [[[NSMutableString alloc] initWithString: ptc]
-                                                     autorelease];
+      NSMutableString *s = [NSMutableString stringWithString: ptc];
 
       // First row is created when column is added
       if (i != 0)
@@ -209,7 +207,7 @@
   /*
     //NSFileManager *fm = [NSFileManager defaultManager];
     NSString *ptc = [sender pathToColumn: column];
-    NSMutableString *s = [[[NSMutableString alloc] initWithString:ptc]autorelease];
+    NSMutableString *s = [NSMutableString stringWithString: ptc];
 
     fprintf(stderr, " browser:sender selectCellWithString: %s ", [title cString]);
 

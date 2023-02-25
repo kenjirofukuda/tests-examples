@@ -144,12 +144,12 @@
   /* Setup the matrix */
   buttonCell = AUTORELEASE([NSButtonCell new]);
   [buttonCell setButtonType: NSPushOnPushOffButton];
-  newMatrix = [[[NSMatrix alloc] initWithFrame: matrixRect
+  newMatrix = [[NSMatrix alloc] initWithFrame: matrixRect
                                   mode: NSRadioModeMatrix
                                   prototype: buttonCell
                                   numberOfRows: 0
-                                  numberOfColumns: 0] autorelease];
-
+                                  numberOfColumns: 0];
+  AUTORELEASE(newMatrix);
   [controller setMatrix: newMatrix];
 
   scrollView = [[NSScrollView alloc] initWithFrame: scrollViewRect];
@@ -165,11 +165,12 @@
   [buttonCell setBordered: NO];
   [buttonCell setImagePosition: NSImageLeft];		// for NS compatibility
 
-  selectionMatrix = [[[NSMatrix alloc] initWithFrame: selectionMatrixRect
+  selectionMatrix = [[NSMatrix alloc] initWithFrame: selectionMatrixRect
                                         mode: NSRadioModeMatrix
                                         prototype: buttonCell
                                         numberOfRows: 4
-                                        numberOfColumns: 1] autorelease];
+                                        numberOfColumns: 1];
+  AUTORELEASE(selectionMatrix);                                      
   [selectionMatrix setTarget: controller];
   [selectionMatrix setAutosizesCells: YES];		// for NS compatibility
   [selectionMatrix setAction: @selector(setMatrixMode:)];

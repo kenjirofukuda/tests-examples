@@ -31,7 +31,7 @@ static NSGlyph GlyphForCharacter(NSFont *f, unichar c)
   NSTextView *view = [[NSTextView alloc] init];
   NSGlyph g = 0;
   [view setFont: f];
-  [view setString: [[[NSString alloc] initWithCharacters: &c length: 1] autorelease]];
+  [view setString: AUTORELEASE([[NSString alloc] initWithCharacters: &c length: 1])];
   if ([[view layoutManager] numberOfGlyphs] > 0)
     {
       [[view layoutManager] getGlyphs: &g range: NSMakeRange(0, 1)];

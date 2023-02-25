@@ -86,15 +86,15 @@ main(int argc, char **argv, char **env)
   browserCell = AUTORELEASE([NSBrowserCell new]);
   [browserCell setStringValue: @"aTitle"];				// for NS compatibility
 
-  matrix = [[[NSMatrix alloc] initWithFrame: matrixRect
+  matrix = [[NSMatrix alloc] initWithFrame: matrixRect
                                mode: NSRadioModeMatrix
 //		mode:NSListModeMatrix	// selectedRow/selectedColumn get set to -1
                                // during matrix init. the program then crashes
                                // when a cell is selected FAR 6/19/98 (fix me)
                                prototype: browserCell
                                numberOfRows: 10
-                               numberOfColumns: 1]
-                              autorelease];
+                               numberOfColumns: 1];
+  AUTORELEASE(matrix);                  
 
 //  [matrix _test];
 
