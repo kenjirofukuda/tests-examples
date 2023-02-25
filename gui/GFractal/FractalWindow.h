@@ -10,22 +10,22 @@
   FractalView *view;
 }
 
-+ (NSString *) typeToString:(FTYPE)ft;
-+ (NSString *) schemeToString:(CSCHEME)cs;
++ (NSString *) typeToString: (FTYPE)ft;
++ (NSString *) schemeToString: (CSCHEME)cs;
 
-- (id)initWithType:(FTYPE)ft;
+- (id) initWithType: (FTYPE)ft;
 
 
-- (id)delegate;
-- (void)setDelegate:(id)aDelegate;
+- (id) delegate;
+- (void) setDelegate: (id)aDelegate;
 
-- (id)window;
+- (id) window;
 
--(void)saveAs:(id)sender;
+- (void) saveAs: (id)sender;
 
--(void)resolution:(id)sender;
--(void)colorScheme:(id)sender;
--(void)zoomOp:(id)sender;
+- (void) resolution: (id)sender;
+- (void) colorScheme: (id)sender;
+- (void) zoomOp: (id)sender;
 
 @end
 

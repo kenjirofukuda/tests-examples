@@ -6,9 +6,9 @@
 
 @interface Controller : NSObject
 
--(void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification;
 
--(void)startNewFractalWindow: (id)sender;
+- (void) startNewFractalWindow: (id)sender;
 
 @end
 

@@ -3,8 +3,9 @@
 
 #define DEFAULT_RES  200
 
-typedef enum {
-  ZSQUARED=0,
+typedef enum
+{
+  ZSQUARED = 0,
   ZCUBED,
   ZSQSQPLUSZ,
   ZLAMBDA,
@@ -14,8 +15,9 @@ typedef enum {
 
 #define DEFAULT_TYPE ZSQUARED
 
-typedef enum {
-  MONOCHROME=0,
+typedef enum
+{
+  MONOCHROME = 0,
   GRAY16,
   RGB8,
   RGB27,
@@ -24,7 +26,8 @@ typedef enum {
 
 #define DEFAULT_SCHEME GRAY16
 
-typedef enum {
+typedef enum
+{
   ZOOM_IN = 0,
   ZOOM_OUT,
   ZOOM_RESTORE
@@ -41,32 +44,32 @@ typedef enum {
   NSBitmapImageRep *rep;
 }
 
-+ (id)getColorsForScheme:(CSCHEME)cs;
++ (id) getColorsForScheme: (CSCHEME)cs;
 
-- (id)initWithType:(FTYPE)ft;
-- (id)initWithType:(FTYPE)ft 
-        resolution:(int)rval
-           cscheme:(CSCHEME)cs
-            region:(double *)reg;
+- (id) initWithType: (FTYPE)ft;
+- (id) initWithType: (FTYPE)ft
+         resolution: (int)rval
+            cscheme: (CSCHEME)cs
+             region: (double *)reg;
 
-- (id)setResolution:(int)rval;
-- (int)resolution;
+- (id) setResolution: (int)rval;
+- (int) resolution;
 
-- (id)setColorScheme:(CSCHEME)cs;
-- (CSCHEME)colorScheme;
+- (id) setColorScheme: (CSCHEME)cs;
+- (CSCHEME) colorScheme;
 
-- (id)zoomOp:(ZOOMOP)op;
+- (id) zoomOp: (ZOOMOP)op;
 
-- (void)update;
+- (void) update;
 
-- (void)drawRect:(NSRect)aRect;
+- (void) drawRect: (NSRect)aRect;
 
-- (void)mouseDown:(NSEvent *)theEvent;
+- (void) mouseDown: (NSEvent *)theEvent;
 
 
-- (BOOL)writeTIFF:(NSString *)name;
+- (BOOL) writeTIFF: (NSString *)name;
 
-- (void)dealloc;
+- (void) dealloc;
 @end
 
 

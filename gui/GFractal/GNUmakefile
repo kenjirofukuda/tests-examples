@@ -1,5 +1,6 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
+OBJCFLAGS += -Wall
 PACKAGE_NAME = GFractal
 VERSION = 0.1
 

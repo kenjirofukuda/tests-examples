@@ -3,27 +3,27 @@
 
 @implementation Controller
 
--(id) init
+- (id) init
 {
   return self;
 }
 
--(void) dealloc
+- (void) dealloc
 {
   [super dealloc];
 }
 
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification;
 {
   [self startNewFractalWindow: nil];
 }
 
-- (void)startNewFractalWindow: (id)sender
+- (void) startNewFractalWindow: (id)sender
 {
   int tag;
-  tag = (sender==nil ? DEFAULT_TYPE:[sender tag]);
-  
-  [[FractalWindow alloc] initWithType:tag];
+  tag = (sender == nil ? DEFAULT_TYPE : [sender tag]);
+
+  [[FractalWindow alloc] initWithType: tag];
 }
 
 @end
