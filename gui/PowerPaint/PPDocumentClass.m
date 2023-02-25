@@ -24,7 +24,7 @@
 - (BOOL) readFromFile: (NSString *)fileName ofType: (NSString *)fileType
 {
   NSData *data = [NSData dataWithContentsOfFile: fileName];
-  rep = [[NSBitmapImageRep imageRepWithData: data] retain];
+  rep = RETAIN([NSBitmapImageRep imageRepWithData: data]);
 
   if (rep != nil)
     {

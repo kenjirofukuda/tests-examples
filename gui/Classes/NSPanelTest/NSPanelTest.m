@@ -441,9 +441,9 @@ static PanelConstructor *choice[3];
 
 + (void) initialize
 {
-  choice[0] = [[AlertPanelConstructor instance]retain];
-  choice[1] = [[CriticalPanelConstructor instance]retain];
-  choice[2] = [[InformationalPanelConstructor instance]retain];
+  choice[0] = RETAIN([AlertPanelConstructor instance]);
+  choice[1] = RETAIN([CriticalPanelConstructor instance]);
+  choice[2] = RETAIN([InformationalPanelConstructor instance]);
 }//initialize;
 
 

@@ -115,7 +115,7 @@
 
 - (void) setMatrix: (NSMatrix *)aMatrix
 {
-  [aMatrix retain];
+  RETAIN(aMatrix);
   RELEASE(matrix);
   matrix = aMatrix;
   [matrix setDoubleAction: @selector(handleDoubleAction:)];

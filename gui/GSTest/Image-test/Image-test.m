@@ -121,7 +121,7 @@ static NSImage *ResizedIcon(NSImage *icon, int size, BOOL createBitmap)
       AddLabel(@"Composite image to (10, 80) (should be bigger and not rotated):", NSMakeRect(10, 30, 500, 12), self);
       AddLabel(@"Draw image at (10, 100) (should be up-side down and rotated):", NSMakeRect(10, 85, 500, 12), self);
       AddLabel(@"Draw image at (10, 155) using respectFlipped: YES (should be right-side-up and rotated):", NSMakeRect(10, 140, 500, 12), self);
-      gsImage = [ImageFromBundle(@"gs", @"png") retain];
+      gsImage = RETAIN(ImageFromBundle(@"gs", @"png"));
     }
   return self;
 }
@@ -241,8 +241,8 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       [self addSubview: flipped];
       RELEASE(flipped);
 
-      pdfexample = [ImageFromBundle(@"pdfexample", @"pdf") retain];
-      svgexample = [ImageFromBundle(@"svgexample", @"svg") retain];
+      pdfexample = RETAIN(ImageFromBundle(@"pdfexample", @"pdf"));
+      svgexample = RETAIN(ImageFromBundle(@"svgexample", @"svg"));
       {
         NSView *flippedNinePartView = [[FlippedNinePartView alloc] initWithFrame: NSMakeRect(670, 128, 128, 128)];
 

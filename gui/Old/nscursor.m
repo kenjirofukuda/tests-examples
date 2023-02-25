@@ -72,9 +72,9 @@
   [cv0 setCursor: cur];
 
   // Cursor for color well using tracking rectangle
-  arrow = [[NSCursor arrowCursor] retain];
+  arrow = RETAIN([NSCursor arrowCursor]);
   [arrow setOnMouseExited: YES];
-  beam = [[NSCursor IBeamCursor] retain];
+  beam = RETAIN([NSCursor IBeamCursor]);
   [beam setOnMouseEntered: YES];
   [v addTrackingRect: cf owner: arrow userData: NULL assumeInside: YES];
   [v addTrackingRect: cf owner: beam userData: NULL assumeInside: YES];

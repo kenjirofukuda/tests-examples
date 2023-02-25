@@ -50,7 +50,7 @@ NSObject
 // Set the corresponding face
 - (void) setFace: (CalcFace *)aFace
 {
-  face = [aFace retain];
+  face = RETAIN(aFace);
   [face setDisplayedNumber: enteredNumber withSeparator: decimalSeparator
           fractionalDigits: fractionalDigits];
 }

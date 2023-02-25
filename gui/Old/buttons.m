@@ -55,7 +55,7 @@
 
 - (void) setTextField: (id)anObject
 {
-  [anObject retain];
+  RETAIN(anObject);
   if (textField)
     RELEASE(textField);
   textField = anObject;

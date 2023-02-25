@@ -111,14 +111,15 @@ NSObject
                staticCombo: (NSComboBox *)aStatic
 {
   self = [self init];
-  sourceCombo = [aSource retain];
-  staticCombo = [aStatic retain];
+  sourceCombo = RETAIN(aSource);
+  staticCombo = RETAIN(aStatic);
   [sourceCombo setUsesDataSource: YES];
   [sourceCombo setDataSource: self];
-  sourceArray = [[NSArray arrayWithObjects:
-                  @"One", @"Two", @"Three", @"Four", @"Five",
-                  @"Six", @"Seven", @"Eight", @"Nine", @"Ten",
-                  @"Eleven", @"Twelve", @"Thirteen", nil] retain];
+  sourceArray = [NSArray arrayWithObjects:
+                         @"One", @"Two", @"Three", @"Four", @"Five",
+                         @"Six", @"Seven", @"Eight", @"Nine", @"Ten",
+                         @"Eleven", @"Twelve", @"Thirteen", nil];
+  RETAIN(sourceArray);
   [staticCombo addItemsWithObjectValues:
                [NSArray arrayWithObjects: @"Dog", @"Cat", @"Beast", nil]];
   return self;

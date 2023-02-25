@@ -79,9 +79,9 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
   if (self != nil)
     {
-      test72DPIAnd288DPI = [ImageFromBundle(@"test72DPIAnd288DPI", @"tiff") retain];
-      testICNSIcon = [ImageFromBundle(@"testICNSIcon", @"icns") retain];
-      testTIFFIconWithAllImages72DPI = [ImageFromBundle(@"testTIFFIconWithAllImages72DPI", @"tiff") retain];
+      test72DPIAnd288DPI = RETAIN(ImageFromBundle(@"test72DPIAnd288DPI", @"tiff"));
+      testICNSIcon = RETAIN(ImageFromBundle(@"testICNSIcon", @"icns"));
+      testTIFFIconWithAllImages72DPI = RETAIN(ImageFromBundle(@"testTIFFIconWithAllImages72DPI", @"tiff"));
 
       {
         NSSlider *slider = AUTORELEASE([[NSSlider alloc] initWithFrame: NSMakeRect(248, 200, 256, 16)]);

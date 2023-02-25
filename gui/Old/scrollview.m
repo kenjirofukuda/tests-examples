@@ -38,7 +38,7 @@
 @implementation MyObject
 - (void) setScrollView: (id)aView
 {
-  [aView retain];
+  RETAIN(aView);
   RELEASE(scrollView);
   scrollView = aView;
   viewFrame = [[scrollView documentView] frame];

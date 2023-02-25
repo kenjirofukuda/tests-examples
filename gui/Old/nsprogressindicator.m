@@ -102,8 +102,8 @@ NSObject
                verIndicator: (NSProgressIndicator *)aVerIndicator
 {
   self = [self init];
-  horInd = [aHorIndicator retain];
-  verInd = [aVerIndicator retain];
+  horInd = RETAIN(aHorIndicator);
+  verInd = RETAIN(aVerIndicator);
   [horInd setIndeterminate: NO];
   [verInd setIndeterminate: NO];
   [verInd setVertical: YES];

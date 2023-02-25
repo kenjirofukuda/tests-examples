@@ -82,7 +82,7 @@ static NSDictionary *infoDict = nil;
       NSBundle *bundle = [NSBundle mainBundle];
 
       fp = [bundle pathForResource: @"Info-project" ofType: @"plist"];
-      infoDict = [[NSDictionary dictionaryWithContentsOfFile: fp] retain];
+      infoDict = RETAIN([NSDictionary dictionaryWithContentsOfFile: fp]);
     }
 
   [[NSApplication sharedApplication] orderFrontStandardInfoPanelWithOptions: infoDict];
