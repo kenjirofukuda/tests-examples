@@ -539,7 +539,7 @@ static PanelConstructor *choice[3];
 
 - (void) dealloc
 {
-  [super dealloc];
+  DEALLOC
 }//dealloc;
 
 

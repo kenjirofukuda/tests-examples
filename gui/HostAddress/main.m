@@ -27,7 +27,7 @@ int main(int argc, const char *argv[])
   controller = [[AppController alloc] init];
   [NSApp setDelegate: controller];
 
-  RELEASE(pool);
+  LEAVE_POOL
 
   return NSApplicationMain(argc, argv);
 }

@@ -10,7 +10,7 @@
 
 - (void) dealloc
 {
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) applicationDidFinishLaunching: (NSNotification *)aNotification;

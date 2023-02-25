@@ -54,7 +54,7 @@ main(int argc, char **argv, char **env)
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
-  pool = [NSAutoreleasePool new];
+  ENTER_POOL
 
   theApp = [NSApplication sharedApplication];
 
@@ -104,7 +104,7 @@ main(int argc, char **argv, char **env)
 
   [theApp run];
   [trigger release];
-  [pool release];
+  LEAVE_POOL
   return 0;
 }
 
@@ -133,7 +133,7 @@ NSObject
   [sourceCombo release];
   [staticCombo release];
   [sourceArray release];
-  [super dealloc];
+  DEALLOC
 }
 
 - (int) numberOfItemsInComboBox: (NSComboBox *)aComboBox

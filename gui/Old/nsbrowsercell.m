@@ -59,7 +59,7 @@ main(int argc, char **argv, char **env)
   NSRect winRect = {{100, 100}, {600, 600}};
   NSRect scrollViewRect = {{20, 115}, {150, 335}};
   NSRect matrixRect = {{0, 0}, {100, 550}};
-  id pool = [NSAutoreleasePool new];
+  ENTER_POOL
   NSMatrix *matrix;
   NSBrowserCell *browserCell;
   NSScrollView *scrollView;
@@ -118,7 +118,7 @@ main(int argc, char **argv, char **env)
   [window orderFrontRegardless];
 
   [theApp run];
-  [pool release];
+  LEAVE_POOL
 
   return 0;
 }

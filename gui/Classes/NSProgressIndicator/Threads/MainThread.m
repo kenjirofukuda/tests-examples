@@ -73,7 +73,7 @@
 - (void) dealloc
 {
   RELEASE(window);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) applicationDidFinishLaunching: (NSNotification *)aNotification;

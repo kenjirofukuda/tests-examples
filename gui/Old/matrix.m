@@ -119,7 +119,7 @@
 int
 main(int argc, char **argv, char **env)
 {
-  NSAutoreleasePool	*pool = [NSAutoreleasePool new];
+  NSAutoreleasePool	*ENTER_POOL
   NSApplication		*theApp;
 
 #if LIB_FOUNDATION_LIBRARY
@@ -139,7 +139,7 @@ main(int argc, char **argv, char **env)
 
   [theApp run];
 
-  [pool release];
+  LEAVE_POOL
 
   return 0;
 }

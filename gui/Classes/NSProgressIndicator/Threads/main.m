@@ -27,7 +27,7 @@ int main(void)
   NSAutoreleasePool *pool;
   NSMenu *mainMenu;
 
-  pool = [NSAutoreleasePool new];
+  ENTER_POOL
   [NSApplication sharedApplication];
 
   mainMenu = AUTORELEASE([NSMenu new]);

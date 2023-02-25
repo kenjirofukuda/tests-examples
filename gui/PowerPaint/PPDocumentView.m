@@ -200,7 +200,7 @@
 - (void) dealloc
 {
   [lastFrame release];
-  [super dealloc];
+  DEALLOC
 }
 
 @end

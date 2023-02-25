@@ -88,7 +88,6 @@ main(int argc, char **argv, char **env)
   NSRect sf4 = {{40, 100}, {20, 150}};
   NSRect sf5 = {{70, 100}, {20, 150}};
   id object;
-  id pool;
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask
                        | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
@@ -96,7 +95,7 @@ main(int argc, char **argv, char **env)
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
-  pool = [NSAutoreleasePool new];
+  ENTER_POOL
 
   theApp = [NSApplication sharedApplication];
   object = [[MyObject new] autorelease];
@@ -170,7 +169,7 @@ main(int argc, char **argv, char **env)
 
   [theApp run];
 
-  [pool release];
+  LEAVE_POOL
 
   return 0;
 }

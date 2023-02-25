@@ -37,7 +37,7 @@ main(void)
   NSMenuItem *menuItem;
   Controller *controller;
 
-  pool = [NSAutoreleasePool new];
+  ENTER_POOL
   app = [NSApplication sharedApplication];
 
   //
@@ -137,7 +137,7 @@ main(void)
   [[NSUserDefaults standardUserDefaults] synchronize];
   /* Useless anyway, since everything is automatically released on exit. */
   RELEASE(controller);
-  RELEASE(pool);
+  LEAVE_POOL
   return 0;
 }
 

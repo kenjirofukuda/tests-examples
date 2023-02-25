@@ -339,7 +339,7 @@ NSObject
 {
   [win setDelegate: nil];
   RELEASE(win);
-  [super dealloc];
+  DEALLOC
 }
 - (void) restart
 {

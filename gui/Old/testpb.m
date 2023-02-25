@@ -37,7 +37,7 @@
 int
 main(int argc, char **argv)
 {
-  NSAutoreleasePool *pool = [NSAutoreleasePool new];
+  NSAutoreleasePool *ENTER_POOL
   pbOwner	*owner = [pbOwner new];
   NSPasteboard	*pb;
   NSArray	*types;
@@ -77,7 +77,7 @@ main(int argc, char **argv)
 
       printf("To upper - result - '%s'\n", [result cString]);
     }
-  [pool release];
+  LEAVE_POOL
   exit(0);
 }
 

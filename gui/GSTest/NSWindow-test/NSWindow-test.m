@@ -130,7 +130,7 @@ static NSButton *AddButton(NSString *label, NSRect frame, NSView *dest, id targe
 {
   RELEASE(testWindow);
   RELEASE(panel);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) log: (NSString *)message

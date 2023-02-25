@@ -53,7 +53,7 @@
 - (void) dealloc
 {
   TEST_RELEASE(attr);
-  [super dealloc];
+  DEALLOC
 }
 - (void) setAttributedString: (NSAttributedString *)s
 {
@@ -143,7 +143,7 @@ NSObject
   // NB: text is automatically released releasing win,
   // since it is a subview of win.
   RELEASE(win);
-  [super dealloc];
+  DEALLOC
 }
 - (void) restart
 {

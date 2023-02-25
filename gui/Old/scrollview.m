@@ -168,7 +168,7 @@ main(int argc, char **argv, char **env)
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
-  pool = [NSAutoreleasePool new];
+  ENTER_POOL
 
   theApp = [NSApplication sharedApplication];
 
@@ -176,6 +176,6 @@ main(int argc, char **argv, char **env)
   [theApp setDelegate: object];
 
   [theApp run];
-  [pool release];
+  LEAVE_POOL
   return 0;
 }

@@ -235,7 +235,7 @@ NSObject
 {
   RELEASE(win);
   RELEASE(winToCheck);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) choose: (id)sender

@@ -94,7 +94,7 @@
 
 int main(int argc, char **argv)
 {
-  NSAutoreleasePool *pool = [NSAutoreleasePool new];
+  NSAutoreleasePool *ENTER_POOL
   NSApplication *application;
   NSMenu *menu;
 
@@ -105,6 +105,6 @@ int main(int argc, char **argv)
   [application setMainMenu: menu];
 
   [application run];
-  [pool release];
+  LEAVE_POOL
   return 0;
 }

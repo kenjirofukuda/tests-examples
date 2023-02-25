@@ -101,7 +101,7 @@ static id sharedFindObject = nil;
   if (self != sharedFindObject)
     {
       [findString release];
-      [super dealloc];
+      DEALLOC
     }
 }
 

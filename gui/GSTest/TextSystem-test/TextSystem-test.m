@@ -192,7 +192,7 @@ NSObject
 - (void) dealloc
 {
   RELEASE(win);
-  [super dealloc];
+  DEALLOC
 }
 
 @end

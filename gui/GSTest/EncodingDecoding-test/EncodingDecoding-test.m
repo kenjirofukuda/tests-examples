@@ -174,7 +174,7 @@ NSObject
 {
   [[NSNotificationCenter defaultCenter] removeObserver: self];
   RELEASE(win);
-  [super dealloc];
+  DEALLOC
 }
 - (void) encode: (id)sender
 {

@@ -25,7 +25,7 @@
 {
   RELEASE(window);
 
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) makeKeyAndOrderFront

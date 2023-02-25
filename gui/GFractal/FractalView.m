@@ -454,7 +454,7 @@ static id cschemes[] =
 - (void) dealloc
 {
   [image dealloc];
-  [super dealloc];
+  DEALLOC
 }
 
 @end

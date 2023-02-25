@@ -38,7 +38,7 @@
   TEST_RELEASE(pipe[0]);
   TEST_RELEASE(pipe[1]);
   [[NSNotificationCenter defaultCenter] removeObserver: self];
-  [super dealloc];
+  DEALLOC
 }
 - (id) init
 {

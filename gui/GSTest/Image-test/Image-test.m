@@ -129,7 +129,7 @@ static NSImage *ResizedIcon(NSImage *icon, int size, BOOL createBitmap)
 - (void) dealloc
 {
   [gsImage release];
-  [super dealloc];
+  DEALLOC
 }
 
 - (BOOL) isFlipped
@@ -258,7 +258,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 {
   [pdfexample release];
   [svgexample release];
-  [super dealloc];
+  DEALLOC
 }
 
 - (NSBezierPath *) gBezierPathAtPoint: (NSPoint)p
@@ -558,7 +558,7 @@ NSObject
 - (void) dealloc
 {
   RELEASE(win);
-  [super dealloc];
+  DEALLOC
 }
 
 @end

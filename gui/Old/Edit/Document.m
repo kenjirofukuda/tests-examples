@@ -119,7 +119,7 @@
     {
       NSRecycleZone([self zone]);
     }
-  [super dealloc];
+  DEALLOC
 }
 
 - (NSText *) firstTextView

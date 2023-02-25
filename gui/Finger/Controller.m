@@ -55,7 +55,7 @@
 - (void) dealloc
 {
   TEST_RELEASE(pref);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) applicationDidFinishLaunching: (NSNotification *)aNotification;

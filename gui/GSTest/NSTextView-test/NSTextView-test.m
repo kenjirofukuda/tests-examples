@@ -134,7 +134,7 @@ NSObject
 {
   RELEASE(win);
   RELEASE(storage);
-  [super dealloc];
+  DEALLOC
 }
 - (void) restart
 {

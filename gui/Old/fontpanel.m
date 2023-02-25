@@ -27,7 +27,7 @@
 int
 main(void)
 {
-  NSAutoreleasePool *pool = [NSAutoreleasePool new];
+  NSAutoreleasePool *ENTER_POOL
   NSApplication     *app;
   NSMenu	    *menu;
   NSMenuItem        *item;
@@ -47,7 +47,7 @@ main(void)
 
   [app run];
 
-  [pool release];
+  LEAVE_POOL
   return 0;
 }
 

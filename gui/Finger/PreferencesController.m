@@ -350,7 +350,7 @@ setup_box(NSString *command, NSTextField *field, int tag, id target)
 - (void) dealloc
 {
   RELEASE(pan);
-  [super dealloc];
+  DEALLOC
 }
 - (BOOL) panel: (id)sender shouldShowFilename: (NSString *)filename
 {

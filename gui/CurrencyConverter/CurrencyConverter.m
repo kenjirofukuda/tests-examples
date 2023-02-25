@@ -205,7 +205,7 @@ static NSString *fieldString[3] =
 {
   // Releasing the window releases all its views in cascade
   RELEASE(window);
-  [super dealloc];
+  DEALLOC
 }
 
 // Received upon ending of editing in one of the two fields.

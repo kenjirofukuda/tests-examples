@@ -139,7 +139,7 @@
   RELEASE(fpsField);
   [fpsDisplayTimer invalidate];
   RELEASE(fpsDisplayTimer);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) fpsDisplay
@@ -433,7 +433,7 @@
 - (void) dealloc
 {
   RELEASE(view);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) updateView

@@ -67,7 +67,7 @@ static NSString *schemestrs[] =
 - (void) dealloc
 {
   RELEASE(window);
-  [super dealloc];
+  DEALLOC
 }
 
 - (id) delegate

@@ -54,7 +54,7 @@
   RELEASE(normal);
   RELEASE(bold);
   TEST_RELEASE(str);
-  [super dealloc];
+  DEALLOC
 }
 - (void) setString: (NSString *)s
 {

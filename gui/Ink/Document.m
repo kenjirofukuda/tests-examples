@@ -38,7 +38,7 @@
 - (void) dealloc
 {
   RELEASE(ts);
-  [super dealloc];
+  DEALLOC
 }
 
 - (NSFileWrapper *) fileWrapperRepresentationOfType: (NSString *)type

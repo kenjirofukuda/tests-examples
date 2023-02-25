@@ -97,7 +97,7 @@
 - (void) dealloc
 {
   [printInfo release];
-  [super dealloc];
+  DEALLOC
 }
 
 - (NSSize) documentSizeInPage

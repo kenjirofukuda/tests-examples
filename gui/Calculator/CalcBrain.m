@@ -45,7 +45,7 @@ NSObject
 {
   if (face)
     [face release];
-  [super dealloc];
+  DEALLOC
 }
 
 // Set the corresponding face

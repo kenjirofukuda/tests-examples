@@ -168,7 +168,7 @@ main(int argc, char **argv, char **env)
   NSRect winRect = {{100, 100}, {300, 350}};
   NSRect tabViewRect = {{10, 10}, {280, 280}};
   NSBox *slash;
-  id pool = [NSAutoreleasePool new];
+  ENTER_POOL
   id aView;
   id label;
   NSButton *button;
@@ -334,7 +334,7 @@ main(int argc, char **argv, char **env)
   }
 
   [theApp run];
-  [pool release];
+  LEAVE_POOL
 
   return 0;
 }

@@ -46,7 +46,7 @@ static NSDictionary *infoDict = nil;
       RELEASE(resolver);
     }
 
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) awakeFromNib

@@ -211,7 +211,7 @@ NSWindow
 
 - (void) dealloc
 {
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) setBrain: (CalcBrain *)aBrain

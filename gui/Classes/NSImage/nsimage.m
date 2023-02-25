@@ -184,18 +184,17 @@ int
 main(int argc, char **argv, char **env)
 {
   MyController *controller;
-  id pool;
-
+  
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
-  pool = [NSAutoreleasePool new];
+  ENTER_POOL
 
   [NSApplication sharedApplication];
   controller = [MyController new];
   [NSApp setDelegate: controller];
   [controller menuSet];
   [NSApp run];
-  [pool release];
+  LEAVE_POOL
   return 0;
 }

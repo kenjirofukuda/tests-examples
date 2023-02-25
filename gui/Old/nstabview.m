@@ -242,7 +242,7 @@
 int
 main(int argc, char **argv, char **env)
 {
-  id pool = [NSAutoreleasePool new];
+  ENTER_POOL
   NSApplication *app;
 
   app = [NSApplication sharedApplication];
@@ -260,7 +260,7 @@ main(int argc, char **argv, char **env)
 
   [app run];
 
-  [pool release];
+  LEAVE_POOL
 
   return 0;
 }

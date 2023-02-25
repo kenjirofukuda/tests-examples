@@ -9,7 +9,7 @@ NSComparisonResult nameSort(id path1, id path2, void *context);
 {
   RELEASE(tests);
   RELEASE(loadedTests);
-  [super dealloc];
+  DEALLOC
 }
 
 - (id) init

@@ -256,7 +256,7 @@ NSObject
   RELEASE(keysArray);
   RELEASE(valuesArray);
   RELEASE(testArray);
-  [super dealloc];
+  DEALLOC
 }
 - (void) restart
 {

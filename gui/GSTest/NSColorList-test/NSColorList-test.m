@@ -166,7 +166,7 @@ NSObject
 - (void) dealloc
 {
   [win release];
-  [super dealloc];
+  DEALLOC
 }
 - (void) showColorList: (id)sender
 {

@@ -45,7 +45,7 @@ int
 main(int argc, char **argv, char **env)
 {
   NSApplication *theApp;
-  id pool = [NSAutoreleasePool new];
+  ENTER_POOL
   NSMenu *menu;
   NSMenu *infoMenu;
   NSMenu *fileMenu;
@@ -157,6 +157,6 @@ main(int argc, char **argv, char **env)
   NSLog(@"ready!");
 
   [theApp run];
-  [pool release];
+  LEAVE_POOL
   return 0;
 }

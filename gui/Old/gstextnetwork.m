@@ -62,7 +62,7 @@
 int
 main(int argc, char **argv, char **env)
 {
-  id pool = [NSAutoreleasePool new];
+  ENTER_POOL
   NSApplication *theApp;
   NSAttributedString *attributedString;
   NSString *funString = @"SomethingNothing";
@@ -95,7 +95,7 @@ main(int argc, char **argv, char **env)
 
   [theApp run];
 
-  [pool release];
+  LEAVE_POOL
 
   return 0;
 }

@@ -31,7 +31,7 @@
 int
 main(int argc, char **argv, char **env_c)
 {
-  CREATE_AUTORELEASE_POOL(pool);
+  ENTER_POOL
   NSFileHandle		*fh;
   NSData		*data;
   NSString		*string;
@@ -69,6 +69,6 @@ main(int argc, char **argv, char **env_c)
       NSLog(@"Got %@", data);
     }
 
-  RELEASE(pool);
+  LEAVE_POOL
   exit(EXIT_SUCCESS);
 }

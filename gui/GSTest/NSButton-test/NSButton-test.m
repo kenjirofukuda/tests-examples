@@ -338,7 +338,7 @@ NSObject
 - (void) dealloc
 {
   RELEASE(win);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) action: (id)sender

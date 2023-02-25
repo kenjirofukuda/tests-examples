@@ -84,7 +84,7 @@
     RELEASE(win[i]);
   RELEASE(animations);
   RELEASE(viewAnimation);
-  [super dealloc];
+  DEALLOC
 }
 
 - (void) restart

@@ -28,7 +28,7 @@
 - (void) dealloc
 {
   RELEASE(comp);
-  [super dealloc];
+  DEALLOC
 }
 
 - (NSImage *) compositeImage
