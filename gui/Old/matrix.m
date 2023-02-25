@@ -60,7 +60,7 @@
 
   window = [[NSWindow alloc] init];
 
-  buttonCell = [[NSButtonCell new] autorelease];
+  buttonCell = AUTORELEASE([NSButtonCell new]);
   [buttonCell setButtonType: NSPushOnPushOffButton];
 
   matrix = [[[NSMatrix alloc] initWithFrame: matrixRect

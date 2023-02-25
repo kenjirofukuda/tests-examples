@@ -515,11 +515,11 @@ static void Normalize(Vector *v)
   RELEASE(glview3);
   */
 
-  splitView1 = [[[NSSplitView alloc] initWithFrame: [window frame]] autorelease];
+  splitView1 = AUTORELEASE([[NSSplitView alloc] initWithFrame: [window frame]]);
   [splitView1 addSubview: glview1];
   [splitView1 addSubview: glview2];
 
-  splitView2 = [[[NSSplitView alloc] initWithFrame: [window frame]] autorelease];
+  splitView2 = AUTORELEASE([[NSSplitView alloc] initWithFrame: [window frame]]);
   [splitView2 addSubview: splitView1];
   [splitView2 addSubview: glview3];
   [splitView2 setVertical: YES];

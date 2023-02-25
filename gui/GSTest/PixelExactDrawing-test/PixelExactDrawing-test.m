@@ -119,7 +119,7 @@ static void DrawCrosshair(NSPoint point)
         NSButtonCell *prototype;
         NSMatrix *matrix;
 
-        prototype = [[[NSButtonCell alloc] init] autorelease];
+        prototype = AUTORELEASE([[NSButtonCell alloc] init]);
         [prototype setButtonType: NSRadioButton];
         matrix = [[[NSMatrix alloc] initWithFrame: NSMakeRect(0, 390, 150, 25)
                                      mode: NSRadioModeMatrix
@@ -149,19 +149,19 @@ static void DrawCrosshair(NSPoint point)
       AddLabel(@"NSCopyBits from (10.5, 329.5, 9.5, 9.5) to (10.5, 340.5)", NSMakeRect(30, 335, 350, 15), self);
       AddLabel(@"Draw from (9.33, 9.33): top and right edges should be dimmed", NSMakeRect(30, 365, 350, 15), self);
 
-      iv1 = [[[NSImageView alloc] initWithFrame: NSMakeRect(10, 130, 10, 10)] autorelease];
+      iv1 = AUTORELEASE([[NSImageView alloc] initWithFrame: NSMakeRect(10, 130, 10, 10)]);
       [iv1 setImage: checkerboard];
       [self addSubview: iv1];
 
-      iv2 = [[[NSImageView alloc] initWithFrame: NSMakeRect(10.5, 160.5, 10, 10)] autorelease];
+      iv2 = AUTORELEASE([[NSImageView alloc] initWithFrame: NSMakeRect(10.5, 160.5, 10, 10)]);
       [iv2 setImage: checkerboard];
       [self addSubview: iv2];
 
-      b1 = [[[NSButton alloc] initWithFrame: NSMakeRect(10, 190, 18, 18)] autorelease];
+      b1 = AUTORELEASE([[NSButton alloc] initWithFrame: NSMakeRect(10, 190, 18, 18)]);
       [b1 setImage: checkerboard];
       [self addSubview: b1];
 
-      b2 = [[[NSButton alloc] initWithFrame: NSMakeRect(10.5, 220.5, 18, 18)] autorelease];
+      b2 = AUTORELEASE([[NSButton alloc] initWithFrame: NSMakeRect(10.5, 220.5, 18, 18)]);
       [b2 setImage: checkerboard];
       [self addSubview: b2];
 
@@ -185,9 +185,9 @@ static void DrawCrosshair(NSPoint point)
                                      [[NSBundle bundleForClass: [self class]] pathForResource: @"pixelExact1" ofType: @"tiff"]] autorelease];
       expected2 = [[[NSImage alloc] initWithContentsOfFile:
                                      [[NSBundle bundleForClass: [self class]] pathForResource: @"pixelExact2" ofType: @"tiff"]] autorelease];
-      expected1view = [[[NSImageView alloc] initWithFrame: NSMakeRect(0, 0, [expected1 size].width, [expected1 size].height)] autorelease];
+      expected1view = AUTORELEASE([[NSImageView alloc] initWithFrame: NSMakeRect(0, 0, [expected1 size].width, [expected1 size].height)]);
       [expected1view setImage: expected1];
-      expected2view = [[[NSImageView alloc] initWithFrame: NSMakeRect(399, 0, [expected2 size].width, [expected2 size].height)] autorelease];
+      expected2view = AUTORELEASE([[NSImageView alloc] initWithFrame: NSMakeRect(399, 0, [expected2 size].width, [expected2 size].height)]);
       [expected2view setImage: expected2];
       [expected1view setHidden: YES];
       [expected2view setHidden: YES];

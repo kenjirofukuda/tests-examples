@@ -98,7 +98,7 @@ main(int argc, char **argv, char **env)
 
 
   theApp = [NSApplication sharedApplication];
-  object = [[MyObject new] autorelease];
+  object = AUTORELEASE([MyObject new]);
 
 #if 0
   window = [[NSWindow alloc] initWithContentRect: winRect

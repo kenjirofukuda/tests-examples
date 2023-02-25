@@ -97,7 +97,7 @@
   window = [[NSWindow alloc] init];
 #endif
 
-  view = [[[TestView alloc] initWithFrame: f] autorelease];
+  view = AUTORELEASE([[TestView alloc] initWithFrame: f]);
 
   scrollView = [[NSScrollView alloc] initWithFrame: scrollViewRect];
   [scrollView setHasHorizontalScroller: YES];
@@ -107,7 +107,7 @@
 
   [self setScrollView: scrollView];
 
-  buttonCell = [[NSButtonCell new] autorelease];
+  buttonCell = AUTORELEASE([NSButtonCell new]);
   [buttonCell setButtonType: NSRadioButton];
   [buttonCell setBordered: NO];
 
@@ -170,7 +170,7 @@ main(int argc, char **argv, char **env)
 
   theApp = [NSApplication sharedApplication];
 
-  object = [[MyObject new] autorelease];
+  object = AUTORELEASE([MyObject new]);
   [theApp setDelegate: object];
 
   [theApp run];

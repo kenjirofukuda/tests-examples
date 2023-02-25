@@ -63,7 +63,7 @@ main(int argc, char **argv, char **env)
   NSMatrix *matrix;
   NSBrowserCell *browserCell;
   NSScrollView *scrollView;
-  MyObject *handler = [[MyObject new] autorelease];
+  MyObject *handler = AUTORELEASE([MyObject new]);
   NSSize cs, ms;
   NSRect mr;
 
@@ -83,7 +83,7 @@ main(int argc, char **argv, char **env)
   window = [[NSWindow alloc] init];
 //#endif
 
-  browserCell = [[NSBrowserCell new] autorelease];
+  browserCell = AUTORELEASE([NSBrowserCell new]);
   [browserCell setStringValue: @"aTitle"];				// for NS compatibility
 
   matrix = [[[NSMatrix alloc] initWithFrame: matrixRect

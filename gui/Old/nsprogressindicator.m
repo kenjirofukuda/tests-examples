@@ -69,7 +69,7 @@ main(int argc, char **argv, char **env)
 
   [window setFrame: winRect display: YES];
 
-  target = [[MyObject new] autorelease];
+  target = AUTORELEASE([MyObject new]);
 
   horInd = [[[NSProgressIndicator alloc] initWithFrame: horIndRect]
                                          autorelease];

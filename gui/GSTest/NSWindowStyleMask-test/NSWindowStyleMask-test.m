@@ -195,13 +195,13 @@ NSObject
   if (isPanel)
     [newWindow setTitle: @"Panel"];
 
-  button = [[[NSButton alloc] initWithFrame: NSMakeRect(100, 0, 100, 30)] autorelease];
+  button = AUTORELEASE([[NSButton alloc] initWithFrame: NSMakeRect(100, 0, 100, 30)]);
   [button setTitle: @"Close"];
   [button setTarget: self];
   [button setAction: @selector(closeWindow:)];
   [[newWindow contentView] addSubview: button];
 
-  label = [[[NSTextField alloc] initWithFrame: NSMakeRect(0, 30, 300, 170)] autorelease];
+  label = AUTORELEASE([[NSTextField alloc] initWithFrame: NSMakeRect(0, 30, 300, 170)]);
   [label setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [label setStringValue: labelString];
   [label setDrawsBackground: NO];

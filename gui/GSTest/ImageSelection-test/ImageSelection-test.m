@@ -80,7 +80,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       testTIFFIconWithAllImages72DPI = [ImageFromBundle(@"testTIFFIconWithAllImages72DPI", @"tiff") retain];
 
       {
-        NSSlider *slider = [[[NSSlider alloc] initWithFrame: NSMakeRect(248, 200, 256, 16)] autorelease];
+        NSSlider *slider = AUTORELEASE([[NSSlider alloc] initWithFrame: NSMakeRect(248, 200, 256, 16)]);
         [slider setMinValue: 8.0];
         [slider setMaxValue: 600.0];
         [slider setFloatValue: 48.0];
@@ -91,7 +91,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       }
 
       {
-        NSSlider *sliderV = [[[NSSlider alloc] initWithFrame: NSMakeRect(228, 200, 16, 256)] autorelease];
+        NSSlider *sliderV = AUTORELEASE([[NSSlider alloc] initWithFrame: NSMakeRect(228, 200, 16, 256)]);
         [sliderV setMinValue: 8.0];
         [sliderV setMaxValue: 600.0];
         [sliderV setFloatValue: 48.0];
@@ -102,7 +102,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       }
 
       {
-        scalingModesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect(0, 200, 220, 32)] autorelease];
+        scalingModesPopUp = AUTORELEASE([[NSPopUpButton alloc] initWithFrame: NSMakeRect(0, 200, 220, 32)]);
         [scalingModesPopUp addItemWithTitle: @"NSImageScaleProportionallyDown"];
         [[scalingModesPopUp lastItem] setTag: NSImageScaleProportionallyDown];
         [scalingModesPopUp addItemWithTitle: @"NSImageScaleAxesIndependently"];
@@ -118,7 +118,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       }
 
       {
-        classesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect(0, 240, 220, 32)] autorelease];
+        classesPopUp = AUTORELEASE([[NSPopUpButton alloc] initWithFrame: NSMakeRect(0, 240, 220, 32)]);
         [classesPopUp addItemWithTitle: @"NSButton"];
         [classesPopUp addItemWithTitle: @"NSImageView"];
         [classesPopUp setTarget: self];
@@ -183,13 +183,13 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
   if ([selected isEqual: @"NSImageView"])
     {
-      imageView = [[[NSImageView alloc] initWithFrame: frame] autorelease];
+      imageView = AUTORELEASE([[NSImageView alloc] initWithFrame: frame]);
       [imageView setImage: testTIFFIconWithAllImages72DPI];
       [imageView setImageFrameStyle: NSImageFrameGrayBezel];
     }
   else if ([selected isEqual: @"NSButton"])
     {
-      imageView = [[[NSButton alloc] initWithFrame: frame] autorelease];
+      imageView = AUTORELEASE([[NSButton alloc] initWithFrame: frame]);
       [imageView setImage: testTIFFIconWithAllImages72DPI];
     }
 
@@ -313,7 +313,7 @@ NSObject
 
 + (NSImage *) testImage
 {
-  NSImage *img = [[[NSImage alloc] initWithSize: NSMakeSize(32, 32)] autorelease];
+  NSImage *img = AUTORELEASE([[NSImage alloc] initWithSize: NSMakeSize(32, 32)]);
   [img addRepresentation: [[[self alloc] init] autorelease]];
   return img;
 }

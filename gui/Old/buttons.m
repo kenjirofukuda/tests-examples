@@ -169,7 +169,7 @@
   [onoff setTarget: self];
   [onoff setAction: @selector(buttonAction2:)];
 
-  txtField = [[[NSTextField alloc] initWithFrame: textFieldRect] autorelease];
+  txtField = AUTORELEASE([[NSTextField alloc] initWithFrame: textFieldRect]);
   [self setTextField: txtField];
   [txtField setStringValue: @"off"];
 

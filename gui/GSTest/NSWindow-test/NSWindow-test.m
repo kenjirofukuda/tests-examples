@@ -95,7 +95,7 @@ static NSButton *AddButton(NSString *label, NSRect frame, NSView *dest, id targe
 
 - (void) setupTextView
 {
-  NSScrollView *sv = [[[NSScrollView alloc] initWithFrame: [[panel contentView] bounds]] autorelease];
+  NSScrollView *sv = AUTORELEASE([[NSScrollView alloc] initWithFrame: [[panel contentView] bounds]]);
   [sv setBorderType: NSNoBorder];
   [sv setHasVerticalScroller: YES];
   [sv setHasHorizontalScroller: NO];

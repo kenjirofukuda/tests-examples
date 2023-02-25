@@ -142,7 +142,7 @@
   window = [[NSWindow alloc] init];
 
   /* Setup the matrix */
-  buttonCell = [[NSButtonCell new] autorelease];
+  buttonCell = AUTORELEASE([NSButtonCell new]);
   [buttonCell setButtonType: NSPushOnPushOffButton];
   newMatrix = [[[NSMatrix alloc] initWithFrame: matrixRect
                                   mode: NSRadioModeMatrix
@@ -160,7 +160,7 @@
   [[window contentView] addSubview: scrollView];
 
   /* Setup the matrix for different selection types */
-  buttonCell = [[NSButtonCell new] autorelease];
+  buttonCell = AUTORELEASE([NSButtonCell new]);
   [buttonCell setButtonType: NSRadioButton];
   [buttonCell setBordered: NO];
   [buttonCell setImagePosition: NSImageLeft];		// for NS compatibility

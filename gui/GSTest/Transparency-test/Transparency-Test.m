@@ -81,7 +81,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 
       AddLabel(@"Window opacity (including title bar):", NSMakeRect(0, 260, 200, 50), self);
       {
-        NSSlider *slider = [[[NSSlider alloc] initWithFrame: NSMakeRect(200, 275, 200, 20)] autorelease];
+        NSSlider *slider = AUTORELEASE([[NSSlider alloc] initWithFrame: NSMakeRect(200, 275, 200, 20)]);
         [slider setMinValue: 0.0];
         [slider setMaxValue: 1.0];
         [slider setFloatValue: 1.0];
@@ -95,7 +95,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
                NSMakeRect(0, 210, 200, 50), self);
       {
         NSColor *defaultColor;
-        NSColorWell *well = [[[NSColorWell alloc] initWithFrame: NSMakeRect(200, 220, 30, 30)] autorelease];
+        NSColorWell *well = AUTORELEASE([[NSColorWell alloc] initWithFrame: NSMakeRect(200, 220, 30, 30)]);
 
         // Convert the window background to NSCalibratedRGBColorSpace
         // so it is possible to change the alpha component
@@ -113,7 +113,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 
       AddLabel(@"GNUstep logo:", NSMakeRect(0, 10, 200, 200), self);
       {
-        NSImageView *logo = [[[NSImageView alloc] initWithFrame: NSMakeRect(200, 10, 200, 200)] autorelease];
+        NSImageView *logo = AUTORELEASE([[NSImageView alloc] initWithFrame: NSMakeRect(200, 10, 200, 200)]);
         [logo setImage: [NSImage imageNamed: @"LogoGNUstep"]];
         [logo setImageFrameStyle: NSImageFrameGrayBezel];
         [self addSubview: logo];

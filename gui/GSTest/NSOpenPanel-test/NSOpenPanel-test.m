@@ -81,11 +81,11 @@ NSObject
   TableEntry *entry;
   NSRect winFrame;
 
-  vbox = [[GSVbox new] autorelease];
+  vbox = AUTORELEASE([GSVbox new]);
   [vbox setDefaultMinYMargin: 5];
   [vbox setBorder: 5];
 
-  button = [[NSButton new] autorelease];
+  button = AUTORELEASE([NSButton new]);
   [button setTitle: @"Start Open Panel"];
   [button sizeToFit];
   [button setAutoresizingMask: NSViewMinXMargin];
@@ -114,7 +114,7 @@ NSObject
 
   [resultsTable setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
   //Add entries in the table
-  entry = [[TableEntry new] autorelease];
+  entry = AUTORELEASE([TableEntry new]);
   [entry setStringValue: @"Button:"];
   [entry setAlignment: NSRightTextAlignment];
   [entry sizeToFit];
@@ -123,7 +123,7 @@ NSObject
                  column: 0
             withMargins: 2];
 
-  entry = [[TableEntry new] autorelease];
+  entry = AUTORELEASE([TableEntry new]);
   [entry setStringValue: @"Filenames:"];
   [entry setAlignment: NSRightTextAlignment];
   [entry sizeToFit];
@@ -132,7 +132,7 @@ NSObject
                  column: 0
             withMargins: 2];
 
-  entry = [[TableEntry new] autorelease];
+  entry = AUTORELEASE([TableEntry new]);
   [entry setStringValue: @"Filename:"];
   [entry setAlignment: NSRightTextAlignment];
   [entry sizeToFit];
@@ -141,7 +141,7 @@ NSObject
                  column: 0
             withMargins: 2];
 
-  entry = [[TableEntry new] autorelease];
+  entry = AUTORELEASE([TableEntry new]);
   [entry setStringValue: @"Directory:"];
   [entry setAlignment: NSRightTextAlignment];
   [entry sizeToFit];
@@ -150,7 +150,7 @@ NSObject
                  column: 0
             withMargins: 2];
 
-  buttonEntry = [[TableEntry new] autorelease];
+  buttonEntry = AUTORELEASE([TableEntry new]);
   [buttonEntry setStringValue: @" "];
   [buttonEntry setAlignment: NSLeftTextAlignment];
   [buttonEntry sizeToFit];
@@ -159,7 +159,7 @@ NSObject
                  column: 1
             withMargins: 2];
 
-  filenamesEntry = [[TableEntry new] autorelease];
+  filenamesEntry = AUTORELEASE([TableEntry new]);
   [filenamesEntry setStringValue: @" "];
   [filenamesEntry setAlignment: NSLeftTextAlignment];
   [filenamesEntry sizeToFit];
@@ -168,7 +168,7 @@ NSObject
                  column: 1
             withMargins: 2];
 
-  filenameEntry = [[TableEntry new] autorelease];
+  filenameEntry = AUTORELEASE([TableEntry new]);
   [filenameEntry setStringValue: @" "];
   [filenameEntry setAlignment: NSLeftTextAlignment];
   [filenameEntry sizeToFit];
@@ -177,7 +177,7 @@ NSObject
                  column: 1
             withMargins: 2];
 
-  directoryEntry = [[TableEntry new] autorelease];
+  directoryEntry = AUTORELEASE([TableEntry new]);
   [directoryEntry setStringValue: @" "];
   [directoryEntry setAlignment: NSLeftTextAlignment];
   [directoryEntry sizeToFit];
@@ -187,7 +187,7 @@ NSObject
             withMargins: 2];
   //
 
-  resultsBox = [[NSBox new] autorelease];
+  resultsBox = AUTORELEASE([NSBox new]);
   [resultsBox setTitle: @"Results"];
   [resultsBox setTitlePosition: NSAtTop];
   [resultsBox addSubview: resultsTable];
@@ -197,7 +197,7 @@ NSObject
   [vbox addView: resultsBox
     withMinYMargin: 10];
 
-  configureForm = [[NSForm new] autorelease];
+  configureForm = AUTORELEASE([NSForm new]);
   [configureForm addEntry: @"Title:"];
   [configureForm addEntry: @"Prompt:"];
   [configureForm addEntry: @"Directory:"];
@@ -206,11 +206,11 @@ NSObject
   [configureForm sizeToFit];
   [configureForm setAutoresizingMask: NSViewWidthSizable];
 
-  tmp_box = [[GSVbox new] autorelease];
+  tmp_box = AUTORELEASE([GSVbox new]);
   [tmp_box setDefaultMinYMargin: 4];
   [tmp_box setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
 
-  chooseDirsButton = [[NSButton new] autorelease];
+  chooseDirsButton = AUTORELEASE([NSButton new]);
   [chooseDirsButton setTitle: @"Can Choose Directories"];
   [chooseDirsButton setButtonType: NSSwitchButton];
   [chooseDirsButton setBordered: NO];
@@ -218,7 +218,7 @@ NSObject
   [chooseDirsButton setAutoresizingMask: NSViewMaxXMargin];
   [tmp_box addView: chooseDirsButton];
 
-  chooseFilesButton = [[NSButton new] autorelease];
+  chooseFilesButton = AUTORELEASE([NSButton new]);
   [chooseFilesButton setTitle: @"Can Choose Files"];
   [chooseFilesButton setButtonType: NSSwitchButton];
   [chooseFilesButton setBordered: NO];
@@ -227,7 +227,7 @@ NSObject
   [chooseFilesButton setAutoresizingMask: NSViewMaxXMargin];
   [tmp_box addView: chooseFilesButton];
 
-  allowMultiButton = [[NSButton new] autorelease];
+  allowMultiButton = AUTORELEASE([NSButton new]);
   [allowMultiButton setTitle: @"Allow Multiple Files"];
   [allowMultiButton setButtonType: NSSwitchButton];
   [allowMultiButton setBordered: NO];
@@ -235,7 +235,7 @@ NSObject
   [allowMultiButton setAutoresizingMask: NSViewMaxXMargin];
   [tmp_box addView: allowMultiButton];
 
-  packageButton = [[NSButton new] autorelease];
+  packageButton = AUTORELEASE([NSButton new]);
   [packageButton setTitle: @"Treat File Packages as Directories"];
   [packageButton setButtonType: NSSwitchButton];
   [packageButton setBordered: NO];
@@ -243,7 +243,7 @@ NSObject
   [packageButton setAutoresizingMask: NSViewMaxXMargin];
   [tmp_box addView: packageButton];
 
-  accessoryViewButton = [[NSButton new] autorelease];
+  accessoryViewButton = AUTORELEASE([NSButton new]);
   [accessoryViewButton setTitle: @"Add an Accessory View"];
   [accessoryViewButton setButtonType: NSSwitchButton];
   [accessoryViewButton setBordered: NO];
@@ -251,7 +251,7 @@ NSObject
   [accessoryViewButton setAutoresizingMask: NSViewMaxXMargin];
   [tmp_box addView: accessoryViewButton];
 
-  ivbox = [[GSVbox new] autorelease];
+  ivbox = AUTORELEASE([GSVbox new]);
   [ivbox setDefaultMinYMargin: 8];
   [ivbox addView: tmp_box
   enablingYResizing: NO];
@@ -259,7 +259,7 @@ NSObject
   enablingYResizing: NO];
   [ivbox setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
 
-  configureBox = [[NSBox new] autorelease];
+  configureBox = AUTORELEASE([NSBox new]);
   [configureBox setTitle: @"Options"];
   [configureBox setTitlePosition: NSAtTop];
   [configureBox addSubview: ivbox];

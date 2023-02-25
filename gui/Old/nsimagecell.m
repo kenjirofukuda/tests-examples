@@ -62,7 +62,7 @@
 
   window = [[NSWindow alloc] init];
 
-  imageCell = [[NSImageCell new] autorelease];
+  imageCell = AUTORELEASE([NSImageCell new]);
   [imageCell setImageFrameStyle: NSImageFrameGrayBezel];
   [imageCell setImageScaling: NSScaleNone];
   [imageCell setImage: [NSImage imageNamed: @"NSRadioButton"]];

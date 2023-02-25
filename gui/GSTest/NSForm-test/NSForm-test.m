@@ -48,7 +48,7 @@ NSObject
   NSTextField *field;
   NSRect winFrame;
 
-  field = [[NSTextField new] autorelease];
+  field = AUTORELEASE([NSTextField new]);
   // I suppose this could be considered a hack
   [field setStringValue: @"Test"];
   [field sizeToFit];
@@ -57,7 +57,7 @@ NSObject
   [field setEditable: YES];
   [field setAutoresizingMask: NSViewWidthSizable];
 
-  fieldBox = [[NSBox new] autorelease];
+  fieldBox = AUTORELEASE([NSBox new]);
   [fieldBox setTitlePosition: NSAtTop];
   [fieldBox setTitle: @"A NSTextField"];
   [fieldBox setBorderType: NSGrooveBorder];
@@ -65,7 +65,7 @@ NSObject
   [fieldBox sizeToFit];
   [fieldBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  formOne = [[NSForm new] autorelease];
+  formOne = AUTORELEASE([NSForm new]);
   [formOne addEntry: @"First Name:"];
   [formOne addEntry: @"Surname:"];
   [formOne addEntry: @"Address:"];
@@ -80,7 +80,7 @@ NSObject
   // minimum width).
   [formOne setEntryWidth: 240];
 
-  boxOne = [[NSBox new] autorelease];
+  boxOne = AUTORELEASE([NSBox new]);
   [boxOne setTitlePosition: NSAtTop];
   [boxOne setTitle: @"A NSForm"];
   [boxOne setBorderType: NSGrooveBorder];
@@ -88,7 +88,7 @@ NSObject
   [boxOne sizeToFit];
   [boxOne setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  formTwo = [[NSForm new] autorelease];
+  formTwo = AUTORELEASE([NSForm new]);
   [formTwo addEntry: @"First Name:"];
   [formTwo addEntry: @"Surname:"];
   [formTwo addEntry: @"Address:"];
@@ -100,7 +100,7 @@ NSObject
   [formTwo sizeToFit];
   [formTwo setEntryWidth: 240];
 
-  boxTwo = [[NSBox new] autorelease];
+  boxTwo = AUTORELEASE([NSBox new]);
   [boxTwo setTitlePosition: NSAtTop];
   [boxTwo setTitle: @"Another NSForm"];
   [boxTwo setBorderType: NSGrooveBorder];
@@ -108,7 +108,7 @@ NSObject
   [boxTwo sizeToFit];
   [boxTwo setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  vbox = [[GSVbox new] autorelease];
+  vbox = AUTORELEASE([GSVbox new]);
   [vbox setBorder: 10];
   [vbox setDefaultMinYMargin: 10];
   [vbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];

@@ -364,7 +364,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     [NSGraphicsContext restoreGraphicsState];
 
 
-    img = [[[NSImage alloc] initWithSize: NSMakeSize(64, 64)] autorelease];
+    img = AUTORELEASE([[NSImage alloc] initWithSize: NSMakeSize(64, 64)]);
     [img addRepresentation: rep];
 
     [img drawInRect: NSMakeRect(400, 0, 64, 64)
@@ -596,7 +596,7 @@ NSObject
 
 + (NSImage *) testImage
 {
-  NSImage *img = [[[NSImage alloc] initWithSize: NSMakeSize(32, 32)] autorelease];
+  NSImage *img = AUTORELEASE([[NSImage alloc] initWithSize: NSMakeSize(32, 32)]);
   [img addRepresentation: [[[self alloc] init] autorelease]];
   return img;
 }
