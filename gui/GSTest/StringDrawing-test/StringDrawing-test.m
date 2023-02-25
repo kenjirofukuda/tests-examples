@@ -181,7 +181,7 @@ NSObject
                             nil];
 
       attr = [[NSAttributedString alloc] initWithString: string
-                                           attributes: dict];
+                                             attributes: dict];
       AUTORELEASE(attr);
       [text setAttributedString: attr];
       [text sizeToFit];

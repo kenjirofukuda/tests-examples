@@ -109,10 +109,10 @@
   [imageCell setImage: [NSImage imageNamed: @"NSRadioButton"]];
 
   theMatrix = [[NSMatrix alloc] initWithFrame: matrixRect
-                                  mode: NSRadioModeMatrix
-                                  prototype: imageCell
-                                  numberOfRows: 3
-                                  numberOfColumns: 4];
+                                         mode: NSRadioModeMatrix
+                                    prototype: imageCell
+                                 numberOfRows: 3
+                              numberOfColumns: 4];
   AUTORELEASE(theMatrix);
   [theMatrix setCellSize: cellSize];
 
@@ -205,7 +205,7 @@ main(int argc, char **argv, char **env)
                           install."]];
                           [aView addSubview: label];
                           RELEASE(label);
-    slash = [[NSBox alloc] initWithFrame: NSMakeRect(10, 37, 260, 2)];
+                          slash = [[NSBox alloc] initWithFrame: NSMakeRect(10, 37, 260, 2)];
                           [slash setTitlePosition: NSNoTitle];
                           [slash setBorderType: NSGrooveBorder];
                           [aView addSubview: slash];
@@ -235,15 +235,15 @@ main(int argc, char **argv, char **env)
 
                           [aView addSubview: [delegate aMatrixToAddAsAView]];
                           /*
-      label = [[NSTextField alloc] initWithFrame:[aView frame]];
+    label = [[NSTextField alloc] initWithFrame:[aView frame]];
      [label setEditable:NO];
-      [label setSelectable:NO];
+   [label setSelectable:NO];
       [label setBezeled:NO];
      [label setBordered:NO];
-      [label setBackgroundColor:[NSColor lightGrayColor]];
+    [label setBackgroundColor:[NSColor lightGrayColor]];
     [label setAlignment:NSCenterTextAlignment];
-      [label setStringValue:[NSString stringWithCString: "Previous, or Next?"]];
-     	[aView addSubview:label];
+  [label setStringValue:[NSString stringWithCString: "Previous, or Next?"]];
+      [aView addSubview:label];
                           	RELEASE(label);
                           */
     slash = [[NSBox alloc] initWithFrame: NSMakeRect(10, 37, 260, 2)];
@@ -281,16 +281,16 @@ main(int argc, char **argv, char **env)
                           [scrollView setHasVerticalScroller: YES];
                           [aView addSubview: scrollView];
                           /*
-      label = [[NSTextField alloc] initWithFrame:[aView frame]];
+    label = [[NSTextField alloc] initWithFrame:[aView frame]];
      [label setEditable:NO];
-      [label setSelectable:NO];
+   [label setSelectable:NO];
       [label setBezeled:NO];
      [label setBordered:NO];
-      [label setBackgroundColor:[NSColor lightGrayColor]];
+    [label setBackgroundColor:[NSColor lightGrayColor]];
     [label setAlignment:NSCenterTextAlignment];
-      [label setStringValue:[NSString stringWithCString:"Well, no install.
+  [label setStringValue:[NSString stringWithCString:"Well, no install.
                 Sorry. :-)"]];
-     	[aView addSubview:label];
+      [aView addSubview:label];
                           	RELEASE(label);
                           */
     slash = [[NSBox alloc] initWithFrame: NSMakeRect(10, 37, 260, 2)];

@@ -184,7 +184,7 @@ int
 main(int argc, char **argv, char **env)
 {
   MyController *controller;
-  
+
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif

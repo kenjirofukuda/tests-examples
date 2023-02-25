@@ -94,7 +94,7 @@ NSObject
   // The little results table
   resultsTable = [[GSTable alloc] initWithNumberOfRows: 3
                                        numberOfColumns: 2];
-  AUTORELEASE(resultsTable);                                     
+  AUTORELEASE(resultsTable);
   // Set resizing properties
   [resultsTable setXResizingEnabled: NO
                           forColumn: 0];

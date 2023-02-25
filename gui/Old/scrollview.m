@@ -112,12 +112,12 @@
   [buttonCell setBordered: NO];
 
   zoomMatrix = [[NSMatrix alloc]
-                 initWithFrame: zoomMatrixRect
-                 mode: NSRadioModeMatrix
-                 prototype: buttonCell
-                 numberOfRows: 4
-                 numberOfColumns: 1];
-  AUTORELEASE(zoomMatrix);               
+                  initWithFrame: zoomMatrixRect
+                           mode: NSRadioModeMatrix
+                      prototype: buttonCell
+                   numberOfRows: 4
+                numberOfColumns: 1];
+  AUTORELEASE(zoomMatrix);
   [zoomMatrix setTarget: self];
   [zoomMatrix setAction: @selector(setZoomFactor:)];
 

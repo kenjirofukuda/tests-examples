@@ -67,9 +67,9 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 {
   NSImage *image;
   image = [[NSImage alloc] initWithContentsOfFile:
-            [[NSBundle bundleForClass: [ImageSelectionTestView class]] 
-                      pathForResource: name 
-                               ofType: type]];
+                           [[NSBundle bundleForClass: [ImageSelectionTestView class]]
+                            pathForResource: name
+                            ofType: type]];
   return AUTORELEASE(image);
 }
 

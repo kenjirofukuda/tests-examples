@@ -223,7 +223,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   NSImage *image;
 
   image = [[NSImage alloc] initWithContentsOfFile:
-                            [[NSBundle bundleForClass: [ImageTestView class]] pathForResource: name ofType: type]];
+                           [[NSBundle bundleForClass: [ImageTestView class]] pathForResource: name ofType: type]];
   return AUTORELEASE(image);
 }
 
@@ -352,15 +352,15 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     rep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
                                                   pixelsWide: 64
                                                   pixelsHigh: 64
-                                                  bitsPerSample: 8
-                                                  samplesPerPixel: 4
-                                                  hasAlpha: YES
-                                                  isPlanar: NO
-                                                  colorSpaceName: NSCalibratedRGBColorSpace
-                                                  bitmapFormat: 0
-                                                  bytesPerRow: 0
-                                                  bitsPerPixel: 0];
-    AUTORELEASE(rep);                                                    
+                                               bitsPerSample: 8
+                                             samplesPerPixel: 4
+                                                    hasAlpha: YES
+                                                    isPlanar: NO
+                                              colorSpaceName: NSCalibratedRGBColorSpace
+                                                bitmapFormat: 0
+                                                 bytesPerRow: 0
+                                                bitsPerPixel: 0];
+    AUTORELEASE(rep);
     [NSGraphicsContext saveGraphicsState];
     [NSGraphicsContext setCurrentContext:
                        [NSGraphicsContext graphicsContextWithBitmapImageRep: rep]];
