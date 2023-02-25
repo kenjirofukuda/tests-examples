@@ -47,7 +47,7 @@ static NSButton *AddButton(NSString *label, NSRect frame, NSView *dest, id targe
   [button setContinuous: YES];
   [button setToolTip: label];
   [dest addSubview: button];
-  return [button autorelease];
+  return AUTORELEASE(button);
 }
 
 @implementation NSWindowTest

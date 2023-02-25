@@ -118,7 +118,7 @@ NSObject
   [text setAutoresizingMask: (NSViewMinYMargin | NSViewMaxYMargin
                               | NSViewMinXMargin | NSViewMaxXMargin)];
   [vbox addView: text];
-  [text release];
+  RELEASE(text);
 
   // We use a browser with one column to get a selection list
   browser = [[NSBrowser alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
@@ -135,7 +135,7 @@ NSObject
   [browser setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   [vbox addView: browser];
-  [browser release];
+  RELEASE(browser);
 
   // Window
   winFrame.size = [vbox frame].size;
@@ -150,7 +150,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
-  [vbox release];
+  RELEASE(vbox);
   [win setTitle: @"NSColorList Test"];
 
   [self restart];
@@ -165,7 +165,7 @@ NSObject
 }
 - (void) dealloc
 {
-  [win release];
+  RELEASE(win);
   DEALLOC
 }
 - (void) showColorList: (id)sender
@@ -201,23 +201,23 @@ NSObject
       [text sizeToFit];
       [text setAutoresizingMask: (NSViewMinYMargin | NSViewMaxYMargin)];
       [hbox addView: text];
-      [text release];
+      RELEASE(text);
 
       color = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
       [color setColor: [cl colorWithKey: name]];
       [color setAutoresizingMask: NSViewMinXMargin];
       [hbox addView: color];
-      [color release];
+      RELEASE(color);
 
       [hbox setAutoresizingMask: NSViewWidthSizable];
       [vbox addView: hbox];
-      [hbox release];
+      RELEASE(hbox);
     }
 
   scrollView = [[NSScrollView alloc]
                 initWithFrame: NSMakeRect(0, 0, 150, 300)];
   [scrollView setDocumentView: vbox];
-  [vbox release];
+  RELEASE(vbox);
   [scrollView setHasHorizontalScroller: NO];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];
@@ -232,7 +232,7 @@ NSObject
                                       defer: NO];
 
   [w setContentView: scrollView];
-  [scrollView release];
+  RELEASE(scrollView);
   [w setTitle: [cl name]];
   [w setReleasedWhenClosed: YES];
   [w orderFront: self];

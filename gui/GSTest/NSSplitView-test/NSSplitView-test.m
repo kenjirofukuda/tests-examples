@@ -70,9 +70,9 @@ NSObject
   [secondView setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   [split addSubview: firstView];
-  [firstView release];
+  RELEASE(firstView);
   [split addSubview: secondView];
-  [secondView release];
+  RELEASE(secondView);
   [split setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   winFrame.size = [split frame].size;
@@ -87,7 +87,7 @@ NSObject
                                         defer: YES];
   [win setReleasedWhenClosed: NO];
   [win setContentView: split];
-  [split release];
+  RELEASE(split);
   [win setTitle: @"NSSplitView Test"];
   [self restart];
   return self;

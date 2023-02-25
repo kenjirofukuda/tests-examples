@@ -56,7 +56,7 @@
 {
   if (printInfo != anObject)
     {
-      [printInfo autorelease];
+      AUTORELEASE(printInfo);
       printInfo = [anObject copyWithZone: [self zone]];
       [self updateFrame];
       [self setNeedsDisplay: YES];	/* Because the page size might change (could optimize this) */
@@ -96,7 +96,7 @@
 
 - (void) dealloc
 {
-  [printInfo release];
+  RELEASE(printInfo);
   DEALLOC
 }
 
@@ -130,7 +130,7 @@
 {
   if (color != lineColor)
     {
-      [lineColor autorelease];
+      AUTORELEASE(lineColor);
       lineColor = [color copyWithZone: [self zone]];
       [self setNeedsDisplay: YES];
     }
@@ -145,7 +145,7 @@
 {
   if (color != marginColor)
     {
-      [marginColor autorelease];
+      AUTORELEASE(marginColor);
       marginColor = [color copyWithZone: [self zone]];
       [self setNeedsDisplay: YES];
     }

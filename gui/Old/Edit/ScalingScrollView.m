@@ -83,7 +83,7 @@ static float _NSScaleMenuFontSize = 10.0;
 
       // put it in the scrollview
       [self addSubview: _scalePopUpButton];
-      [_scalePopUpButton release];
+      RELEASE(_scalePopUpButton);
     }
 }
 

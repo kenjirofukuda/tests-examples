@@ -54,8 +54,8 @@ NSObject
     lm2 = [[NSLayoutManager alloc] init];
     [storage addLayoutManager: lm1];
     [storage addLayoutManager: lm2];
-    [lm1 release];
-    [lm2 release];
+    RELEASE(lm1);
+    RELEASE(lm2);
 
     tc1 = [[NSTextContainer alloc] initWithContainerSize: NSMakeSize(150, 150)];
     tc2 = [[NSTextContainer alloc] initWithContainerSize: NSMakeSize(150, 150)];
@@ -70,12 +70,12 @@ NSObject
     [lm1 addTextContainer: tc4];
     [lm2 addTextContainer: tc5];
     [lm2 addTextContainer: tc6];
-    [tc1 release];
-    [tc2 release];
-    [tc3 release];
-    [tc4 release];
-    [tc5 release];
-    [tc6 release];
+    RELEASE(tc1);
+    RELEASE(tc2);
+    RELEASE(tc3);
+    RELEASE(tc4);
+    RELEASE(tc5);
+    RELEASE(tc6);
 
     tv1 = [[NSTextView alloc] initWithFrame: NSMakeRect(0,	151,	150, 150) textContainer: tc1];
     tv2 = [[NSTextView alloc] initWithFrame: NSMakeRect(151,	151,	150, 150) textContainer: tc2];
@@ -90,12 +90,12 @@ NSObject
     [container addSubview: tv4];
     [container addSubview: tv5];
     [container addSubview: tv6];
-    [tv1 release];
-    [tv2 release];
-    [tv3 release];
-    [tv4 release];
-    [tv5 release];
-    [tv6 release];
+    RELEASE(tv1);
+    RELEASE(tv2);
+    RELEASE(tv3);
+    RELEASE(tv4);
+    RELEASE(tv5);
+    RELEASE(tv6);
 
     [[storage mutableString] appendString: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."];
 

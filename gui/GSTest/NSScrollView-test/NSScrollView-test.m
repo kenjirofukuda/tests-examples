@@ -62,7 +62,7 @@ NSObject
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
   [box addSubview: view];
-  [view release];
+  RELEASE(view);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewNotSizable];
 
@@ -70,14 +70,14 @@ NSObject
   [borderBox setTitlePosition: NSNoTitle];
   [borderBox setBorderType: NSNoBorder];
   [borderBox addSubview: box];
-  [box release];
+  RELEASE(box);
   [borderBox sizeToFit];
   [borderBox setAutoresizingMask: NSViewNotSizable];
 
   scrollView = [[NSScrollView alloc]
                 initWithFrame: NSMakeRect(0, 0, 200, 200)];
   [scrollView setDocumentView: borderBox];
-  [borderBox release];
+  RELEASE(borderBox);
   [scrollView setHasHorizontalScroller: YES];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];
@@ -88,7 +88,7 @@ NSObject
   [externalBox setTitlePosition: NSNoTitle];
   [externalBox setBorderType: NSNoBorder];
   [externalBox addSubview: scrollView];
-  [scrollView release];
+  RELEASE(scrollView);
   [externalBox sizeToFit];
   [externalBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
@@ -104,7 +104,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: externalBox];
-  [externalBox release];
+  RELEASE(externalBox);
   [win setTitle: @"NSScrollView Test"];
 
   [self restart];

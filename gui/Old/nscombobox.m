@@ -101,7 +101,7 @@ main(int argc, char **argv, char **env)
   [window orderFrontRegardless];
 
   [theApp run];
-  [trigger release];
+  RELEASE(trigger);
   LEAVE_POOL
   return 0;
 }
@@ -128,9 +128,9 @@ NSObject
 
 - (void) dealloc
 {
-  [sourceCombo release];
-  [staticCombo release];
-  [sourceArray release];
+  RELEASE(sourceCombo);
+  RELEASE(staticCombo);
+  RELEASE(sourceArray);
   DEALLOC
 }
 

@@ -204,12 +204,12 @@ main(int argc, char **argv, char **env)
   [label setStringValue: [NSString stringWithCString: "Press next to
                           install."]];
                           [aView addSubview: label];
-                          [label release];
+                          RELEASE(label);
     slash = [[NSBox alloc] initWithFrame: NSMakeRect(10, 37, 260, 2)];
                           [slash setTitlePosition: NSNoTitle];
                           [slash setBorderType: NSGrooveBorder];
                           [aView addSubview: slash];
-                          [slash release];
+                          RELEASE(slash);
 
     button = [[NSButton alloc] initWithFrame: NSMakeRect(10, 10, 72, 22)];
                           [button setTitle: @"Previous..."];
@@ -217,19 +217,19 @@ main(int argc, char **argv, char **env)
                           [button setAction: @selector(buttonPrevious:)];
                           [button setEnabled: NO];
                           [aView addSubview: button];
-                          [button release];
+                          RELEASE(button);
     button = [[NSButton alloc] initWithFrame: NSMakeRect(85, 10, 72, 22)];
                           [button setTitle: @"Next..."];
                           [button setTarget: delegate];
                           [button setAction: @selector(buttonNext:)];
                           [aView addSubview: button];
-                          [button release];
+                          RELEASE(button);
 
     item = [[NSTabViewItem alloc] initWithIdentifier: @"Urph"];
                           [item setLabel: @"Natalie"];
                           [item setView: aView];
                           [tabView addTabViewItem: item];
-                          [aView release];
+                          RELEASE(aView);
 
     aView = [[NSView alloc] initWithFrame: [tabView contentRect]];
 
@@ -244,32 +244,32 @@ main(int argc, char **argv, char **env)
     [label setAlignment:NSCenterTextAlignment];
       [label setStringValue:[NSString stringWithCString: "Previous, or Next?"]];
      	[aView addSubview:label];
-                          	[label release];
+                          	RELEASE(label);
                           */
     slash = [[NSBox alloc] initWithFrame: NSMakeRect(10, 37, 260, 2)];
                           [slash setTitlePosition: NSNoTitle];
                           [slash setBorderType: NSGrooveBorder];
                           [aView addSubview: slash];
-                          [slash release];
+                          RELEASE(slash);
 
     button = [[NSButton alloc] initWithFrame: NSMakeRect(10, 10, 72, 22)];
                           [button setTitle: @"Previous..."];
                           [button setTarget: delegate];
                           [button setAction: @selector(buttonPrevious:)];
                           [aView addSubview: button];
-                          [button release];
+                          RELEASE(button);
     button = [[NSButton alloc] initWithFrame: NSMakeRect(85, 10, 72, 22)];
                           [button setTitle: @"Next..."];
                           [button setTarget: delegate];
                           [button setAction: @selector(buttonNext:)];
                           [aView addSubview: button];
-                          [button release];
+                          RELEASE(button);
 
     item = [[NSTabViewItem alloc] initWithIdentifier: @"Urph2"];
                           [item setLabel: @"Natalia Conquistadori"];
                           [item setView: aView];
                           [tabView addTabViewItem: item];
-                          [aView release];
+                          RELEASE(aView);
 
     aView = [[NSView alloc] initWithFrame: [tabView contentRect]];
 
@@ -291,34 +291,34 @@ main(int argc, char **argv, char **env)
       [label setStringValue:[NSString stringWithCString:"Well, no install.
                 Sorry. :-)"]];
      	[aView addSubview:label];
-                          	[label release];
+                          	RELEASE(label);
                           */
     slash = [[NSBox alloc] initWithFrame: NSMakeRect(10, 37, 260, 2)];
                           [slash setTitlePosition: NSNoTitle];
                           [slash setBorderType: NSGrooveBorder];
                           [aView addSubview: slash];
-                          [slash release];
+                          RELEASE(slash);
 
     button = [[NSButton alloc] initWithFrame: NSMakeRect(10, 10, 72, 22)];
                           [button setTitle: @"Previous..."];
                           [button setTarget: delegate];
                           [button setAction: @selector(buttonPrevious:)];
                           [aView addSubview: button];
-                          [button release];
+                          RELEASE(button);
     button = [[NSButton alloc] initWithFrame: NSMakeRect(85, 10, 72, 22)];
                           [button setTitle: @"Next..."];
                           [button setTarget: delegate];
                           [button setEnabled: NO];
                           [button setAction: @selector(buttonNext:)];
                           [aView addSubview: button];
-                          [button release];
+                          RELEASE(button);
 
     item = [[GSImageTabViewItem alloc] initWithIdentifier: @"Urph3"];
                           [item setImage: [NSImage imageNamed: @"Smiley"]];
                           [item setLabel: @"Me"];
                           [item setView: aView];
                           [tabView addTabViewItem: item];
-                          [aView release];
+                          RELEASE(aView);
 
                           [window setTitle: @"NSTabView without Tabs"];
                           [window setFrame: winRect display: YES];

@@ -55,7 +55,7 @@
   uniqueZone = flag;	/* So if something goes wrong we can recycle the zone correctly in dealloc */
   if (filename && ![self loadFromPath: filename encoding: encoding])
     {
-      [self release];
+      RELEASE(self);
       return nil;
     }
   if (filename)
@@ -114,7 +114,7 @@
 {
   [[self firstTextView] setDelegate: nil];
   [[self window] setDelegate: nil];
-  [documentName release];
+  RELEASE(documentName);
   if (uniqueZone)
     {
       NSRecycleZone([self zone]);
@@ -164,7 +164,7 @@
 
 - (void) setDocumentName: (NSString *)filename
 {
-  [documentName autorelease];
+  AUTORELEASE(documentName);
   if (filename)
     {
       documentName = [[filename stringByResolvingSymlinksInPath] copyWithZone: [self zone]];
@@ -307,7 +307,7 @@ static NSView *encodingAccessory = nil;
 {
   NSWindow *window = [self window];
   [window setDelegate: nil];
-  [self release];
+  RELEASE(self);
 }
 
 /* Text view delegation messages */

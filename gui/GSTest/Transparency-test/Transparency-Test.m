@@ -35,7 +35,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   [labelView setFont: [NSFont labelFontOfSize: 10]];
   [labelView setDrawsBackground: NO];
   [dest addSubview: labelView];
-  [labelView release];
+  RELEASE(labelView);
 }
 
 @interface TransparencyTest : NSObject <GSTest>

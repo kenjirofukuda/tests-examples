@@ -46,7 +46,7 @@
 
 - (void) windowControllerDidLoadNib: (NSWindowController *)windowController
 {
-  [view setFile: [rep autorelease]];
+  [view setFile: AUTORELEASE(rep)];
 }
 
 @end

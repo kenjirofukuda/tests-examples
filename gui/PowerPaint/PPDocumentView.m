@@ -199,7 +199,7 @@
 
 - (void) dealloc
 {
-  [lastFrame release];
+  RELEASE(lastFrame);
   DEALLOC
 }
 

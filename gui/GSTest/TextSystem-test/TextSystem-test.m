@@ -36,7 +36,7 @@ static NSGlyph GlyphForCharacter(NSFont *f, unichar c)
     {
       [[view layoutManager] getGlyphs: &g range: NSMakeRange(0, 1)];
     }
-  [view release];
+  RELEASE(view);
   return g;
 }
 
@@ -96,7 +96,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   [labelView setFont: [NSFont labelFontOfSize: 10]];
   [labelView setDrawsBackground: NO];
   [dest addSubview: labelView];
-  [labelView release];
+  RELEASE(labelView);
 }
 
 @interface TextSystemTest : NSObject <GSTest>
@@ -137,17 +137,17 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 
         lm1 = [[NSLayoutManager alloc] init];
         [lm1 setGlyphGenerator: gg];
-        [gg release];
+        RELEASE(gg);
         [storage addLayoutManager: lm1];
-        [lm1 release];
+        RELEASE(lm1);
 
         tc1 = [[NSTextContainer alloc] initWithContainerSize: NSMakeSize(150, 150)];
         [lm1 addTextContainer: tc1];
-        [tc1 release];
+        RELEASE(tc1);
         tv1 = [[NSTextView alloc] initWithFrame: NSMakeRect(0, 0, 150, 150) textContainer: tc1];
 
         [self addSubview: tv1];
-        [tv1 release];
+        RELEASE(tv1);
 
         [[storage mutableString] appendString: @"HelloWorld"];
       }

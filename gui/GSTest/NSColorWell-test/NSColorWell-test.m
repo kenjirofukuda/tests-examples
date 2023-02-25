@@ -62,9 +62,9 @@ NSObject
   [hbox setBorder: 5];
   [hbox addView: label
   enablingXResizing: NO];
-  [label release];
+  RELEASE(label);
   [hbox addView: well];
-  [well release];
+  RELEASE(well);
   [hbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   winFrame.size = [hbox frame].size;
@@ -80,7 +80,7 @@ NSObject
   [win setTitle: @"NSColorWell Test"];
   [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
-  [hbox release];
+  RELEASE(hbox);
   [win setMinSize: [NSWindow frameRectForContentRect: winFrame
                     styleMask: [win styleMask]].size];
   [self restart];

@@ -200,7 +200,7 @@
       if (releaseDoc)
         {
           // If we created it, we get rid of it.
-          [document release];
+          RELEASE(document);
         }
     }
   return retval;

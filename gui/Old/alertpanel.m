@@ -83,7 +83,7 @@
   a = [GMArchiver new];
   [a encodeRootObject: p withName: @"AlertPanel"];
   [a writeToFile: @"archivedPanel"];
-  [a release];
+  RELEASE(a);
 }
 
 - (void) applicationDidFinishLaunching: (NSNotification *)aNotification
@@ -114,7 +114,7 @@
   [button setTarget: self];
   [button setAction: @selector(buttonAction1:)];
   [v addSubview: button];
-  [button release];
+  RELEASE(button);
 
   bf.origin.x += 100;
   button = [[NSButton alloc] initWithFrame: bf];
@@ -122,7 +122,7 @@
   [button setTarget: self];
   [button setAction: @selector(buttonAction2:)];
   [v addSubview: button];
-  [button release];
+  RELEASE(button);
 
   bf.origin.y -= 100;
   button = [[NSButton alloc] initWithFrame: bf];
@@ -130,7 +130,7 @@
   [button setTarget: self];
   [button setAction: @selector(buttonAction4:)];
   [v addSubview: button];
-  [button release];
+  RELEASE(button);
 
   bf.origin.x -= 100;
   button = [[NSButton alloc] initWithFrame: bf];
@@ -138,7 +138,7 @@
   [button setTarget: self];
   [button setAction: @selector(buttonAction3:)];
   [v addSubview: button];
-  [button release];
+  RELEASE(button);
 
   [v display];
   [win orderFront: nil];

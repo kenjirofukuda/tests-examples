@@ -101,7 +101,7 @@ NSObject
   scrollView = [[NSScrollView alloc]
                 initWithFrame: NSMakeRect(0, 0, 60, 60)];
   [scrollView setDocumentView: text];
-  [text release];
+  RELEASE(text);
   [scrollView setHasHorizontalScroller: YES];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];
@@ -132,7 +132,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
-  [vbox release];
+  RELEASE(vbox);
   [win setTitle: @"StringDrawing Test"];
 
   [self restart];

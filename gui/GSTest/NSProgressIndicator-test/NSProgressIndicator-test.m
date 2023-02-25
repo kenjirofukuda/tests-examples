@@ -59,7 +59,7 @@ NSObject
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
   [box addSubview: pi1];
-  [pi1 release];
+  RELEASE(pi1);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [vbox addView: box];
@@ -78,7 +78,7 @@ NSObject
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
   [box addSubview: pi2];
-  [pi2 release];
+  RELEASE(pi2);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [vbox addView: box];
@@ -95,7 +95,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
-  [vbox release];
+  RELEASE(vbox);
   [win setTitle: @"NSProgressIndicator Test"];
 
   [self restart];

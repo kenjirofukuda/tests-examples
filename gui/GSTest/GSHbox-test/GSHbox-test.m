@@ -74,28 +74,28 @@ NSObject
   [hbox setDefaultMinXMargin: 10];
 
   [hbox addView: wA];
-  [wA release];
+  RELEASE(wA);
 
   [hbox addView: wB];
-  [wB release];
+  RELEASE(wB);
 
   [hbox addView: wC];
-  [wC release];
+  RELEASE(wC);
 
   [hbox addView: wD];
-  [wD release];
+  RELEASE(wD);
 
   [hbox addSeparator];
 
   [hbox addView: wE];
-  [wE release];
+  RELEASE(wE);
 
   [hbox addView: wF];
-  [wF release];
+  RELEASE(wF);
 
   [hbox addView: wG
     enablingXResizing: NO];
-  [wG release];
+  RELEASE(wG);
 
   [hbox setBorder: 10];
   [hbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
@@ -112,7 +112,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
-  [hbox release];
+  RELEASE(hbox);
   [win setTitle: @"GSHbox Test"];
 
   [self restart];
@@ -120,7 +120,7 @@ NSObject
 }
 - (void) dealloc
 {
-  [win release];
+  RELEASE(win);
   DEALLOC
 }
 - (void) restart

@@ -315,7 +315,7 @@ static NSArray *tokenize(NSString *string)
       [tokens addObject: token];
       [scanner scanCharactersFromSet: whiteSet intoString: NULL];
     }
-  return [tokens autorelease];
+  return AUTORELEASE(tokens);
 }
 - (void) startOpenPanel: (id)sender
 {
@@ -423,10 +423,10 @@ static NSArray *tokenize(NSString *string)
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
   [box addSubview: view];
-  [view release];
+  RELEASE(view);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewWidthSizable];
 
-  return [box autorelease];
+  return AUTORELEASE(box);
 }
 @end

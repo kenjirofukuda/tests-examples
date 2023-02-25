@@ -110,7 +110,7 @@ NSObject
   [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
   [win setTitle: @"NSBrowser Test"];
-  [hbox release];
+  RELEASE(hbox);
 
   [self restart];
   return self;
@@ -118,9 +118,9 @@ NSObject
 
 - (void) dealloc
 {
-  [a1 release];
-  [a2 release];
-  [win release];
+  RELEASE(a1);
+  RELEASE(a2);
+  RELEASE(win);
   DEALLOC
 }
 

@@ -109,19 +109,19 @@ NSObject
   vLabelBox = [GSHbox new];
   [vLabelBox addView: vLabel
    enablingXResizing: NO];
-  [vLabel release];
+  RELEASE(vLabel);
   [vLabelBox addView: vNumber];
-  [vNumber release];
+  RELEASE(vNumber);
   [vLabelBox setAutoresizingMask: NSViewMaxXMargin];
 
   vSliderVbox = [GSVbox new];
   [vSliderVbox setDefaultMinYMargin: 5];
   [vSliderVbox addView: vButton1];
-  [vButton1 release];
+  RELEASE(vButton1);
   [vSliderVbox addView: vButton2];
-  [vButton2 release];
+  RELEASE(vButton2);
   [vSliderVbox addView: vLabelBox];
-  [vLabelBox release];
+  RELEASE(vLabelBox);
   [vSliderVbox setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin
                                      | NSViewMinYMargin)];
 
@@ -130,7 +130,7 @@ NSObject
   [vSliderBox setTitlePosition: NSAtTop];
   [vSliderBox setBorderType: NSGrooveBorder];
   [vSliderBox addSubview: vSliderVbox];
-  [vSliderVbox release];
+  RELEASE(vSliderVbox);
   [vSliderBox sizeToFit];
   [vSliderBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
@@ -178,19 +178,19 @@ NSObject
   hLabelBox = [GSHbox new];
   [hLabelBox addView: hLabel
    enablingXResizing: NO];
-  [hLabel release];
+  RELEASE(hLabel);
   [hLabelBox addView: hNumber];
-  [hNumber release];
+  RELEASE(hNumber);
   [hLabelBox setAutoresizingMask: NSViewMaxXMargin];
 
   hSliderVbox = [GSVbox new];
   [hSliderVbox setDefaultMinYMargin: 5];
   [hSliderVbox addView: hButton1];
-  [hButton1 release];
+  RELEASE(hButton1);
   [hSliderVbox addView: hButton2];
-  [hButton2 release];
+  RELEASE(hButton2);
   [hSliderVbox addView: hLabelBox];
-  [hLabelBox release];
+  RELEASE(hLabelBox);
   [hSliderVbox setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin
                                      | NSViewMinYMargin)];
 
@@ -199,16 +199,16 @@ NSObject
   [hSliderBox setTitlePosition: NSAtTop];
   [hSliderBox setBorderType: NSGrooveBorder];
   [hSliderBox addSubview: hSliderVbox];
-  [hSliderVbox release];
+  RELEASE(hSliderVbox);
   [hSliderBox sizeToFit];
   [hSliderBox setAutoresizingMask: (NSViewHeightSizable | NSViewWidthSizable)];
 
   vboxOne = [GSVbox new];
   [vboxOne setDefaultMinYMargin: 10];
   [vboxOne addView: hSliderBox];
-  [hSliderBox release];
+  RELEASE(hSliderBox);
   [vboxOne addView: vSliderBox];
-  [vSliderBox release];
+  RELEASE(vSliderBox);
   [vboxOne setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   // The sliders themselves
@@ -272,7 +272,7 @@ NSObject
       minYMargin: 0
       maxYMargin: 0];
 
-  [circSlider release];
+  RELEASE(circSlider);
 
 
 

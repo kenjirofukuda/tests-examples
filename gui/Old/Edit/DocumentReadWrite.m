@@ -36,7 +36,7 @@ static float defaultPadding(void)
     {
       NSTextContainer *container = [[NSTextContainer alloc] init];
       padding = [container lineFragmentPadding];
-      [container release];
+      RELEASE(container);
     }
   return padding;
 }
@@ -168,7 +168,7 @@ static float defaultPadding(void)
           if (size.width > 0 && size.height > 0 && ![self hasMultiplePages]) [self setViewSize: size];
           [self setHyphenationFactor: factor];
           [[self layoutManager] replaceTextStorage: newTextStorage];
-          [textStorage release];
+          RELEASE(textStorage);
           textStorage = newTextStorage;
           success = YES;
         }
@@ -189,7 +189,7 @@ static float defaultPadding(void)
                   if (size.width > 0 && size.height > 0 && ![self hasMultiplePages]) [self setViewSize: size];
                   [self setHyphenationFactor: factor];
                   [[self layoutManager] replaceTextStorage: newTextStorage];
-                  [textStorage release];
+                  RELEASE(textStorage);
                   textStorage = newTextStorage;
                   success = YES;
                 }
@@ -203,14 +203,14 @@ static float defaultPadding(void)
                   [[textStorage mutableString] setString: fileContents];
                   [self setRichText: NO];
                   [textStorage endEditing];
-                  [fileContents release];
+                  RELEASE(fileContents);
                   encodingIfPlainText = encoding;
                   success = YES;
                 }
             }
         }
     }
-  [fileContentsAsData release];
+  RELEASE(fileContentsAsData);
 
   return success;
 }

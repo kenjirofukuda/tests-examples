@@ -49,7 +49,7 @@ NSObject
   [labelView setBezeled: NO];
   [labelView setDrawsBackground: NO];
   [box addView: labelView];
-  return [labelView autorelease];
+  return AUTORELEASE(labelView);
 }
 
 - (NSButton *) addButtonWithLabel: (NSString *)label to: (id)box
@@ -63,7 +63,7 @@ NSObject
   [button setAction: @selector(action:)];
   [button setToolTip: label];
   [box addView: button];
-  return [button autorelease];
+  return AUTORELEASE(button);
 }
 
 - (NSButton *) addButtonWithLabel: (NSString *)label bezel: (NSBezelStyle)bezel to: (id)box
@@ -94,7 +94,7 @@ NSObject
 
   [self addLabel: label to: box];
 
-  return [segmented autorelease];
+  return AUTORELEASE(segmented);
 }
 
 - (NSComboBox *) addComboBoxWithLabel: (NSString *)label buttonBordered: (BOOL)button to: (id)box
@@ -116,7 +116,7 @@ NSObject
   [box addView: combo];
   [self addLabel: label to: box];
 
-  return [combo autorelease];
+  return AUTORELEASE(combo);
 }
 
 - (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown: (BOOL)pullsDown to: (id)box andItems: (NSArray *)items;
@@ -140,7 +140,7 @@ NSObject
 
   [self addLabel: label to: box];
 
-  return [button autorelease];
+  return AUTORELEASE(button);
 }
 
 

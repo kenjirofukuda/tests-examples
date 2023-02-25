@@ -57,7 +57,7 @@
 {
   [anObject retain];
   if (textField)
-    [textField release];
+    RELEASE(textField);
   textField = anObject;
 }
 

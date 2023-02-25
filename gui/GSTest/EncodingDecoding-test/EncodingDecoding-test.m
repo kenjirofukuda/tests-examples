@@ -79,7 +79,7 @@ NSObject
   [box setTitle: @"Decoding a Window"];
   [box setTitlePosition: NSAtTop];
   [box addSubview: button];
-  [button release];
+  RELEASE(button);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewWidthSizable];
 
@@ -97,7 +97,7 @@ NSObject
   [button setTarget: self];
   [button setAction: @selector(encode:)];
   [vvbox addView: button];
-  [button release];
+  RELEASE(button);
 
   // We use a browser with one column to get a selection list
   browser = [[NSBrowser alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
@@ -138,7 +138,7 @@ NSObject
   [box setTitle: @"Encoding a Window"];
   [box setTitlePosition: NSAtTop];
   [box addSubview: vvbox];
-  [vvbox release];
+  RELEASE(vvbox);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewWidthSizable];
 
@@ -157,7 +157,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
-  [vbox release];
+  RELEASE(vbox);
   [win setTitle: @"Encoding-Decoding Test"];
 
   [self restart];

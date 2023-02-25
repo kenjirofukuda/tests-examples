@@ -76,7 +76,7 @@ NSObject
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
   [box addSubview: boxContents];
-  [boxContents release];
+  RELEASE(boxContents);
   [box sizeToFit];
   [box setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
@@ -96,7 +96,7 @@ NSObject
                                       prototype: cell
                                    numberOfRows: 7
                                 numberOfColumns: 1];
-  [cell release];
+  RELEASE(cell);
 
   [borderMatrix setIntercellSpacing: NSMakeSize(0, 4) ];
   [borderMatrix setTarget: self];
@@ -160,29 +160,29 @@ NSObject
   [hbox setDefaultMinXMargin: 10];
   [hbox setBorder: 10];
   [hbox addView: box];
-  [box release];
+  RELEASE(box);
 
   tmp_box = [NSBox new];
   [tmp_box setTitle: @"setBorderType:"];
   [tmp_box setTitlePosition: NSAtTop];
   [tmp_box setBorderType: NSGrooveBorder];
   [tmp_box addSubview: borderMatrix];
-  [borderMatrix release];
+  RELEASE(borderMatrix);
   [tmp_box sizeToFit];
   [tmp_box setAutoresizingMask: (NSViewMinYMargin | NSViewWidthSizable)];
   [hbox addView: tmp_box];
-  [tmp_box release];
+  RELEASE(tmp_box);
 
   tmp_box = [NSBox new];
   [tmp_box setTitle: @"setTitlePosition:"];
   [tmp_box setTitlePosition: NSAtTop];
   [tmp_box setBorderType: NSGrooveBorder];
   [tmp_box addSubview: titleMatrix];
-  [titleMatrix release];
+  RELEASE(titleMatrix);
   [tmp_box sizeToFit];
   [tmp_box setAutoresizingMask: (NSViewMinYMargin | NSViewWidthSizable)];
   [hbox addView: tmp_box];
-  [tmp_box release];
+  RELEASE(tmp_box);
   [hbox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   winFrame.size = [hbox frame].size;
@@ -199,7 +199,7 @@ NSObject
   [win setTitle: @"NSBox Test"];
   [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
-  [hbox release];
+  RELEASE(hbox);
   [win setMinSize: [NSWindow frameRectForContentRect: winFrame
                     styleMask: [win styleMask]].size];
   [self restart];

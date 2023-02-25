@@ -235,7 +235,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
             fraction: 1.0];
     [[NSColor redColor] set];
     NSFrameRect(NSMakeRect(0, 64, 24, 24));
-    [img release];
+    RELEASE(img);
   }
 }
 @end

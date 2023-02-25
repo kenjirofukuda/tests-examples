@@ -63,9 +63,9 @@ static NSImage *CheckerboardImage(NSInteger w, NSInteger h)
 
   img = [[NSImage alloc] initWithSize: NSMakeSize(w, h)];
   [img addRepresentation: rep];
-  [rep release];
+  RELEASE(rep);
 
-  return [img autorelease];
+  return AUTORELEASE(img);
 }
 
 static void AddLabel(NSString *text, NSRect frame, NSView *dest)
@@ -77,7 +77,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   [labelView setBezeled: NO];
   [labelView setFont: [NSFont labelFontOfSize: 10]];
   [dest addSubview: labelView];
-  [labelView release];
+  RELEASE(labelView);
 }
 
 /**

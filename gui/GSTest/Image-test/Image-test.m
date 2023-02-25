@@ -38,7 +38,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   [labelView setFont: [NSFont labelFontOfSize: 10]];
   [labelView setDrawsBackground: NO];
   [dest addSubview: labelView];
-  [labelView release];
+  RELEASE(labelView);
 }
 
 /**
@@ -76,12 +76,12 @@ static NSImage *ResizedIcon(NSImage *icon, int size, BOOL createBitmap)
     {
       NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: dstr];
       [newIcon addRepresentation: rep];
-      [rep release];
+      RELEASE(rep);
     }
 
   [newIcon unlockFocus];
 
-  return [newIcon autorelease];
+  return AUTORELEASE(newIcon);
 }
 
 @interface ImageTest : NSObject <GSTest>
@@ -128,7 +128,7 @@ static NSImage *ResizedIcon(NSImage *icon, int size, BOOL createBitmap)
 
 - (void) dealloc
 {
-  [gsImage release];
+  RELEASE(gsImage);
   DEALLOC
 }
 
@@ -236,7 +236,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       [flipped translateOriginToPoint: NSMakePoint(25, 0)];
 
       [self addSubview: flipped];
-      [flipped release];
+      RELEASE(flipped);
 
       pdfexample = [ImageFromBundle(@"pdfexample", @"pdf") retain];
       svgexample = [ImageFromBundle(@"svgexample", @"svg") retain];
@@ -244,7 +244,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
         NSView *flippedNinePartView = [[FlippedNinePartView alloc] initWithFrame: NSMakeRect(670, 128, 128, 128)];
 
         [self addSubview: flippedNinePartView];
-        [flippedNinePartView release];
+        RELEASE(flippedNinePartView);
 
         AddLabel(@"Flipped NSDrawNinePartImage", NSMakeRect(670, 260, 128, 30), self);
       }
@@ -256,8 +256,8 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
 - (void) dealloc
 {
-  [pdfexample release];
-  [svgexample release];
+  RELEASE(pdfexample);
+  RELEASE(svgexample);
   DEALLOC
 }
 
@@ -404,7 +404,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     NSCustomImageRep *rep = [[NSCustomImageRep alloc] initWithDrawSelector: @selector(draw:)
                                                                   delegate: delegate];
     [img addRepresentation: rep];
-    [rep release];
+    RELEASE(rep);
 
     // NOTE: We'll test with the rep size (0, 0); it should still work.
 
@@ -415,8 +415,8 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
            operation: NSCompositeSourceOver
             fraction: 1.0];
 
-    [delegate release];
-    [img release];
+    RELEASE(delegate);
+    RELEASE(img);
   }
 
   // Test NSDrawNinePartImage

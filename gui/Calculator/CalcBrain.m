@@ -43,8 +43,7 @@ NSObject
 
 - (void) dealloc
 {
-  if (face)
-    [face release];
+  TEST_RELEASE(face);
   DEALLOC
 }
 

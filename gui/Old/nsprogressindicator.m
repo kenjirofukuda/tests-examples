@@ -92,7 +92,7 @@ main(int argc, char **argv, char **env)
   [window orderFrontRegardless];
 
   [theApp run];
-  [trigger release];
+  RELEASE(trigger);
   LEAVE_POOL
   return 0;
 }
@@ -119,8 +119,8 @@ NSObject
 
 - (void) dealloc
 {
-  [horInd release];
-  [verInd release];
+  RELEASE(horInd);
+  RELEASE(verInd);
   DEALLOC
 }
 

@@ -141,7 +141,7 @@ NSObject
 }
 - (void) dealloc
 {
-  [win release];
+  RELEASE(win);
   DEALLOC
 }
 - (void) restart

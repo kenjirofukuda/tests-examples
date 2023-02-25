@@ -100,7 +100,7 @@ NSPanel
   [copyrightTwo setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [copyrightTwo sizeToFit];
   [lowerVbox addView: copyrightTwo];
-  [copyrightTwo release];
+  RELEASE(copyrightTwo);
 
   copyrightOne = [Label new];
   [copyrightOne
@@ -110,7 +110,7 @@ NSPanel
   [copyrightOne setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [copyrightOne sizeToFit];
   [lowerVbox addView: copyrightOne];
-  [copyrightOne release];
+  RELEASE(copyrightOne);
 
   fsf = [Label new];
   [fsf setStringValue: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."];
@@ -118,7 +118,7 @@ NSPanel
   [fsf setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [fsf sizeToFit];
   [lowerVbox addView: fsf];
-  [fsf release];
+  RELEASE(fsf);
 
   authors = [Label new];
   [authors setStringValue: @"Author: Nicola Pero <n.pero@mi.flashnet.it>"];
@@ -126,10 +126,10 @@ NSPanel
   [authors setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [authors sizeToFit];
   [lowerVbox addView: authors];
-  [authors release];
+  RELEASE(authors);
 
   [vbox addView: lowerVbox];
-  [lowerVbox release];
+  RELEASE(lowerVbox);
 
   // Separator
   [vbox addSeparator];
@@ -146,7 +146,7 @@ NSPanel
   [logo setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin
                               | NSViewMinYMargin | NSViewMaxYMargin)];
   [hbox addView: logo];
-  [logo release];
+  RELEASE(logo);
 
   upperVbox = [GSVbox new];
   version = [Label new];
@@ -166,7 +166,7 @@ NSPanel
   [version setAutoresizingMask: NSViewMinXMargin];
   [version sizeToFit];
   [upperVbox addView: version];
-  [version release];
+  RELEASE(version);
 
   subtitle = [Label new];
   [subtitle setStringValue: @"GNUstep GUI test/demo app"];
@@ -174,7 +174,7 @@ NSPanel
   [subtitle setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
   [subtitle sizeToFit];
   [upperVbox addView: subtitle];
-  [subtitle release];
+  RELEASE(subtitle);
 
   title = [Label new];
   [title setStringValue: @"GSTest.app"];
@@ -182,16 +182,16 @@ NSPanel
   [title setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [title sizeToFit];
   [upperVbox addView: title];
-  [title release];
+  RELEASE(title);
   [upperVbox setAutoresizingMask: NSViewMaxXMargin];
 
   [hbox addView: upperVbox];
-  [upperVbox release];
+  RELEASE(upperVbox);
   [hbox setAutoresizingMask: NSViewWidthSizable];
 
   [vbox addView: hbox];
   //	margin: 10];
-  [hbox release];
+  RELEASE(hbox);
 
   // Window
   winFrame.size = [vbox frame].size;
@@ -202,7 +202,7 @@ NSPanel
                     backing: NSBackingStoreBuffered
                       defer: NO];
   [self setContentView: vbox];
-  [vbox release];
+  RELEASE(vbox);
   [self setTitle: @"Info Panel"];
   [self center];
   return self;

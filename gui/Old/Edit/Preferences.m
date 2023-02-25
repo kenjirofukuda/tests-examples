@@ -211,7 +211,7 @@ static BOOL changingRTFFont = NO;
 {
   if (curValues != displayedValues)
     {
-      [curValues release];
+      RELEASE(curValues);
       curValues = [displayedValues copyWithZone: [self zone]];
     }
 }
@@ -220,7 +220,7 @@ static BOOL changingRTFFont = NO;
 {
   if (curValues != displayedValues)
     {
-      [displayedValues release];
+      RELEASE(displayedValues);
       displayedValues = [curValues mutableCopyWithZone: [self zone]];
       [self updateUI];
     }

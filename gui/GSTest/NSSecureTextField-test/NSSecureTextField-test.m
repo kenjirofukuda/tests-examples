@@ -61,7 +61,7 @@ NSObject
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
   [box addSubview: sview];
-  [sview release];
+  RELEASE(sview);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewWidthSizable];
   [vbox addView: box];
@@ -81,7 +81,7 @@ NSObject
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
   [box addSubview: view];
-  [view release];
+  RELEASE(view);
   [box sizeToFit];
   [box setAutoresizingMask: NSViewWidthSizable];
   [vbox addView: box];
@@ -98,7 +98,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
-  [vbox release];
+  RELEASE(vbox);
   [win setTitle: @"NSSecureTextField Test"];
 
   [self restart];

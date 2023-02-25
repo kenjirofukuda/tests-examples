@@ -201,7 +201,7 @@ NSWindow
       [buttons[i] release];
     }
   [[self contentView] addSubview: display];
-  [display release];
+  RELEASE(display);
 
   [self setTitle: @"Calculator.app"];
   [self center];
