@@ -202,11 +202,11 @@ static id cschemes[] =
   midre = (minre + maxre) / (double)2;
   midim = (minim + maxim) / (double)2;
 
-  switch(op)
+  switch (op)
     {
     case ZOOM_IN:
     case ZOOM_OUT:
-      if(op == ZOOM_IN)
+      if (op == ZOOM_IN)
         {
           deltare /= (double)4;
           deltaim /= (double)4;
@@ -270,7 +270,7 @@ static id cschemes[] =
               zzbar =
                 (__real__ z) * (__real__ z) +
                 (__imag__ z) * (__imag__ z);
-              switch(ftype)
+              switch (ftype)
                 {
                 case ZSQUARED:
                   z = z * z + c;
@@ -290,7 +290,7 @@ static id cschemes[] =
                 }
               count++;
             }
-          while(count < maxit && zzbar < esc);
+          while (count < maxit && zzbar < esc);
 
           color = [colors objectAtIndex: ((maxit - count) % cols)];
           [color getRed: &colr green: &colg blue: &colb alpha: NULL];
@@ -386,7 +386,7 @@ static id cschemes[] =
 
       [self lockFocus];
 
-      if(prevr)
+      if (prevr)
         {
           update = NSMakeRect(startp.x - prevr - PAD,
                               startp.y - prevr - PAD,
@@ -416,7 +416,7 @@ static id cschemes[] =
          nextEventMatchingMask:
          NSLeftMouseUpMask | NSLeftMouseDraggedMask];
     }
-  while([curEvent type] != NSLeftMouseUp);
+  while ([curEvent type] != NSLeftMouseUp);
 
 
   deltare = maxre - minre;
