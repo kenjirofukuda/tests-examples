@@ -37,13 +37,13 @@
 int
 main(int argc, char **argv)
 {
-  NSAutoreleasePool *ENTER_POOL
-  pbOwner	*owner = [pbOwner new];
   NSPasteboard	*pb;
   NSArray	*types;
   NSData	*d;
   NSApplication *theApp;
+  pbOwner	*owner = [pbOwner new];
 
+  ENTER_POOL
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif

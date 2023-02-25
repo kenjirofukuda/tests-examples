@@ -30,7 +30,6 @@
 int
 main(void)
 {
-  NSAutoreleasePool *pool;
   NSApplication *app;
   NSMenu *mainMenu;
   NSMenu *menu;

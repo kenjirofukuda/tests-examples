@@ -48,13 +48,11 @@ main(int argc, char **argv, char **env)
   NSRect winRect = {{100, 100}, {300, 200}};
   NSRect sourceComboRect = {{40, 60}, {150, 20}};
   NSRect staticComboRect = {{40, 90}, {200, 20}};
-  NSAutoreleasePool *pool;
 
+  ENTER_POOL
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
-
-  ENTER_POOL
 
   theApp = [NSApplication sharedApplication];
 

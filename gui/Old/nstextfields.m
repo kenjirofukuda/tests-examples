@@ -94,10 +94,10 @@
 
 int main(int argc, char **argv)
 {
-  NSAutoreleasePool *ENTER_POOL
   NSApplication *application;
   NSMenu *menu;
 
+  ENTER_POOL
   [application = [NSApplication sharedApplication] setDelegate: [Controller new]];
 
   menu = [NSMenu new];

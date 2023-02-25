@@ -119,9 +119,9 @@
 int
 main(int argc, char **argv, char **env)
 {
-  NSAutoreleasePool	*ENTER_POOL
   NSApplication		*theApp;
 
+  ENTER_POOL
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif

@@ -91,11 +91,11 @@ main(int argc, char **argv, char **env)
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask
                        | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
+  ENTER_POOL
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
-  ENTER_POOL
 
   theApp = [NSApplication sharedApplication];
   object = [[MyObject new] autorelease];

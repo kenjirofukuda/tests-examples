@@ -162,13 +162,11 @@ main(int argc, char **argv, char **env)
 {
   id object;
   NSApplication *theApp;
-  NSAutoreleasePool *pool;
 
+  ENTER_POOL
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
-
-  ENTER_POOL
 
   theApp = [NSApplication sharedApplication];
 

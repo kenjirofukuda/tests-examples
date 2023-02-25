@@ -149,9 +149,9 @@
 int
 main(int argc, char **argv, char **env)
 {
-  id		ENTER_POOL
   NSApplication *app;
 
+  ENTER_POOL
   app = [NSApplication sharedApplication];
 
   {

@@ -45,17 +45,18 @@ int
 main(int argc, char **argv, char **env)
 {
   NSApplication *theApp;
-  ENTER_POOL
   NSMenu *menu;
   NSMenu *infoMenu;
   NSMenu *fileMenu;
   NSMenu *editMenu;
   NSMenu *linkMenu;
   NSMenu *findMenu;
-  SEL action = @selector(method:);
-  SEL doEepz = @selector(eepzact:);
   NSMenuItem *menuItem;
 
+  SEL action = @selector(method:);
+  SEL doEepz = @selector(eepzact:);
+
+  ENTER_POOL
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif

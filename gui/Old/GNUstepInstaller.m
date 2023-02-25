@@ -168,13 +168,13 @@ main(int argc, char **argv, char **env)
   NSRect winRect = {{100, 100}, {300, 350}};
   NSRect tabViewRect = {{10, 10}, {280, 280}};
   NSBox *slash;
-  ENTER_POOL
   id aView;
   id label;
   NSButton *button;
   id delegate = [myTabViewDelegate new];
   id scrollView;
 
+  ENTER_POOL
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif

@@ -27,11 +27,11 @@
 int
 main(void)
 {
-  NSAutoreleasePool *ENTER_POOL
   NSApplication     *app;
   NSMenu	    *menu;
   NSMenuItem        *item;
 
+  ENTER_POOL
   app = [NSApplication sharedApplication];
 
   menu = [NSMenu new];

@@ -24,7 +24,6 @@
 
 int main(void)
 {
-  NSAutoreleasePool *pool;
   NSMenu *mainMenu;
 
   ENTER_POOL
@@ -43,6 +42,7 @@ int main(void)
 
   [NSApp setDelegate: [MainThread new]];
 
+  LEAVE_POOL
   [NSApp run];
 
   return 0;
