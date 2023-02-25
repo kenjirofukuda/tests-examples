@@ -4,19 +4,19 @@
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
    Date: 1999
-   
+
    This file is part of GNUstep.
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
@@ -28,7 +28,7 @@
 #include "../GSTestProtocol.h"
 
 // A unit rectangle of the little results table
-@interface TableEntry: NSTextField
+@interface TableEntry : NSTextField
 @end
 
 @implementation TableEntry
@@ -44,7 +44,7 @@
 }
 @end
 
-@interface NSSavePanelTest: NSObject <GSTest>
+@interface NSSavePanelTest : NSObject <GSTest>
 {
   NSButton *otherTypesButton;
   NSButton *packageButton;
@@ -56,16 +56,17 @@
   TableEntry *directoryEntry;
   TableEntry *buttonEntry;
 }
--(void)restart;
--(void)startSavePanel: (id)sender;
--(NSBox *)accessoryView;
+- (void) restart;
+- (void) startSavePanel: (id)sender;
+- (NSBox *) accessoryView;
 @end
 
-@implementation NSSavePanelTest: NSObject
+@implementation NSSavePanelTest:
+NSObject
 {
   // for instance variables see above
 }
--(id) init
+- (id) init
 {
   NSButton *button;
   GSVbox *vbox;
@@ -76,11 +77,11 @@
   GSTable *resultsTable;
   TableEntry *entry;
   NSRect winFrame;
-  
+
   vbox = [[GSVbox new] autorelease];
   [vbox setDefaultMinYMargin: 5];
   [vbox setBorder: 5];
- 
+
   button = [[NSButton new] autorelease];
   [button setTitle: @"Start Save Panel"];
   [button sizeToFit];
@@ -88,23 +89,23 @@
   [button setTarget: self];
   [button setAction: @selector (startSavePanel:)];
   [vbox addView: button
-	enablingYResizing: NO];
+  enablingYResizing: NO];
 
   // The little results table
   resultsTable = [[[GSTable alloc] initWithNumberOfRows: 3
-				   numberOfColumns: 2] autorelease];
+                                    numberOfColumns: 2] autorelease];
   // Set resizing properties
   [resultsTable setXResizingEnabled: NO
-		forColumn: 0];
+                          forColumn: 0];
   [resultsTable setXResizingEnabled: YES
-		forColumn: 1];
+                          forColumn: 1];
 
   [resultsTable setYResizingEnabled: NO
-		forRow: 0];
+                             forRow: 0];
   [resultsTable setYResizingEnabled: NO
-		forRow: 1];
+                             forRow: 1];
   [resultsTable setYResizingEnabled: NO
-		forRow: 2];
+                             forRow: 2];
 
   [resultsTable setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
   //Add entries in the table
@@ -113,55 +114,55 @@
   [entry setAlignment: NSRightTextAlignment];
   [entry sizeToFit];
   [resultsTable putView: entry
-		atRow: 0
-		column: 0
-		withMargins: 2];
+                  atRow: 0
+                 column: 0
+            withMargins: 2];
 
   entry = [[TableEntry new] autorelease];
   [entry setStringValue: @"Filename:"];
   [entry setAlignment: NSRightTextAlignment];
   [entry sizeToFit];
   [resultsTable putView: entry
-		atRow: 1
-		column: 0
-		withMargins: 2];
+                  atRow: 1
+                 column: 0
+            withMargins: 2];
 
   entry = [[TableEntry new] autorelease];
   [entry setStringValue: @"Directory:"];
   [entry setAlignment: NSRightTextAlignment];
   [entry sizeToFit];
   [resultsTable putView: entry
-		atRow: 2
-		column: 0
-		withMargins: 2];
+                  atRow: 2
+                 column: 0
+            withMargins: 2];
 
   buttonEntry = [[TableEntry new] autorelease];
   [buttonEntry setStringValue: @" "];
   [buttonEntry setAlignment: NSLeftTextAlignment];
   [buttonEntry sizeToFit];
   [resultsTable putView: buttonEntry
-		atRow: 0
-		column: 1
-		withMargins: 2];
+                  atRow: 0
+                 column: 1
+            withMargins: 2];
 
   filenameEntry = [[TableEntry new] autorelease];
   [filenameEntry setStringValue: @" "];
   [filenameEntry setAlignment: NSLeftTextAlignment];
   [filenameEntry sizeToFit];
   [resultsTable putView: filenameEntry
-		atRow: 1
-		column: 1
-		withMargins: 2];
+                  atRow: 1
+                 column: 1
+            withMargins: 2];
 
   directoryEntry = [[TableEntry new] autorelease];
   [directoryEntry setStringValue: @" "];
   [directoryEntry setAlignment: NSLeftTextAlignment];
   [directoryEntry sizeToFit];
   [resultsTable putView: directoryEntry
-		atRow: 2
-		column: 1
-		withMargins: 2];
-  //  
+                  atRow: 2
+                 column: 1
+            withMargins: 2];
+  //
 
   resultsBox = [[NSBox new] autorelease];
   [resultsBox setTitle: @"Results"];
@@ -171,8 +172,8 @@
   [resultsBox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   [vbox addView: resultsBox
-	withMinYMargin: 10];
-  
+    withMinYMargin: 10];
+
   configureForm = [[NSForm new] autorelease];
   [configureForm addEntry: @"Title:"];
   [configureForm addEntry: @"Prompt:"];
@@ -193,7 +194,7 @@
   [otherTypesButton sizeToFit];
   [otherTypesButton setAutoresizingMask: NSViewMaxXMargin];
   [tmp_box addView: otherTypesButton];
-  
+
   packageButton = [[NSButton new] autorelease];
   [packageButton setTitle: @"Treat File Packages as Directories"];
   [packageButton setButtonType: NSSwitchButton];
@@ -213,11 +214,11 @@
   ivbox = [[GSVbox new] autorelease];
   [ivbox setDefaultMinYMargin: 8];
   [ivbox addView: tmp_box
-	 enablingYResizing: NO];
-  [ivbox addView: configureForm 
-	 enablingYResizing: NO];
-  [ivbox setAutoresizingMask: NSViewWidthSizable|NSViewMinYMargin];
-  
+  enablingYResizing: NO];
+  [ivbox addView: configureForm
+  enablingYResizing: NO];
+  [ivbox setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
+
   configureBox = [[NSBox new] autorelease];
   [configureBox setTitle: @"Options"];
   [configureBox setTitlePosition: NSAtTop];
@@ -231,35 +232,35 @@
   [configureForm setNextKeyView: accessoryViewButton];
   [accessoryViewButton setNextKeyView: packageButton];
   [packageButton setNextKeyView: configureForm];
-  
+
   winFrame.size = [vbox frame].size;
   winFrame.origin = NSMakePoint (100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
-			  styleMask: (NSTitledWindowMask 
-				      | NSClosableWindowMask 
-				      | NSMiniaturizableWindowMask 
-				      | NSResizableWindowMask)
-			  backing: NSBackingStoreBuffered
-			  defer: NO];
-  [win setReleasedWhenClosed: NO];  
+                                    styleMask: (NSTitledWindowMask
+                                      | NSClosableWindowMask
+                                      | NSMiniaturizableWindowMask
+                                      | NSResizableWindowMask)
+                                      backing: NSBackingStoreBuffered
+                                        defer: NO];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
   [win setTitle: @"NSSavePanel Test"];
-  
+
   [self restart];
   return self;
 }
--(void) dealloc
+- (void) dealloc
 {
   RELEASE(win);
   [super dealloc];
 }
--(void) restart
+- (void) restart
 {
-  [win orderFront: nil]; 
+  [win orderFront: nil];
   [[NSApplication sharedApplication] addWindowsItem: win
-				     title: @"NSSavePanel Test"
-				     filename: NO];
+                                              title: @"NSSavePanel Test"
+                                           filename: NO];
 }
 static NSArray *tokenize(NSString *string)
 {
@@ -276,7 +277,7 @@ static NSArray *tokenize(NSString *string)
     }
   return [tokens autorelease];
 }
--(void) startSavePanel: (id) sender 
+- (void) startSavePanel: (id)sender
 {
   NSSavePanel *savePanel;
   int otherTypesFlag;
@@ -290,13 +291,13 @@ static NSArray *tokenize(NSString *string)
 
   savePanel = [NSSavePanel savePanel];
   string = [[configureForm cellAtIndex: 0] stringValue];
-  if ([string length]) 
+  if ([string length])
     [savePanel setTitle: string];
-  
+
   string = [[configureForm cellAtIndex: 1] stringValue];
   if ([string length])
     [savePanel setPrompt: string];
-  
+
   packageFlag = [packageButton state];
   if (packageFlag == 0)
     [savePanel setTreatsFilePackagesAsDirectories: NO];
@@ -325,12 +326,12 @@ static NSArray *tokenize(NSString *string)
   if ([filename hasPrefix: @"/"])
     {
       NSRunAlertPanel (NULL, @"A valid filename can not begin with / !",
-		       @"OK", NULL, NULL);
+                       @"OK", NULL, NULL);
       return;
     }
 
-  result = [savePanel runModalForDirectory:  directory
-		      file: filename];
+  result = [savePanel runModalForDirectory: directory
+                                      file: filename];
   switch (result)
     {
     case NSOKButton:
@@ -341,13 +342,13 @@ static NSArray *tokenize(NSString *string)
       break;
     default: // There are no other cases.
       [buttonEntry setStringValue: @"<Weird. Report to bug-gnustep@gnu.org>"];
-      break;      
+      break;
     }
 
   [directoryEntry setStringValue: [savePanel directory]];
   [filenameEntry setStringValue: [savePanel filename]];
 }
--(NSBox *) accessoryView
+- (NSBox *) accessoryView
 {
   NSTextField *view;
   NSBox *box;
@@ -361,9 +362,9 @@ static NSArray *tokenize(NSString *string)
   [view setBordered: YES];
   [view setAlignment: NSCenterTextAlignment];
   [view setStringValue: @"This is the AccessoryView"];
-  [view setFrameSize: NSMakeSize (400, 70)]; 
+  [view setFrameSize: NSMakeSize (400, 70)];
   [view setAutoresizingMask: NSViewWidthSizable];
-  
+
   box = [NSBox new];
   [box setTitle: @"AccessoryView"];
   [box setTitlePosition: NSAtTop];
@@ -371,8 +372,8 @@ static NSArray *tokenize(NSString *string)
   [box addSubview: view];
   [view release];
   [box sizeToFit];
-  [box setAutoresizingMask: NSViewWidthSizable];      
-  
+  [box setAutoresizingMask: NSViewWidthSizable];
+
   return [box autorelease];
 }
 @end

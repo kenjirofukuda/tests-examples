@@ -4,19 +4,19 @@
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
    Date: 1999
-   
+
    This file is part of GNUstep.
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
@@ -24,26 +24,27 @@
 #include <AppKit/AppKit.h>
 #include "../GSTestProtocol.h"
 
-@interface NSSplitViewTest: NSObject <GSTest>
+@interface NSSplitViewTest : NSObject <GSTest>
 {
   NSWindow *win;
 }
--(void) restart;
+- (void) restart;
 @end
 
-@implementation NSSplitViewTest: NSObject
+@implementation NSSplitViewTest:
+NSObject
 {
   // for instance variables see above
 }
--(id) init
+- (id) init
 {
   NSSplitView *split;
   NSTextField *firstView;
   NSTextField *secondView;
   NSRect winFrame;
 
-  split = [[NSSplitView alloc] initWithFrame: NSMakeRect (0, 0, 400, 200)];  
-  
+  split = [[NSSplitView alloc] initWithFrame: NSMakeRect (0, 0, 400, 200)];
+
   firstView = [NSTextField new];
   [firstView setDrawsBackground: YES];
   [firstView setBackgroundColor: [NSColor whiteColor]];
@@ -53,9 +54,9 @@
   [firstView setBordered: NO];
   [firstView setAlignment: NSCenterTextAlignment];
   [firstView setStringValue: @"First NSView Contents"];
-  [firstView setFrameSize: NSMakeSize (200, 200)]; 
+  [firstView setFrameSize: NSMakeSize (200, 200)];
   [firstView setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
-  
+
   secondView = [NSTextField new];
   [secondView setDrawsBackground: YES];
   [secondView setBackgroundColor: [NSColor grayColor]];
@@ -65,9 +66,9 @@
   [secondView setBordered: NO];
   [secondView setAlignment: NSCenterTextAlignment];
   [secondView setStringValue: @"Second  NSView Contents"];
-  [secondView setFrameSize: NSMakeSize (200, 200)]; 
+  [secondView setFrameSize: NSMakeSize (200, 200)];
   [secondView setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
-  
+
   [split addSubview: firstView];
   [firstView release];
   [split addSubview: secondView];
@@ -76,31 +77,31 @@
 
   winFrame.size = [split frame].size;
   winFrame.origin = NSMakePoint (100, 120);
-  
+
   win = [[NSWindow alloc] initWithContentRect: winFrame
-			  styleMask: (NSTitledWindowMask 
-				      | NSClosableWindowMask 
-				      | NSMiniaturizableWindowMask 
-				      | NSResizableWindowMask)
-			  backing: NSBackingStoreBuffered
-			  defer: YES];
-  [win setReleasedWhenClosed: NO];  
+                                    styleMask: (NSTitledWindowMask
+                                      | NSClosableWindowMask
+                                      | NSMiniaturizableWindowMask
+                                      | NSResizableWindowMask)
+                                      backing: NSBackingStoreBuffered
+                                        defer: YES];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: split];
   [split release];
   [win setTitle: @"NSSplitView Test"];
   [self restart];
   return self;
 }
--(void) dealloc
+- (void) dealloc
 {
   RELEASE(win);
   [super dealloc];
 }
--(void) restart
+- (void) restart
 {
-  [win orderFront: nil]; 
+  [win orderFront: nil];
   [[NSApplication sharedApplication] addWindowsItem: win
-				     title: @"NSSplitView Test"
-				     filename: NO];
+                                              title: @"NSSplitView Test"
+                                           filename: NO];
 }
 @end

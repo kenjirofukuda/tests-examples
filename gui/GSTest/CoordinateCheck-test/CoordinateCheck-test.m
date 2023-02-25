@@ -4,19 +4,19 @@
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
    Date: 2001
-   
+
    This file is part of GNUstep.
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
@@ -38,23 +38,23 @@
 
   rect1 = [self convertRect: _bounds  toView: nil];
   rect2 = [[self superview] convertRect: _frame  toView: nil];
-  
+
   if (NSEqualRects (rect1, rect2) != YES)
     {
       NSMutableString *string;
-      
+
       string = AUTORELEASE ([NSMutableString new]);
       [string appendFormat: @"%@: INVALID - \n", self];
-      [string appendFormat: @"    bounds in window space are: `%@'\n", 
-	      NSStringFromRect (rect1)];
-      [string appendFormat: @"    frame in window space is: `%@'\n", 
-	      NSStringFromRect (rect2)];
+      [string appendFormat: @"    bounds in window space are: `%@'\n",
+              NSStringFromRect (rect1)];
+      [string appendFormat: @"    frame in window space is: `%@'\n",
+              NSStringFromRect (rect2)];
       return string;
     }
   else
     {
       return [NSString stringWithFormat: @"%@: Ok\n", self];
-    } 
+    }
 }
 
 - (NSString *) recursivelyCheckCoordinates
@@ -63,9 +63,9 @@
   NSMutableString *string;
 
   string = AUTORELEASE ([NSMutableString new]);
-  
+
   [string appendString: [self checkCoordinates]];
-  
+
   count = [[self subviews] count];
 
   for (i = 0; i < count; i++)
@@ -94,7 +94,7 @@
 
 /* Now the test itself */
 
-@interface CoordinateCheckTest: NSObject <GSTest>
+@interface CoordinateCheckTest : NSObject <GSTest>
 {
   NSTextField *windowName;
   NSTextView *text;
@@ -102,17 +102,18 @@
 
   NSWindow *winToCheck;
 }
--(void) restart;
--(void) check: (id)sender;
--(void) choose: (id)sender;
--(void) reset: (id)sender;
+- (void) restart;
+- (void) check: (id)sender;
+- (void) choose: (id)sender;
+- (void) reset: (id)sender;
 @end
 
-@implementation CoordinateCheckTest: NSObject
+@implementation CoordinateCheckTest:
+NSObject
 {
   // for instance variables see above
 }
--(id) init
+- (id) init
 {
   GSHbox *hbox;
   GSVbox *vbox;
@@ -124,10 +125,10 @@
   [vbox setDefaultMinYMargin: 5];
   [vbox setBorder: 5];
 
-  scrollView = [[NSScrollView alloc] initWithFrame: 
-				       NSMakeRect (0, 0, 300, 300)];
+  scrollView = [[NSScrollView alloc] initWithFrame:
+                                     NSMakeRect (0, 0, 300, 300)];
   [scrollView setHasHorizontalScroller: NO];
-  [scrollView setHasVerticalScroller: YES]; 
+  [scrollView setHasVerticalScroller: YES];
   [scrollView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
 
   text = [[NSText alloc] initWithFrame: [[scrollView contentView] frame]];
@@ -140,7 +141,7 @@
   [text setMaxSize: NSMakeSize (1E7, 1E7)];
   [text setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
   [[text textContainer] setContainerSize: NSMakeSize ([text frame].size.width,
-						      1e7)];
+                           1e7)];
   [[text textContainer] setWidthTracksTextView: YES];
   [scrollView setDocumentView: text];
   RELEASE(text);
@@ -199,17 +200,17 @@
   RELEASE (hbox);
 
   [vbox setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
-  
+
   winFrame.size = [vbox frame].size;
   winFrame.origin = NSMakePoint (100, 100);
-  
+
   win = [[NSWindow alloc] initWithContentRect: winFrame
-			  styleMask: (NSTitledWindowMask 
-				      | NSClosableWindowMask 
-				      | NSMiniaturizableWindowMask 
-				      | NSResizableWindowMask)
-			  backing: NSBackingStoreBuffered
-			  defer: NO];
+                                    styleMask: (NSTitledWindowMask
+                                      | NSClosableWindowMask
+                                      | NSMiniaturizableWindowMask
+                                      | NSResizableWindowMask)
+                                      backing: NSBackingStoreBuffered
+                                        defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
   [win setMinSize: [win frame].size];
@@ -222,12 +223,12 @@
   return self;
 }
 
--(void) restart
+- (void) restart
 {
-  [win orderFront: nil]; 
+  [win orderFront: nil];
   [[NSApplication sharedApplication] addWindowsItem: win
-				     title: @"Coordinate Check Test"
-				     filename: NO];
+                                              title: @"Coordinate Check Test"
+                                           filename: NO];
 }
 
 - (void) dealloc
@@ -240,15 +241,15 @@
 - (void) choose: (id)sender
 {
   NSEvent *event;
-  
+
   event = [NSApp nextEventMatchingMask: NSLeftMouseDownMask
-		 untilDate: nil
-		 inMode: NSEventTrackingRunLoopMode
-		 dequeue: YES];
-  
+                             untilDate: nil
+                                inMode: NSEventTrackingRunLoopMode
+                               dequeue: YES];
+
   ASSIGN (winToCheck, [event window]);
   [windowName setStringValue: [NSString stringWithFormat: @"Window Title: %@",
-					[winToCheck title]]];
+                               [winToCheck title]]];
   [windowName sizeToFit];
 }
 
@@ -256,27 +257,27 @@
 {
   if (winToCheck == nil)
     {
-      [text replaceCharactersInRange: 
-	      NSMakeRange ([[text textStorage] length], 0)
-	    withString: @"Please select a window first -\nby pressing `Choose Window'\nand then clicking inside the window\nyou want to select\n"];      
+      [text replaceCharactersInRange:
+            NSMakeRange ([[text textStorage] length], 0)
+                          withString: @"Please select a window first -\nby pressing `Choose Window'\nand then clicking inside the window\nyou want to select\n"];
     }
   else
     {
       NSString *newCheck = [winToCheck checkCoordinates];
 
-      [text replaceCharactersInRange: 
-	      NSMakeRange ([[text textStorage] length], 0)
-	 withString: [NSString stringWithFormat: @" - %@ -\n", 
-			       [winToCheck title]]];
+      [text replaceCharactersInRange:
+            NSMakeRange ([[text textStorage] length], 0)
+                          withString: [NSString stringWithFormat: @" - %@ -\n",
+                         [winToCheck title]]];
 
-      [text replaceCharactersInRange: 
-	      NSMakeRange ([[text textStorage] length], 0)
-	 withString: newCheck];
+      [text replaceCharactersInRange:
+            NSMakeRange ([[text textStorage] length], 0)
+                          withString: newCheck];
 
-      [text replaceCharactersInRange: 
-	      NSMakeRange ([[text textStorage] length], 0)
-	 withString: [NSString stringWithFormat: @"\n", 
-			       [winToCheck title]]];
+      [text replaceCharactersInRange:
+            NSMakeRange ([[text textStorage] length], 0)
+                          withString: [NSString stringWithFormat: @"\n",
+                         [winToCheck title]]];
     }
 }
 

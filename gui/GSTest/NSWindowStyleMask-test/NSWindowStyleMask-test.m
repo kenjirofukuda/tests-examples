@@ -4,19 +4,19 @@
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
    Date: 1999, July 2000
-   
+
    This file is part of GNUstep.
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
@@ -31,10 +31,11 @@
 #define STYLE_NUMBER 7
 #define PANEL_STYLE_NUMBER 4
 
-struct 
-{ 
-  NSString *name; unsigned int styleMask;
-} styles[STYLE_NUMBER + PANEL_STYLE_NUMBER] = 
+struct
+{
+  NSString *name;
+  unsigned int styleMask;
+} styles[STYLE_NUMBER + PANEL_STYLE_NUMBER] =
 {
   { @"NSMiniWindowMask",                            NSMiniWindowMask               },
   { @"NSIconWindowMask",                            NSIconWindowMask               },
@@ -51,21 +52,22 @@ struct
 
 
 
-@interface NSWindowStyleMaskTest: NSObject <GSTest>
+@interface NSWindowStyleMaskTest : NSObject <GSTest>
 {
   NSButton *styleButton[STYLE_NUMBER + PANEL_STYLE_NUMBER];
   NSButton *panelButton;
   NSWindow *win;
 }
--(void) restart;
--(void) newWindow: (id)sender;
+- (void) restart;
+- (void) newWindow: (id)sender;
 @end
 
-@implementation NSWindowStyleMaskTest: NSObject
+@implementation NSWindowStyleMaskTest:
+NSObject
 {
   // for instance variables see above
 }
--(id) init
+- (id) init
 {
   int i;
   GSVbox *styleVbox;
@@ -93,9 +95,9 @@ struct
   [panelButton sizeToFit];
   [panelButton setAutoresizingMask: NSViewMaxXMargin];
   [mainVbox addView: panelButton];
- 
+
   [mainVbox addSeparator];
-  
+
   styleVbox = AUTORELEASE ([GSVbox new]);
   [styleVbox setDefaultMinYMargin: 5];
   [styleVbox setBorder: 5];
@@ -115,10 +117,10 @@ struct
       [styleButton[i] setAutoresizingMask: NSViewMaxXMargin];
       [styleVbox addView: styleButton[i]];
     }
- 
 
 
- 
+
+
   optionsBox = AUTORELEASE ([NSBox new]);
   [optionsBox setTitle: @"Window Style Mask"];
   [optionsBox setTitlePosition: NSAtTop];
@@ -127,36 +129,36 @@ struct
   [optionsBox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   [mainVbox addView: optionsBox];
-  
+
   winFrame.size = [mainVbox frame].size;
   winFrame.origin = NSMakePoint (100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
-			  styleMask: (NSTitledWindowMask 
-				      | NSClosableWindowMask 
-				      | NSMiniaturizableWindowMask)
-			  backing: NSBackingStoreBuffered
-			  defer: NO];
-  [win setReleasedWhenClosed: NO];  
+                                    styleMask: (NSTitledWindowMask
+                                      | NSClosableWindowMask
+                                      | NSMiniaturizableWindowMask)
+                                      backing: NSBackingStoreBuffered
+                                        defer: NO];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: mainVbox];
   [win setTitle: @"NSWindowStyleMask Test"];
-  
+
   [self restart];
   return self;
 }
--(void) dealloc
+- (void) dealloc
 {
   RELEASE (win);
   [super dealloc];
 }
--(void) restart
+- (void) restart
 {
-  [win orderFront: nil]; 
+  [win orderFront: nil];
   [[NSApplication sharedApplication] addWindowsItem: win
-				     title: @"NSWindowStyleMask Test"
-				     filename: NO];
+                                              title: @"NSWindowStyleMask Test"
+                                           filename: NO];
 }
--(void) newWindow: (id) sender 
+- (void) newWindow: (id)sender
 {
   BOOL isPanel;
   NSButton *button;
@@ -165,7 +167,7 @@ struct
   NSWindow *newWindow;
   unsigned int styleMask;
   int i;
-  
+
   isPanel = ([panelButton state] == 1);
 
   styleMask = 0;
@@ -173,10 +175,10 @@ struct
   for (i = 0; i < (isPanel ? (STYLE_NUMBER + PANEL_STYLE_NUMBER) : STYLE_NUMBER); i++)
     {
       if ([styleButton[i] state] == 1)
-	{
-	  styleMask |= styles[i].styleMask;
+        {
+          styleMask |= styles[i].styleMask;
           labelString = [NSString stringWithFormat: @"%@\n%@", labelString, styles[i].name];
-	}      
+        }
     }
 
   if (isPanel)
@@ -185,11 +187,11 @@ struct
     newWindow = [NSWindow alloc];
 
   newWindow = [newWindow initWithContentRect: NSMakeRect (100, 100, 300, 200)
-			 styleMask: styleMask
-			 backing: NSBackingStoreBuffered
-			 defer: NO];
+                                   styleMask: styleMask
+                                     backing: NSBackingStoreBuffered
+                                       defer: NO];
   [newWindow setReleasedWhenClosed: YES];
-  
+
   if (isPanel)
     [newWindow setTitle: @"Panel"];
 
@@ -208,10 +210,10 @@ struct
   [label setSelectable: NO];
   [[newWindow contentView] addSubview: label];
 
-  [newWindow orderFront: self]; 
+  [newWindow orderFront: self];
 }
 
-- (void) closeWindow: (id) sender
+- (void) closeWindow: (id)sender
 {
   [[sender window] close];
 }

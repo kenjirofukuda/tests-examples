@@ -4,19 +4,19 @@
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
    Date: 1999
-   
+
    This file is part of GNUstep.
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
@@ -25,19 +25,20 @@
 #include <GNUstepGUI/GSHbox.h>
 #include "../GSTestProtocol.h"
 
-@interface GSHboxTest: NSObject <GSTest>
+@interface GSHboxTest : NSObject <GSTest>
 {
   NSWindow *win;
 }
--(void) restart;
+- (void) restart;
 @end
 
-@implementation GSHboxTest: NSObject
+@implementation GSHboxTest:
+NSObject
 {
 }
--(id) init
+- (id) init
 {
-  GSHbox* hbox;
+  GSHbox *hbox;
   NSColorWell *wA;
   NSColorWell *wB;
   NSColorWell *wC;
@@ -46,12 +47,12 @@
   NSColorWell *wF;
   NSColorWell *wG;
   NSRect winFrame;
-  
+
   wA = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
   [wA setAutoresizingMask: NSViewHeightSizable];
 
   wB = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
-  [wB setAutoresizingMask: NSViewMinYMargin | NSViewMaxYMargin 
+  [wB setAutoresizingMask: NSViewMinYMargin | NSViewMaxYMargin
       | NSViewMinXMargin | NSViewMaxXMargin];
 
   wC = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
@@ -93,40 +94,40 @@
   [wF release];
 
   [hbox addView: wG
-	enablingXResizing: NO];
+    enablingXResizing: NO];
   [wG release];
 
   [hbox setBorder: 10];
   [hbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
-  
+
   winFrame.size = [hbox frame].size;
   winFrame.origin = NSMakePoint (100, 200);
-  
+
   win = [[NSWindow alloc] initWithContentRect: winFrame
-			  styleMask: (NSTitledWindowMask 
-				      | NSClosableWindowMask 
-				      | NSMiniaturizableWindowMask 
-				      | NSResizableWindowMask)
-			  backing: NSBackingStoreBuffered
-			  defer: NO];
-  [win setReleasedWhenClosed: NO]; 
+                                    styleMask: (NSTitledWindowMask
+                                      | NSClosableWindowMask
+                                      | NSMiniaturizableWindowMask
+                                      | NSResizableWindowMask)
+                                      backing: NSBackingStoreBuffered
+                                        defer: NO];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
   [hbox release];
   [win setTitle: @"GSHbox Test"];
-  
+
   [self restart];
   return self;
 }
--(void) dealloc
+- (void) dealloc
 {
   [win release];
   [super dealloc];
 }
--(void) restart
+- (void) restart
 {
-  [win orderFront: nil]; 
+  [win orderFront: nil];
   [[NSApplication sharedApplication] addWindowsItem: win
-				     title: @"GSHbox Test"
-				     filename: NO];
+                                              title: @"GSHbox Test"
+                                           filename: NO];
 }
 @end

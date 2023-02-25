@@ -4,21 +4,21 @@
 
    Author:  Gregory John Casamento <greg_casamento@yahoo.com>
    Date:  Feb 2002
-   
+
    Based on Nicola's test for NSTableView...
 
    This file is part of GNUstep.
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
@@ -28,22 +28,23 @@
 #include <GNUstepGUI/GSVbox.h>
 #include "../GSTestProtocol.h"
 
-@interface NSOutlineViewTest: NSObject <GSTest>
+@interface NSOutlineViewTest : NSObject <GSTest>
 {
   NSWindow *win;
 }
--(void) restart;
+- (void) restart;
 @end
 
-@implementation NSOutlineViewTest: NSObject
+@implementation NSOutlineViewTest:
+NSObject
 
--(id) init
+- (id) init
 {
   NSBox *externalBox;
   NSOutlineView *outlineView;
   NSRect winFrame;
   NSTableColumn *keyColumn;
-  NSTableColumn *valueColumn;  
+  NSTableColumn *valueColumn;
   NSTableColumn *testColumn;
   NSTableColumn *tb;
   NSScrollView *scrollView;
@@ -68,8 +69,8 @@
   [[testColumn headerCell] setStringValue: @"actions"];
   [testColumn setMinWidth: 100];
 
-  outlineView = [[NSOutlineView alloc] 
-		 initWithFrame: NSMakeRect (0, 0, 300, 300)];
+  outlineView = [[NSOutlineView alloc]
+                 initWithFrame: NSMakeRect (0, 0, 300, 300)];
   [outlineView addTableColumn: keyColumn];
   [outlineView addTableColumn: valueColumn];
   [outlineView addTableColumn: testColumn];
@@ -92,20 +93,20 @@
   [outlineView setDataSource: self];
   [outlineView setDelegate: self];
 
-  [outlineView registerForDraggedTypes: 
-	       [NSArray arrayWithObject: NSStringPboardType]];
+  [outlineView registerForDraggedTypes:
+               [NSArray arrayWithObject: NSStringPboardType]];
 
 
-  scrollView = [[NSScrollView alloc] 
-		 initWithFrame: NSMakeRect (0, 0, 300, 200)];
+  scrollView = [[NSScrollView alloc]
+                initWithFrame: NSMakeRect (0, 0, 300, 200)];
   [scrollView setDocumentView: outlineView];
   RELEASE (outlineView);
   [scrollView setHasHorizontalScroller: YES];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];
-  [scrollView setAutoresizingMask: (NSViewWidthSizable 
-				    | NSViewHeightSizable)];
-	 
+  [scrollView setAutoresizingMask: (NSViewWidthSizable
+                                    | NSViewHeightSizable)];
+
   [outlineView sizeToFit];
 
   externalBox = [NSBox new];
@@ -114,78 +115,78 @@
   [externalBox addSubview: scrollView];
   RELEASE (scrollView);
   [externalBox sizeToFit];
-  [externalBox setAutoresizingMask: (NSViewWidthSizable 
-				     | NSViewHeightSizable)];
-  
+  [externalBox setAutoresizingMask: (NSViewWidthSizable
+                                     | NSViewHeightSizable)];
+
   winFrame.size = [externalBox frame].size;
   winFrame.origin = NSMakePoint (100, 200);
-  
+
   win = [[NSWindow alloc] initWithContentRect: winFrame
-			  styleMask: (NSTitledWindowMask 
-				      | NSClosableWindowMask 
-				      | NSMiniaturizableWindowMask 
-				      | NSResizableWindowMask)
-			  backing: NSBackingStoreBuffered
-			  defer: NO];
-  
+                                    styleMask: (NSTitledWindowMask
+                                      | NSClosableWindowMask
+                                      | NSMiniaturizableWindowMask
+                                      | NSResizableWindowMask)
+                                      backing: NSBackingStoreBuffered
+                                        defer: NO];
+
   [win setReleasedWhenClosed: NO];
   [win setContentView: externalBox];
   RELEASE (externalBox);
   [win setTitle: @"NSOutlineView Test"];
-  
+
   [self restart];
   return self;
 }
 
--(void) restart
+- (void) restart
 {
-  [win orderFront: nil]; 
+  [win orderFront: nil];
   [[NSApplication sharedApplication] addWindowsItem: win
-				     title: @"NSOutlineView Test"
-				     filename: NO];
+                                              title: @"NSOutlineView Test"
+                                           filename: NO];
 }
 
 // required methods for data source
-- (id)outlineView: (NSOutlineView *)outlineView
-	    child: (NSInteger)index
-	   ofItem: (id)item
+- (id) outlineView: (NSOutlineView *)outlineView
+             child: (NSInteger)index
+            ofItem: (id)item
 {
   //NSLog(@"child: %"PRIiPTR" ofItem: %@", index, item);
   if ([item isEqual: @"NSObject"])
     {
-      switch(index)
-	{
-	  case 0:
-	    return @"NSApplication";
-	  case 1:
-	    return @"NSPanel";
-	  case 2:
-	    return @"NSWindow";
-	  case 3:
-	    return @"NSOutlineView";
-          case 4:
-            return @"City";
-	  default:
-	    break;
-	}
+      switch (index)
+        {
+        case 0:
+          return @"NSApplication";
+        case 1:
+          return @"NSPanel";
+        case 2:
+          return @"NSWindow";
+        case 3:
+          return @"NSOutlineView";
+        case 4:
+          return @"City";
+        default:
+          break;
+        }
     }
   else if ([item isEqual: @"NSPanel"])
     {
       switch (index)
-	{
-	  case 0:
-	    return @"class1";
-	  case 1:
-	    return @"class2";
-	  case 2:
-	    return @"class3";
-	  case 3:
-	    return @"class4";
-          case 4:
-            return @"Color";
-	  default:
-	    break;
-	}
+        {
+        case 0:
+          return @"class1";
+        case 1:
+          return @"class2";
+        case 2:
+          return @"class3";
+        case 3:
+          return @"class4";
+        case 4:
+          return @"Color";
+        default:
+          break;
+        }
     }
   else if ([item isEqual: @"Color"])
     {
@@ -199,13 +200,13 @@
   return nil;
 }
 
-- (BOOL)outlineView: (NSOutlineView *)outlineView
-   isItemExpandable: (id)item
+- (BOOL) outlineView: (NSOutlineView *)outlineView
+    isItemExpandable: (id)item
 {
   //NSLog(@"isItemExpandable:....");
 
-  if ([item isEqual: @"NSObject"] || [item isEqual: @"NSPanel"] 
-    || [item isEqual: @"City"] || [item isEqual: @"Color"])
+  if ([item isEqual: @"NSObject"] || [item isEqual: @"NSPanel"]
+      || [item isEqual: @"City"] || [item isEqual: @"Color"])
     {
       return YES;
     }
@@ -213,8 +214,8 @@
   return NO;
 }
 
-- (NSInteger)  outlineView: (NSOutlineView *)outlineView 
-    numberOfChildrenOfItem: (id)item
+- (NSInteger) outlineView: (NSOutlineView *)outlineView
+   numberOfChildrenOfItem: (id)item
 {
   //NSLog(@"numberOfChildren:....");
   if (item == nil)
@@ -241,120 +242,120 @@
   return 0;
 }
 
-- (id)         outlineView: (NSOutlineView *)outlineView 
- objectValueForTableColumn: (NSTableColumn *)tableColumn 
-		    byItem: (id)item
+- (id) outlineView: (NSOutlineView *)outlineView
+  objectValueForTableColumn: (NSTableColumn *)tableColumn
+                     byItem: (id)item
 {
   NSString *value = nil;
   //NSLog(@"item = %@", item);
   if ([item isEqual: @"NSObject"])
     {
       if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
-	{
-	  value = @"NSObject";
-	}
+        {
+          value = @"NSObject";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
-	{
-	  value = @"1";
-	}
+        {
+          value = @"1";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
-	{
-	  value = @"2";
-	}
+        {
+          value = @"2";
+        }
     }
   else if ([item isEqual: @"NSApplication"])
     {
       if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
-	{
-	  value = @"NSApplication";
-	}
+        {
+          value = @"NSApplication";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
-	{
-	  value = @"2";
-	}
+        {
+          value = @"2";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
-	{
-	  value = @"3";
-	}
+        {
+          value = @"3";
+        }
     }
   else if ([item isEqual: @"NSPanel"])
     {
       if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
-	{
-	  value = @"NSPanel";
-	}
+        {
+          value = @"NSPanel";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
-	{
-	  value = @"2";
-	}
+        {
+          value = @"2";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
-	{
-	  value = @"3";
-	}
+        {
+          value = @"3";
+        }
     }
   else if ([item isEqual: @"NSWindow"])
     {
       if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
-	{
-	  value = @"NSWindow";
-	}
+        {
+          value = @"NSWindow";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
-	{
-	  value = @"3";
-	}
+        {
+          value = @"3";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
-	{
-	  value = @"5";
-	}
+        {
+          value = @"5";
+        }
     }
   else if ([item isEqual: @"NSOutlineView"])
     {
       if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
-	{
-	  value = @"NSOutlineView";
-	}
+        {
+          value = @"NSOutlineView";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
-	{
-	  value = @"4";
-	}
+        {
+          value = @"4";
+        }
       else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
-	{
-	  value = @"6";
-	}
+        {
+          value = @"6";
+        }
     }
-  else if ([item isEqual: @"class1"] || [item isEqual: @"class2"] 
-    || [item isEqual: @"class3"] || [item isEqual: @"class4"])
-    {
-      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
-	{
-	  value = item;
-	}
-      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
-	{
-	  value = @"2";
-	}
-      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
-	{
-	  value = @"3";
-	}
-    }
-  else if ([item isEqual: @"Color"] || [item isEqual: @"blue"] 
-    || [item isEqual: @"City"])
+  else if ([item isEqual: @"class1"] || [item isEqual: @"class2"]
+           || [item isEqual: @"class3"] || [item isEqual: @"class4"])
     {
       if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
         {
-	  value = item;
-	}
+          value = item;
+        }
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+        {
+          value = @"2";
+        }
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+        {
+          value = @"3";
+        }
+    }
+  else if ([item isEqual: @"Color"] || [item isEqual: @"blue"]
+           || [item isEqual: @"City"])
+    {
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+        {
+          value = item;
+        }
     }
 
   return value;
 }
 
 // delegate methods
-- (void) outlineView: (NSOutlineView *)aTableView 
-     willDisplayCell: (id)aCell 
+- (void) outlineView: (NSOutlineView *)aTableView
+     willDisplayCell: (id)aCell
       forTableColumn: (NSTableColumn *)aTableColumn
-		item: (id)item
+                item: (id)item
 {
   //NSLog(@"outlineView:willDisplayCell:forTableColumn:item:");
 }
@@ -367,31 +368,31 @@
 }
 
 - (BOOL) outlineView: (NSTableView *)aTableView
-	 writeItems: (NSArray *) items
-      toPasteboard: (NSPasteboard *) pboard
+          writeItems: (NSArray *)items
+        toPasteboard: (NSPasteboard *)pboard
 {
   NSLog(@"%@", items);
   [pboard declareTypes: [NSArray arrayWithObject: NSStringPboardType]
-	  owner: self];
+                 owner: self];
 
   [pboard setPropertyList: @"1"
-	  forType: NSStringPboardType];
+                  forType: NSStringPboardType];
   return YES;
 }
 
-- (NSDragOperation) outlineView: (NSOutlineView *) ov
-		   validateDrop: (id <NSDraggingInfo>) info
-		   proposedItem: (id) item
-	     proposedChildIndex: (NSInteger) childIndex
+- (NSDragOperation) outlineView: (NSOutlineView *)ov
+                   validateDrop: (id <NSDraggingInfo>)info
+                   proposedItem: (id)item
+             proposedChildIndex: (NSInteger)childIndex
 
 {
   NSLog(@"Validate drop %@ at %"PRIiPTR"", item, childIndex);
   /*if (item == nil)
     [ov setDropItem: @"NSObject"
-	dropChildIndex: NSOutlineViewDropOnItemIndex];
+  dropChildIndex: NSOutlineViewDropOnItemIndex];
   else
     [ov setDropItem: item
-	dropChildIndex: NSOutlineViewDropOnItemIndex];*/
+  dropChildIndex: NSOutlineViewDropOnItemIndex];*/
 
   return NSDragOperationCopy;
 }
@@ -412,7 +413,7 @@
       NSLog(@"refusingRow");
       return NO;
     }
-  
+
 }
 */
 @end

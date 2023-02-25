@@ -8,8 +8,8 @@
   NSMutableArray *loadedTestTags;
 }
 
-- (void) startListedTest: (id) sender;
-- (void) startUnlistedTest: (id) sender;
+- (void) startListedTest: (id)sender;
+- (void) startUnlistedTest: (id)sender;
 - (id) loadAndStartTestWithBundlePath: (NSString *)fullPath;
 - (void) _findBundles;
 

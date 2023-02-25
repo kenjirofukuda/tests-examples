@@ -4,19 +4,19 @@
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
    Date: 1999
-   
+
    This file is part of GNUstep.
-   
+
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
@@ -26,26 +26,26 @@
 
 /*
  *
- * This class is unused at the moment; for the InfoPanel 
+ * This class is unused at the moment; for the InfoPanel
  * we are using the standardInfoPanel provided by NSApplication
  *
  */
 
 // This simply shows some non-editable text
-@interface Label: NSTextField
+@interface Label : NSTextField
 {
 }
--(id) initWithText: (NSString *)aText;
+- (id) initWithText: (NSString *)aText;
 @end
 
-@implementation Label 
+@implementation Label
 {
 }
--(id) init
+- (id) init
 {
   return [self initWithText: nil];
 }
--(id) initWithText: (NSString *)aText
+- (id) initWithText: (NSString *)aText
 {
   [super initWithFrame: NSZeroRect];
   [self setEditable: NO];
@@ -60,10 +60,11 @@
 }
 @end
 
-@implementation infoPanel: NSPanel
+@implementation infoPanel:
+NSPanel
 {
 }
--(id) init
+- (id) init
 {
   // Labels
   Label *title;
@@ -93,8 +94,8 @@
   [lowerVbox setBorder: 5];
 
   copyrightTwo = [Label new];
-  [copyrightTwo setStringValue: 
-		  @"it under the terms of the GNU General Public License."];
+  [copyrightTwo setStringValue:
+                @"it under the terms of the GNU General Public License."];
   [copyrightTwo setFont: [NSFont systemFontOfSize: 10]];
   [copyrightTwo setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [copyrightTwo sizeToFit];
@@ -102,9 +103,9 @@
   [copyrightTwo release];
 
   copyrightOne = [Label new];
-  [copyrightOne 
-    setStringValue: 
-      @"This program is free software; you can redistribute it and/or modify"];
+  [copyrightOne
+   setStringValue:
+   @"This program is free software; you can redistribute it and/or modify"];
   [copyrightOne setFont: [NSFont systemFontOfSize: 10]];
   [copyrightOne setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [copyrightOne sizeToFit];
@@ -112,13 +113,13 @@
   [copyrightOne release];
 
   fsf = [Label new];
-  [fsf setStringValue: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."];  
+  [fsf setStringValue: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."];
   [fsf setFont: [NSFont systemFontOfSize: 10]];
   [fsf setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [fsf sizeToFit];
   [lowerVbox addView: fsf];
   [fsf release];
-  
+
   authors = [Label new];
   [authors setStringValue: @"Author: Nicola Pero <n.pero@mi.flashnet.it>"];
   [authors setFont: [NSFont systemFontOfSize: 10]];
@@ -133,17 +134,17 @@
   // Separator
   [vbox addSeparator];
 
-  // Upper Part of the Panel 
+  // Upper Part of the Panel
   hbox = [GSHbox new];
   [hbox setBorder: 5];
-  
+
   logo = [NSImageView new];
   [logo setImage: [NSImage imageNamed: @"GNUstep.tiff"]];
   [logo setImageFrameStyle: NSImageFrameNone];
   [logo setEditable: NO];
   [logo sizeToFit];
   [logo setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin
-			      | NSViewMinYMargin | NSViewMaxYMargin)];
+                              | NSViewMinYMargin | NSViewMaxYMargin)];
   [hbox addView: logo];
   [logo release];
 
@@ -151,15 +152,15 @@
   version = [Label new];
 #ifdef GNUSTEP_SUBMINOR_VERSION
   [version setStringValue: [NSString stringWithFormat:
-				       @"GNUstep Version: %d.%d.%d", 
-				     GNUSTEP_MAJOR_VERSION, 
-				     GNUSTEP_MINOR_VERSION,
-				     GNUSTEP_SUBMINOR_VERSION]];
-#else 
+                            @"GNUstep Version: %d.%d.%d",
+                            GNUSTEP_MAJOR_VERSION,
+                            GNUSTEP_MINOR_VERSION,
+                            GNUSTEP_SUBMINOR_VERSION]];
+#else
   [version setStringValue: [NSString stringWithFormat:
-				       @"GNUstep Version: %d.%d.x", 
-				     GNUSTEP_MAJOR_VERSION, 
-				     GNUSTEP_MINOR_VERSION]];
+                            @"GNUstep Version: %d.%d.x",
+                            GNUSTEP_MAJOR_VERSION,
+                            GNUSTEP_MINOR_VERSION]];
 #endif
   [version setFont: [NSFont systemFontOfSize: 12]];
   [version setAutoresizingMask: NSViewMinXMargin];
@@ -185,11 +186,11 @@
   [upperVbox setAutoresizingMask: NSViewMaxXMargin];
 
   [hbox addView: upperVbox];
-  [upperVbox release];  
+  [upperVbox release];
   [hbox setAutoresizingMask: NSViewWidthSizable];
 
   [vbox addView: hbox];
-	//	margin: 10];
+  //	margin: 10];
   [hbox release];
 
   // Window
@@ -197,9 +198,9 @@
   winFrame.origin = NSMakePoint (100, 100);
 
   [self initWithContentRect: winFrame
-	styleMask: (NSTitledWindowMask | NSClosableWindowMask)
-	backing: NSBackingStoreBuffered
-	defer: NO];
+                  styleMask: (NSTitledWindowMask | NSClosableWindowMask)
+                    backing: NSBackingStoreBuffered
+                      defer: NO];
   [self setContentView: vbox];
   [vbox release];
   [self setTitle: @"Info Panel"];

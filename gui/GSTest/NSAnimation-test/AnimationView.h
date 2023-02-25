@@ -13,12 +13,12 @@
  * modify it under the terms of the GNU Library General Public
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Library General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
@@ -33,7 +33,7 @@
 #include <AppKit/NSAnimation.h>
 
 @interface NSAnimation(Private)
-- (_NSAnimationCurveDesc*) _gs_curveDesc;
+- (_NSAnimationCurveDesc *) _gs_curveDesc;
 - (NSAnimationProgress) _gs_curveShift;
 @end
 
@@ -49,8 +49,8 @@
   AnimationTestMainAnimation *mainAnimation;
   AnimationTestLoopAnimation *circlePosAnimation;
   AnimationTestRoundTripAnimation *circleColorAnimation;
-  NSAnimation* shapeAnimation[4];
-  AnimationTestLoopAnimation* plotAnimation;
+  NSAnimation *shapeAnimation[4];
+  AnimationTestLoopAnimation *plotAnimation;
   NSPoint curvePath[100];
   unsigned curvePathIndex;
   NSTimer *fpsDisplayTimer;
