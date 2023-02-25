@@ -73,7 +73,7 @@ NSObject
   [button sizeToFit];
   [button setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
   [button setTarget: self];
-  [button setAction: @selector (decode:)];
+  [button setAction: @selector(decode:)];
 
   box = [NSBox new];
   [box setTitle: @"Decoding a Window"];
@@ -95,12 +95,12 @@ NSObject
   [button sizeToFit];
   [button setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
   [button setTarget: self];
-  [button setAction: @selector (encode:)];
+  [button setAction: @selector(encode:)];
   [vvbox addView: button];
   [button release];
 
   // We use a browser with one column to get a selection list
-  browser = [[NSBrowser alloc] initWithFrame: NSMakeRect (0, 0, 200, 200)];
+  browser = [[NSBrowser alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
   [browser setDelegate: self];
   [browser setMaxVisibleColumns: 1];
   [browser setAllowsMultipleSelection: NO];
@@ -146,7 +146,7 @@ NSObject
 
   // Window
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -187,9 +187,9 @@ NSObject
 
   if (!w || ![w isKindOfClass: [NSWindow class]])
     {
-      NSRunCriticalAlertPanel (@"Error",
-                               @"You must choose a valid window",
-                               @"OK", nil, nil);
+      NSRunCriticalAlertPanel(@"Error",
+                              @"You must choose a valid window",
+                              @"OK", nil, nil);
       return;
     }
 
@@ -220,10 +220,10 @@ NSObject
               exception = @"UnknownProblem";
             }
 
-          NSRunCriticalAlertPanel (@"Error",
-                                   @"Error encoding to file %@:\n%@",
-                                   @"OK", nil, nil,
-                                   [s filename], exception);
+          NSRunCriticalAlertPanel(@"Error",
+                                  @"Error encoding to file %@:\n%@",
+                                  @"OK", nil, nil,
+                                  [s filename], exception);
         }
     }
 }
@@ -264,10 +264,10 @@ NSObject
             {
               if (error_panels)
                 {
-                  int p = NSRunCriticalAlertPanel (@"Error",
-                                                   @"Error decoding file %@",
-                                                   @"OK", @"OK to all", nil,
-                                                   [f objectAtIndex: i]);
+                  int p = NSRunCriticalAlertPanel(@"Error",
+                                                  @"Error decoding file %@",
+                                                  @"OK", @"OK to all", nil,
+                                                  [f objectAtIndex: i]);
                   if (p == NS_ALERTALTERNATE)
                     error_panels = NO;
                 }
@@ -277,16 +277,16 @@ NSObject
               if ([w isKindOfClass: [NSWindow class]])
                 {
                   [w orderFront: self];
-                  RETAIN (w);
+                  RETAIN(w);
                 }
               else
                 {
                   if (error_panels)
                     {
-                      int p = NSRunCriticalAlertPanel (@"Error",
-                                                       @"Object in file %@ is not a window",
-                                                       @"OK", @"OK to all", nil,
-                                                       [f objectAtIndex: i]);
+                      int p = NSRunCriticalAlertPanel(@"Error",
+                                                      @"Object in file %@ is not a window",
+                                                      @"OK", @"OK to all", nil,
+                                                      [f objectAtIndex: i]);
                       if (p == NS_ALERTALTERNATE)
                         error_panels = NO;
                     }
@@ -309,7 +309,7 @@ NSObject
     return @"Choose a Window to Encode";
   else
     {
-      NSLog (@"Bug: Asking title of column > 0!");
+      NSLog(@"Bug: Asking title of column > 0!");
       return @"Bug: Column > 0!";
     }
 }

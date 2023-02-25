@@ -1,5 +1,5 @@
 #import <GNUstepGUI/GSTheme.h>
 
-@interface Rhea: GSTheme
+@interface Rhea : GSTheme
 @end
 

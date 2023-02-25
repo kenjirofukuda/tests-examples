@@ -1,5 +1,5 @@
 /* This tool creates an md5 digest using the example filter
-   based on what type of file is being accessed. 
+   based on what type of file is being accessed.
 
    Copyright (C) 2003 Free Software Foundation, Inc.
 
@@ -12,8 +12,8 @@
    modify it under the terms of the GNU General Public License
    as published by the Free Software Foundation; either version 2
    of the License, or (at your option) any later version.
-    
-   You should have received a copy of the GNU General Public  
+
+   You should have received a copy of the GNU General Public
    License along with this library; see the file COPYING.LIB.
    If not, write to the Free Software Foundation,
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
@@ -29,7 +29,7 @@
 #include <AppKit/NSPasteboard.h>
 
 int
-main(int argc, char** argv, char **env_c)
+main(int argc, char **argv, char **env_c)
 {
   CREATE_AUTORELEASE_POOL(pool);
   NSFileHandle		*fh;
@@ -39,7 +39,7 @@ main(int argc, char** argv, char **env_c)
   NSUserDefaults	*defs;
 
 #ifdef GS_PASS_ARGUMENTS
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env_c];
+  [NSProcessInfo initializeWithArguments: argv count: argc environment: env_c];
 #endif
 
   defs = [NSUserDefaults standardUserDefaults];
@@ -48,7 +48,7 @@ main(int argc, char** argv, char **env_c)
     {
       data = [NSSerializer serializePropertyList: string];
       pb = [NSPasteboard pasteboardByFilteringData: data
-					    ofType: NSFilenamesPboardType];
+                                            ofType: NSFilenamesPboardType];
       NSLog(@"Types: %@", [pb types]);
       data = [pb dataForType: NSGeneralPboardType];
       NSLog(@"Got %@", data);
@@ -59,11 +59,11 @@ main(int argc, char** argv, char **env_c)
       fh = [NSFileHandle fileHandleWithStandardInput];
       data = [fh readDataToEndOfFile];
       string = [[NSString alloc] initWithData: data
-				     encoding: NSUTF8StringEncoding];
+                                     encoding: NSUTF8StringEncoding];
       data = [NSSerializer serializePropertyList: string];
 
       pb = [NSPasteboard pasteboardByFilteringData: data
-					    ofType: NSStringPboardType];
+                                            ofType: NSStringPboardType];
       NSLog(@"Types: %@", [pb types]);
       data = [pb dataForType: @"md5Digest"];
       NSLog(@"Got %@", data);

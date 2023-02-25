@@ -2,7 +2,7 @@
  *  Controller.m: Main Object of Finger.app
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -28,42 +28,42 @@
 
 @implementation Controller
 
-+(void)initialize
++ (void) initialize
 {
   if (self == [Controller class])
     {
       NSUserDefaults *defaults;
-      NSMutableDictionary   *dict; 
+      NSMutableDictionary   *dict;
 
-      defaults = [NSUserDefaults standardUserDefaults];      
-      dict = AUTORELEASE ([NSMutableDictionary new]);
+      defaults = [NSUserDefaults standardUserDefaults];
+      dict = AUTORELEASE([NSMutableDictionary new]);
       [dict setObject: WHOIS_DEFAULT_COMMAND forKey: @"WhoisCommand"];
       [dict setObject: FINGER_DEFAULT_COMMAND forKey: @"FingerCommand"];
       [dict setObject: PING_DEFAULT_COMMAND forKey: @"PingCommand"];
-      [dict setObject: TRACEROUTE_DEFAULT_COMMAND 
-	    forKey: @"TracerouteCommand"];
+      [dict setObject: TRACEROUTE_DEFAULT_COMMAND
+               forKey: @"TracerouteCommand"];
       [dict setObject: DEFAULT_BUTTON_SIZE forKey: @"ButtonSize"];
       [defaults registerDefaults: dict];
     }
 }
 
--(id) init
+- (id) init
 {
   return self;
 }
 
--(void) dealloc
+- (void) dealloc
 {
-  TEST_RELEASE (pref);
+  TEST_RELEASE(pref);
   [super dealloc];
 }
 
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification;
 {
   [self startNewFingerWindow: self];
 }
 
-- (void)startNewFingerWindow: (id) sender
+- (void) startNewFingerWindow: (id)sender
 {
   FingerWindow *win;
 
@@ -71,7 +71,7 @@
   [win orderFront: self];
 }
 
--(void) runPreferencesPanel: (id) sender
+- (void) runPreferencesPanel: (id)sender
 {
   if (pref == nil)
     pref = [PreferencesController new];

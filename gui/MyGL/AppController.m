@@ -52,25 +52,25 @@ typedef struct tagMATRIX
 
 @implementation Mesh
 
-static float DotProduct (Vector *v1, Vector *v2)
+static float DotProduct(Vector *v1, Vector *v2)
 {
   return v1->X * v2->X + v1->Y * v2->Y + v1->Z * v2->Z;
 }
 
-static float Magnitude (Vector *v)
+static float Magnitude(Vector *v)
 {
   return sqrtf(v->X * v->X + v->Y * v->Y + v->Z * v->Z);
 }
 
-static void Normalize (Vector *v)
+static void Normalize(Vector *v)
 {
   float m = Magnitude(v);
   if (m != 0.0f)
-  {
-    v->X /= m;
-    v->Y /= m;
-    v->Z /= m;
-  }
+    {
+      v->X /= m;
+      v->Y /= m;
+      v->Z /= m;
+    }
 
 }
 
@@ -88,44 +88,44 @@ static void Normalize (Vector *v)
 
   for (t = 0; t < pcount; t++)
     {
-      glBegin( GL_TRIANGLES );
+      glBegin(GL_TRIANGLES);
 
       vv = nvertices[pnormals[t].p1];
       Normalize(&vv);
-      xx = DotProduct(&light,&vv);
+      xx = DotProduct(&light, &vv);
       if (xx < 0.0f)
         {
           xx = 0;
         }
-      glColor3f(xx,xx,xx);
+      glColor3f(xx, xx, xx);
       glVertex3f(vertices[polygons[t].p1].X,
                  vertices[polygons[t].p1].Y,
                  vertices[polygons[t].p1].Z);
 
       vv = nvertices[pnormals[t].p2];
       Normalize(&vv);
-      xx = DotProduct(&light,&vv);
+      xx = DotProduct(&light, &vv);
       if (xx < 0.0f)
         {
           xx = 0;
         }
-      glColor3f(xx,xx,xx);
+      glColor3f(xx, xx, xx);
       glVertex3f(vertices[polygons[t].p2].X,
                  vertices[polygons[t].p2].Y,
                  vertices[polygons[t].p2].Z);
-      
+
       vv = nvertices[pnormals[t].p3];
       Normalize(&vv);
-      xx = DotProduct(&light,&vv);
+      xx = DotProduct(&light, &vv);
       if (xx < 0.0f)
         {
           xx = 0;
         }
-      glColor3f(xx,xx,xx);
+      glColor3f(xx, xx, xx);
       glVertex3f(vertices[polygons[t].p3].X,
                  vertices[polygons[t].p3].Y,
                  vertices[polygons[t].p3].Z);
-      
+
       glEnd();
     }
 }
@@ -142,8 +142,8 @@ static void Normalize (Vector *v)
         vertices[t].Z);
   }
   */
-  glColor3f(0.8f,0.5f,0.3f);
-  glBegin( GL_TRIANGLES );
+  glColor3f(0.8f, 0.5f, 0.3f);
+  glBegin(GL_TRIANGLES);
   for (t = 0; t < pcount; t++)
     {
       glVertex3f(vertices[polygons[t].p1].X,
@@ -185,7 +185,7 @@ static void Normalize (Vector *v)
   trackMeshVertices = NO;
   trackNormalVertices = NO;
   trackPolygons = NO;
-    
+
   return self;
 }
 
@@ -194,7 +194,7 @@ static void Normalize (Vector *v)
   return mesh;
 }
 
-- (void) characters:(NSString *)str
+- (void) characters: (NSString *)str
 {
   int p;
   NSEnumerator *en;
@@ -204,24 +204,24 @@ static void Normalize (Vector *v)
       NSArray *ar, *parray;
 
       str = [[str stringByTrimmingSpaces]
-              stringByReplacingString:@"\t"
-                           withString:@""];
-      parray = [str componentsSeparatedByString:@"\n"];
+             stringByReplacingString: @"\t"
+                          withString: @""];
+      parray = [str componentsSeparatedByString: @"\n"];
       mesh->vcount = [parray count];
       mesh->vertices = malloc(sizeof(Vector) * mesh->vcount);
-      
-      NSLog(@"import %d vertices",mesh->vcount);
-      
+
+      NSLog(@"import %d vertices", mesh->vcount);
+
       p = 0;
       en = [parray objectEnumerator];
       while ((str = [en nextObject]))
         {
-          ar = [str componentsSeparatedByString:@" "];
+          ar = [str componentsSeparatedByString: @" "];
           if ([ar count] == 3)
             {
-              mesh->vertices[p].X = [[ar objectAtIndex:0] floatValue];
-              mesh->vertices[p].Y = [[ar objectAtIndex:1] floatValue];
-              mesh->vertices[p].Z = [[ar objectAtIndex:2] floatValue];
+              mesh->vertices[p].X = [[ar objectAtIndex: 0] floatValue];
+              mesh->vertices[p].Y = [[ar objectAtIndex: 1] floatValue];
+              mesh->vertices[p].Z = [[ar objectAtIndex: 2] floatValue];
               p++;
             }
         }
@@ -231,39 +231,39 @@ static void Normalize (Vector *v)
       NSArray *ar, *parray;
 
       str = [[str stringByTrimmingSpaces]
-              stringByReplacingString:@"\t"
-                           withString:@""];
-      parray = [str componentsSeparatedByString:@"\n"];
+             stringByReplacingString: @"\t"
+                          withString: @""];
+      parray = [str componentsSeparatedByString: @"\n"];
       mesh->nvcount = [parray count];
       mesh->nvertices = malloc(sizeof(Vector) * mesh->nvcount);
-      
-      NSLog(@"import %d normal vertices",mesh->nvcount);
-      
+
+      NSLog(@"import %d normal vertices", mesh->nvcount);
+
       p = 0;
       en = [parray objectEnumerator];
       while ((str = [en nextObject]))
         {
-          ar = [str componentsSeparatedByString:@" "];
+          ar = [str componentsSeparatedByString: @" "];
           if ([ar count] == 3)
             {
-              mesh->nvertices[p].X = [[ar objectAtIndex:0] floatValue];
-              mesh->nvertices[p].Y = [[ar objectAtIndex:1] floatValue];
-              mesh->nvertices[p].Z = [[ar objectAtIndex:2] floatValue];
+              mesh->nvertices[p].X = [[ar objectAtIndex: 0] floatValue];
+              mesh->nvertices[p].Y = [[ar objectAtIndex: 1] floatValue];
+              mesh->nvertices[p].Z = [[ar objectAtIndex: 2] floatValue];
               p++;
             }
         }
     }
   else if (trackPolygons)
     {
-      NSArray *parray = [str componentsSeparatedByString:@" "];
+      NSArray *parray = [str componentsSeparatedByString: @" "];
 
-      mesh->polygons[idx].p1 = [[parray objectAtIndex:0] intValue];
-      mesh->polygons[idx].p2 = [[parray objectAtIndex:2] intValue];
-      mesh->polygons[idx].p3 = [[parray objectAtIndex:4] intValue];
-      
-      mesh->pnormals[idx].p1 = [[parray objectAtIndex:1] intValue];
-      mesh->pnormals[idx].p2 = [[parray objectAtIndex:3] intValue];
-      mesh->pnormals[idx].p3 = [[parray objectAtIndex:5] intValue];
+      mesh->polygons[idx].p1 = [[parray objectAtIndex: 0] intValue];
+      mesh->polygons[idx].p2 = [[parray objectAtIndex: 2] intValue];
+      mesh->polygons[idx].p3 = [[parray objectAtIndex: 4] intValue];
+
+      mesh->pnormals[idx].p1 = [[parray objectAtIndex: 1] intValue];
+      mesh->pnormals[idx].p2 = [[parray objectAtIndex: 3] intValue];
+      mesh->pnormals[idx].p3 = [[parray objectAtIndex: 5] intValue];
       idx ++;
     }
 }
@@ -288,8 +288,8 @@ static void Normalize (Vector *v)
           trackPolygons = NO;
         }
     }
-  
-  if ([elementName isEqualToString:@"polygons"])
+
+  if ([elementName isEqualToString: @"polygons"])
     {
       int pc = [[elementAttributes objectForKey: @"count"] intValue];
 
@@ -318,7 +318,7 @@ static void Normalize (Vector *v)
     }
 }
 
-- (void) endElement:(NSString*)elementName
+- (void) endElement: (NSString *)elementName
 {
   trackMeshVertices = NO;
   trackNormalVertices = NO;
@@ -327,7 +327,7 @@ static void Normalize (Vector *v)
 
 - (void) endDocument
 {
-  NSLog(@"end %d tris",idx);
+  NSLog(@"end %d tris", idx);
 }
 @end
 
@@ -347,18 +347,18 @@ static void Normalize (Vector *v)
 
 @implementation MyGLView
 
-- (void) scrollWheel:(NSEvent *)theEvent
+- (void) scrollWheel: (NSEvent *)theEvent
 {
   _artl += [theEvent deltaY];
   [self reshape];
 }
 
-- (void) mouseDragged: (NSEvent*)theEvent
+- (void) mouseDragged: (NSEvent *)theEvent
 {
   NSRect bounds = [self bounds];
 
-  _arty = [theEvent deltaX]/NSWidth(bounds) * 180;
-  _artx = -[theEvent deltaY]/NSHeight(bounds) * 180;
+  _arty = [theEvent deltaX] / NSWidth(bounds) * 180;
+  _artx = -[theEvent deltaY] / NSHeight(bounds) * 180;
   _artz = sqrtf(_arty * _artz);
 
   _rtz += _artz;
@@ -395,7 +395,7 @@ static void Normalize (Vector *v)
 
   [super reshape];
 
-  ratio = NSWidth(sceneBounds)/ NSHeight(sceneBounds);
+  ratio = NSWidth(sceneBounds) / NSHeight(sceneBounds);
 
   glViewport(0, 0, NSWidth(sceneBounds), NSHeight(sceneBounds));
   glMatrixMode(GL_PROJECTION);
@@ -403,33 +403,33 @@ static void Normalize (Vector *v)
   gluPerspective(_artl, ratio, 0.1f, 100.0f);
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
-  [self setNeedsDisplay:YES];
+  [self setNeedsDisplay: YES];
 }
 
-- (void) drawRect:(NSRect)r
+- (void) drawRect: (NSRect)r
 {
   unsigned int i;
- 
-  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glLoadIdentity();
 
   glTranslatef(-1.5f, 0.0f, -6.0f);
-  glRotatef(_rtx,1.0f,0.0f,0.0f);
-  glRotatef(_rty,0.0f,1.0f,0.0f);
-  glRotatef(_rtz,0.0f,0.0f,1.0f);
+  glRotatef(_rtx, 1.0f, 0.0f, 0.0f);
+  glRotatef(_rty, 0.0f, 1.0f, 0.0f);
+  glRotatef(_rtz, 0.0f, 0.0f, 1.0f);
 
-  for (i=0; i<[meshArray count]; i++)
+  for (i = 0; i < [meshArray count]; i++)
     {
       [[meshArray objectAtIndex: i] drawCelShadeWithRtx: _rtx
-                                                    rty: _rty
-                                                    rtz: _rtz];
+                            rty: _rty
+                            rtz: _rtz];
     }
 
   [[self openGLContext] flushBuffer];
 }
 
--(void) refresh
+- (void) refresh
 {
   [self setNeedsDisplay: YES];
 }
@@ -441,8 +441,8 @@ static void Normalize (Vector *v)
 
   h = [MySAX new];
   p = [GSXMLParser parserWithSAXHandler: h
-            withContentsOfFile: [[NSBundle mainBundle] pathForResource: @"girl"
-                                                                ofType: @"dae"]];
+                     withContentsOfFile: [[NSBundle mainBundle] pathForResource: @"girl"
+                                 ofType: @"dae"]];
   if ([p parse])
     {
       [meshArray addObject: [h currentMesh]];
@@ -459,17 +459,18 @@ static void Normalize (Vector *v)
 
 @implementation MyTransparentGLView
 
-+ (NSOpenGLPixelFormat*)defaultPixelFormat
++ (NSOpenGLPixelFormat *) defaultPixelFormat
 {
-  static NSOpenGLPixelFormatAttribute pf [] = {
-              NSOpenGLPFADoubleBuffer,
-              NSOpenGLPFAAccelerated,
-              NSOpenGLPFADoubleBuffer,
-              NSOpenGLPFADepthSize, 24,
-              NSOpenGLPFAColorSize, 24,
-              NSOpenGLPFAAlphaSize, 8,
-              0
-              };
+  static NSOpenGLPixelFormatAttribute pf [] =
+  {
+    NSOpenGLPFADoubleBuffer,
+    NSOpenGLPFAAccelerated,
+    NSOpenGLPFADoubleBuffer,
+    NSOpenGLPFADepthSize, 24,
+    NSOpenGLPFAColorSize, 24,
+    NSOpenGLPFAAlphaSize, 8,
+    0
+  };
   return [[NSOpenGLPixelFormat alloc] initWithAttributes: pf];
 }
 
@@ -477,7 +478,7 @@ static void Normalize (Vector *v)
 
 @implementation AppController
 
--(void) applicationDidFinishLaunching: (NSNotification *)not
+- (void) applicationDidFinishLaunching: (NSNotification *)not
 {
   int i;
 
@@ -492,7 +493,7 @@ static void Normalize (Vector *v)
     }
 }
 
--(void) applicationWillFinishLaunching: (NSNotification *)not
+- (void) applicationWillFinishLaunching: (NSNotification *)not
 {
   NSView *glview1, *glview2, *glview3;
   NSSplitView *splitView1, *splitView2;
@@ -515,7 +516,7 @@ static void Normalize (Vector *v)
   */
 
   splitView1 = [[[NSSplitView alloc] initWithFrame: [window frame]] autorelease];
-  [splitView1 addSubview: glview1];  
+  [splitView1 addSubview: glview1];
   [splitView1 addSubview: glview2];
 
   splitView2 = [[[NSSplitView alloc] initWithFrame: [window frame]] autorelease];
@@ -523,7 +524,7 @@ static void Normalize (Vector *v)
   [splitView2 addSubview: glview3];
   [splitView2 setVertical: YES];
   //RELEASE(splitView1);
-  
+
   [window setContentView: splitView2];
   //RELEASE(splitView2);
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  * Resolver.h created by phr on 2000-10-10 18:38:00 +0000
  *
  * Project HostAddress
@@ -21,18 +21,18 @@
   id addressButton;
 }
 
-- (id)init;
-- (void)dealloc;
+- (id) init;
+- (void) dealloc;
 
-- (void)resolveHost;
-- (void)resolveAddress;
+- (void) resolveHost;
+- (void) resolveAddress;
 
-- (void)makeKeyAndOrderFront;
+- (void) makeKeyAndOrderFront;
 
 @end
 
-@interface Resolver (UIBuilder)
+@interface Resolver(UIBuilder)
 
-- (void)createUI;
+- (void) createUI;
 
 @end

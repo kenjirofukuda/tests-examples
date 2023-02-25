@@ -2,7 +2,7 @@
  *  TrivialTextView.h: A Text View for Finger.app
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -32,17 +32,17 @@
 /*
  * This object displays uneditable, unselectable attributed text.
  */
-@interface TrivialTextView: NSView
+@interface TrivialTextView : NSView
 {
   NSDictionary *bold;
   NSDictionary *normal;
   NSMutableAttributedString *str;
 }
--(void) setString: (NSString *)s;
--(NSString *) string;
--(void) appendAttributedString: (NSMutableAttributedString *)s;
--(void) appendString: (NSString *)s;
--(void) appendBoldString: (NSString *)s;
--(void) sizeToFit;
+- (void) setString: (NSString *)s;
+- (NSString *) string;
+- (void) appendAttributedString: (NSMutableAttributedString *)s;
+- (void) appendString: (NSString *)s;
+- (void) appendBoldString: (NSString *)s;
+- (void) sizeToFit;
 @end
 

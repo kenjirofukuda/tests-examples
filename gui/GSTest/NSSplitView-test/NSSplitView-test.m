@@ -43,7 +43,7 @@ NSObject
   NSTextField *secondView;
   NSRect winFrame;
 
-  split = [[NSSplitView alloc] initWithFrame: NSMakeRect (0, 0, 400, 200)];
+  split = [[NSSplitView alloc] initWithFrame: NSMakeRect(0, 0, 400, 200)];
 
   firstView = [NSTextField new];
   [firstView setDrawsBackground: YES];
@@ -54,7 +54,7 @@ NSObject
   [firstView setBordered: NO];
   [firstView setAlignment: NSCenterTextAlignment];
   [firstView setStringValue: @"First NSView Contents"];
-  [firstView setFrameSize: NSMakeSize (200, 200)];
+  [firstView setFrameSize: NSMakeSize(200, 200)];
   [firstView setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   secondView = [NSTextField new];
@@ -66,7 +66,7 @@ NSObject
   [secondView setBordered: NO];
   [secondView setAlignment: NSCenterTextAlignment];
   [secondView setStringValue: @"Second  NSView Contents"];
-  [secondView setFrameSize: NSMakeSize (200, 200)];
+  [secondView setFrameSize: NSMakeSize(200, 200)];
   [secondView setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   [split addSubview: firstView];
@@ -76,7 +76,7 @@ NSObject
   [split setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   winFrame.size = [split frame].size;
-  winFrame.origin = NSMakePoint (100, 120);
+  winFrame.origin = NSMakePoint(100, 120);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask

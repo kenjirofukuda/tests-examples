@@ -195,7 +195,7 @@ NSPanel
 
   // Window
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   [self initWithContentRect: winFrame
                   styleMask: (NSTitledWindowMask | NSClosableWindowMask)

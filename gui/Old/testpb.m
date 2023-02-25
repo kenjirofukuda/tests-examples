@@ -9,31 +9,33 @@
 @interface	pbOwner : NSObject
 {
 }
-- (void) pasteboard: (NSPasteboard*)pb provideDataForType: (NSString*)type;
+- (void) pasteboard: (NSPasteboard *)pb provideDataForType: (NSString *)type;
 @end
 
 @implementation	pbOwner
-- (void) pasteboard: (NSPasteboard*)pb provideDataForType: (NSString*)type
+- (void) pasteboard: (NSPasteboard *)pb provideDataForType: (NSString *)type
 {
-    if ([type isEqual: NSFileContentsPboardType]) {
-        NSString*	s = [pb stringForType: NSStringPboardType];
+  if ([type isEqual: NSFileContentsPboardType])
+    {
+      NSString	*s = [pb stringForType: NSStringPboardType];
 
-	if (s) {
-	    const char*	ptr;
-	    int		len;
-	    NSData*		d;
+      if (s)
+        {
+          const char	*ptr;
+          int		len;
+          NSData		*d;
 
-	    ptr = [s cString];
-	    len = strlen(ptr);
-	    d = [NSData dataWithBytes: ptr length: len];
-    	    [pb setData: d forType: type];
-	}
+          ptr = [s cString];
+          len = strlen(ptr);
+          d = [NSData dataWithBytes: ptr length: len];
+          [pb setData: d forType: type];
+        }
     }
 }
 @end
 
 int
-main(int argc, char** argv)
+main(int argc, char **argv)
 {
   NSAutoreleasePool *pool = [NSAutoreleasePool new];
   pbOwner	*owner = [pbOwner new];
@@ -43,17 +45,17 @@ main(int argc, char** argv)
   NSApplication *theApp;
 
 #if LIB_FOUNDATION_LIBRARY
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+  [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
   theApp = [NSApplication sharedApplication];
   [theApp registerServicesMenuSendTypes: [NSArray arrayWithObject: NSStringPboardType]
-	  returnTypes: [NSArray arrayWithObject: NSStringPboardType]];
-  
+                            returnTypes: [NSArray arrayWithObject: NSStringPboardType]];
+
   [NSObject enableDoubleReleaseCheck: YES];
 
   types = [NSArray arrayWithObjects:
-	NSStringPboardType, NSFileContentsPboardType, nil];
+                   NSStringPboardType, NSFileContentsPboardType, nil];
   pb = [NSPasteboard generalPasteboard];
   [pb declareTypes: types owner: owner];
   [pb setString: @"This is a test" forType: NSStringPboardType];
@@ -62,7 +64,7 @@ main(int argc, char** argv)
 
   pb = [NSPasteboard pasteboardWithUniqueName];
   types = [NSArray arrayWithObjects:
-	NSStringPboardType, nil];
+                   NSStringPboardType, nil];
   [pb declareTypes: types owner: owner];
   [pb setString: @"a lowercase test string" forType: NSStringPboardType];
   if (NSPerformService(@"To upper", pb) == NO)

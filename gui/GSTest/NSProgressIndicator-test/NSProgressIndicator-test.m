@@ -48,7 +48,7 @@ NSObject
   [vbox setBorder: 5];
 
   //  pi1 = [NSProgressIndicator new];
-  pi1 = [[NSProgressIndicator alloc] initWithFrame: NSMakeRect (0, 0, 120, 20)];
+  pi1 = [[NSProgressIndicator alloc] initWithFrame: NSMakeRect(0, 0, 120, 20)];
   [pi1 setIndeterminate: YES];
   [pi1 setBezeled: YES];
   [pi1 setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
@@ -64,7 +64,7 @@ NSObject
   [box setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [vbox addView: box];
 
-  pi2 = [[NSProgressIndicator alloc] initWithFrame: NSMakeRect (0, 0, 120, 20)];
+  pi2 = [[NSProgressIndicator alloc] initWithFrame: NSMakeRect(0, 0, 120, 20)];
   [pi2 setIndeterminate: NO];
   [pi2 setMinValue: 0];
   [pi2 setMaxValue: 1];
@@ -84,7 +84,7 @@ NSObject
   [vbox addView: box];
 
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 200);
+  winFrame.origin = NSMakePoint(100, 200);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -103,7 +103,7 @@ NSObject
 }
 - (void) dealloc
 {
-  RELEASE (win);
+  RELEASE(win);
   [super dealloc];
 }
 - (void) restart

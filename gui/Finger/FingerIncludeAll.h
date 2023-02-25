@@ -2,7 +2,7 @@
  *  FingerIncludeAll.h: A GNUstep simple demo: a finger front-end
  *
  *  Copyright (c) 2007 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2007
  *

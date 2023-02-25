@@ -41,47 +41,47 @@
   NSWindow *win;
   id textField;
   id textField1;
-  NSView* anotherView1;
-  NSView* anotherView2;
+  NSView *anotherView1;
+  NSView *anotherView2;
 }
 
 @end
 
 @implementation buttonsController
 
-- (void)buttonAction:(id)sender
+- (void) buttonAction: (id)sender
 {
-  NSLog (@"buttonAction:");
+  NSLog(@"buttonAction:");
 }
 
-- (void)buttonAction2:(id)sender
+- (void) buttonAction2: (id)sender
 {
-  NSLog (@"buttonAction2:");
-  [textField setStringValue:[sender intValue] ? @"on" : @"off"];
+  NSLog(@"buttonAction2:");
+  [textField setStringValue: [sender intValue] ? @"on" : @"off"];
 }
 
-- (void)buttonSwitchView:(id)sender
+- (void) buttonSwitchView: (id)sender
 {
   NSString *title;
   NSLog(@"Sender = %@", sender);
 
   title = [sender titleOfSelectedItem];
 
-  NSLog (@"title value = %@, indexOfSelectedItem: %d, titleIndexOfSelectedItem: %d numItems: %d",
-	 title,
-	 [sender indexOfSelectedItem],
-	 [sender indexOfItem:[sender selectedItem]],
-	 [sender numberOfItems]);
+  NSLog(@"title value = %@, indexOfSelectedItem: %d, titleIndexOfSelectedItem: %d numItems: %d",
+        title,
+        [sender indexOfSelectedItem],
+        [sender indexOfItem: [sender selectedItem]],
+        [sender numberOfItems]);
 
   /*
   if ([title isEqualToString:@"Devices"])
-    [[win contentView] addSubview:anotherView1];    
+    [[win contentView] addSubview:anotherView1];
   else
-    [[win contentView] addSubview:anotherView2];    
+    [[win contentView] addSubview:anotherView2];
   */
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification
 {
   NSRect wf = {{100, 100}, {400, 400}};
   NSRect f = {{10, 10}, {380, 200}};
@@ -89,96 +89,96 @@
 
   id anItem;
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask
-		      | NSMiniaturizableWindowMask | NSResizableWindowMask;
+                       | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
-  win = [[NSWindow alloc] initWithContentRect:wf
-				    styleMask:style
-				      backing:NSBackingStoreRetained
-					defer:NO];
+  win = [[NSWindow alloc] initWithContentRect: wf
+                                    styleMask: style
+                                      backing: NSBackingStoreRetained
+                                        defer: NO];
 
-  anotherView1 = [[NSScrollView alloc] initWithFrame:f];
-  [[win contentView] addSubview:anotherView1];
-  
-  anotherView2 = [[TestView alloc] initWithFrame:f];
+  anotherView1 = [[NSScrollView alloc] initWithFrame: f];
+  [[win contentView] addSubview: anotherView1];
 
-  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(200,375,100,20)];
-  [pushb setTarget:self];
-  [pushb setAction:@selector(buttonSwitchView:)];
-  [pushb addItemWithTitle:@"Devices Pop"];
-  [pushb addItemWithTitle:@"Network"];
-  [pushb addItemWithTitle:@"Printers"];
-  [pushb addItemWithTitle:@"Austin"];
-  [pushb addItemWithTitle:@"Powers"];
-  [pushb addItemWithTitle:@"Shag"];
-  [[win contentView] addSubview:pushb];
+  anotherView2 = [[TestView alloc] initWithFrame: f];
+
+  pushb = [[NSPopUpButton alloc] initWithFrame: NSMakeRect(200, 375, 100, 20)];
+  [pushb setTarget: self];
+  [pushb setAction: @selector(buttonSwitchView:)];
+  [pushb addItemWithTitle: @"Devices Pop"];
+  [pushb addItemWithTitle: @"Network"];
+  [pushb addItemWithTitle: @"Printers"];
+  [pushb addItemWithTitle: @"Austin"];
+  [pushb addItemWithTitle: @"Powers"];
+  [pushb addItemWithTitle: @"Shag"];
+  [[win contentView] addSubview: pushb];
   RELEASE(pushb);
 
-  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(200,175,100,20)];
-  [pushb setTarget:self];
-  [pushb setAction:@selector(buttonSwitchView:)];
-  [[win contentView] addSubview:pushb];
+  pushb = [[NSPopUpButton alloc] initWithFrame: NSMakeRect(200, 175, 100, 20)];
+  [pushb setTarget: self];
+  [pushb setAction: @selector(buttonSwitchView:)];
+  [[win contentView] addSubview: pushb];
   RELEASE(pushb);
 
-  /* NB: popupbuttons with images are not possible in the 
+  /* NB: popupbuttons with images are not possible in the
   present framework */
 #if 0
-  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,275,64,64)];
+  pushb = [[NSPopUpButton alloc] initWithFrame: NSMakeRect(15, 275, 64, 64)];
 
-  [pushb addItemWithTitle:@""];
-  anItem = [pushb itemAtIndex:0];
-  [anItem setImage:[NSImage imageNamed:@"animations.tiff"]];
+  [pushb addItemWithTitle: @""];
+  anItem = [pushb itemAtIndex: 0];
+  [anItem setImage: [NSImage imageNamed: @"animations.tiff"]];
 
-  [pushb addItemWithTitle:@""];
-  anItem = [pushb itemAtIndex:1];
-  [anItem setImage:[NSImage imageNamed:@"appearance.tiff"]];
+  [pushb addItemWithTitle: @""];
+  anItem = [pushb itemAtIndex: 1];
+  [anItem setImage: [NSImage imageNamed: @"appearance.tiff"]];
 
-  [pushb addItemWithTitle:@""];
-  anItem = [pushb itemAtIndex:2];
-  [anItem setImage:[NSImage imageNamed:@"configs.tiff"]];
+  [pushb addItemWithTitle: @""];
+  anItem = [pushb itemAtIndex: 2];
+  [anItem setImage: [NSImage imageNamed: @"configs.tiff"]];
 
-  [pushb addItemWithTitle:@""];
-  anItem = [pushb itemAtIndex:3];
-  [anItem setImage:[NSImage imageNamed:@"dock.tiff"]];
+  [pushb addItemWithTitle: @""];
+  anItem = [pushb itemAtIndex: 3];
+  [anItem setImage: [NSImage imageNamed: @"dock.tiff"]];
 
 //  [pushb setTarget:self];
 //  [pushb setAction:@selector(buttonSwitchView:)];
-  [[win contentView] addSubview:pushb];
+  [[win contentView] addSubview: pushb];
 #endif
 
-  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,375,100,20) 
-				 pullsDown:YES];
-  [pushb setTarget:self];
-  [pushb setAction:@selector(buttonSwitchView:)];
-  [pushb addItemWithTitle:@"Devices Pull"];
-  [pushb addItemWithTitle:@"Network"];
-  [pushb addItemWithTitle:@"Printers"];
-  [pushb addItemWithTitle:@"Austin"];
-  [pushb addItemWithTitle:@"Powers"];
-  [pushb addItemWithTitle:@"Shag"];
-  [[win contentView] addSubview:pushb];
+  pushb = [[NSPopUpButton alloc] initWithFrame: NSMakeRect(15, 375, 100, 20)
+                                     pullsDown: YES];
+  [pushb setTarget: self];
+  [pushb setAction: @selector(buttonSwitchView:)];
+  [pushb addItemWithTitle: @"Devices Pull"];
+  [pushb addItemWithTitle: @"Network"];
+  [pushb addItemWithTitle: @"Printers"];
+  [pushb addItemWithTitle: @"Austin"];
+  [pushb addItemWithTitle: @"Powers"];
+  [pushb addItemWithTitle: @"Shag"];
+  [[win contentView] addSubview: pushb];
   RELEASE(pushb);
 
-  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,175,100,20) 
-				 pullsDown:YES];
-  [pushb setTarget:self];
-  [pushb setAction:@selector(buttonSwitchView:)];
-  [[win contentView] addSubview:pushb];
+  pushb = [[NSPopUpButton alloc] initWithFrame: NSMakeRect(15, 175, 100, 20)
+                                     pullsDown: YES];
+  [pushb setTarget: self];
+  [pushb setAction: @selector(buttonSwitchView:)];
+  [[win contentView] addSubview: pushb];
   RELEASE(pushb);
 
   [win display];
-  [win orderFront:nil];
+  [win orderFront: nil];
 }
 
 @end
 
 int
-main(int argc, char **argv, char** env)
+main(int argc, char **argv, char **env)
 {
   id pool = [NSAutoreleasePool new];
   NSApplication *theApp;
 
 #if LIB_FOUNDATION_LIBRARY
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+  [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
   theApp = [NSApplication sharedApplication];
@@ -187,8 +187,8 @@ main(int argc, char **argv, char** env)
     NSMenu	*menu = [NSMenu new];
 
     [menu addItemWithTitle: @"Quit"
-		    action: @selector(terminate:)
-	     keyEquivalent: @"q"];
+                    action: @selector(terminate:)
+             keyEquivalent: @"q"];
     [NSApp setMainMenu: menu];
   }
 

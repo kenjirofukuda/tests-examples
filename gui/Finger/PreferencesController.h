@@ -2,7 +2,7 @@
  *  PreferencesController.h: Finger.app Preferences Panel
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -39,7 +39,7 @@
 {
   NSPanel *pan;
   NSTextField *fingerCommand;
-  NSTextField *pingCommand;  
+  NSTextField *pingCommand;
   NSTextField *tracerouteCommand;
   NSTextField *whoisCommand;
   NSPopUpButton *buttonsSize;
@@ -47,11 +47,11 @@
   NSButton *setButton;
 #endif
 }
-- (id)  init;
-- (void)reset;
-- (void)resetToDefault: (id)sender;
-- (void)set: (id)sender;
-- (void)changePreference: (id)sender;
-- (void)orderFrontPanel;
-- (BOOL)panel:(id)sender shouldShowFilename:(NSString *)filename;
+- (id) init;
+- (void) reset;
+- (void) resetToDefault: (id)sender;
+- (void) set: (id)sender;
+- (void) changePreference: (id)sender;
+- (void) orderFrontPanel;
+- (BOOL) panel: (id)sender shouldShowFilename: (NSString *)filename;
 @end

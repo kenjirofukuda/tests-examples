@@ -2,7 +2,7 @@
  *  Finger.h: A GNUstep simple demo: a finger front-end
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -23,9 +23,9 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-/* 
+/*
  * You may edit the following ones (recommended if you are
- * distributing this program bundled in some distribution.)  
+ * distributing this program bundled in some distribution.)
  */
 #define FINGER_DEFAULT_COMMAND     @"/usr/bin/finger"
 #define PING_DEFAULT_COMMAND       @"/bin/ping"

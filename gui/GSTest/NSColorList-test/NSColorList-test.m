@@ -27,7 +27,7 @@
 #include "../GSTestProtocol.h"
 
 static void
-create_test_color_list (void)
+create_test_color_list(void)
 {
   if ([NSColorList colorListNamed: @"test"])
     return;
@@ -35,10 +35,10 @@ create_test_color_list (void)
     {
       NSColorList *testList;
 
-      NSRunAlertPanel (NULL, @"Creating a new test color list",
-                       @"OK", NULL, NULL);
+      NSRunAlertPanel(NULL, @"Creating a new test color list",
+                      @"OK", NULL, NULL);
 
-      testList = AUTORELEASE ([[NSColorList alloc] initWithName: @"test"]);
+      testList = AUTORELEASE([[NSColorList alloc] initWithName: @"test"]);
       [testList setColor: [NSColor blackColor]
                   forKey: @"Black"];
       [testList setColor: [NSColor redColor]
@@ -102,7 +102,7 @@ NSObject
   NSRect winFrame;
   NSTextField *text;
 
-  create_test_color_list ();
+  create_test_color_list();
 
   vbox = [GSVbox new];
   [vbox setDefaultMinYMargin: 5];
@@ -121,7 +121,7 @@ NSObject
   [text release];
 
   // We use a browser with one column to get a selection list
-  browser = [[NSBrowser alloc] initWithFrame: NSMakeRect (0, 0, 200, 200)];
+  browser = [[NSBrowser alloc] initWithFrame: NSMakeRect(0, 0, 200, 200)];
   [browser setDelegate: self];
   [browser setMaxVisibleColumns: 1];
   [browser setAllowsMultipleSelection: NO];
@@ -139,7 +139,7 @@ NSObject
 
   // Window
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -203,7 +203,7 @@ NSObject
       [hbox addView: text];
       [text release];
 
-      color = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
+      color = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
       [color setColor: [cl colorWithKey: name]];
       [color setAutoresizingMask: NSViewMinXMargin];
       [hbox addView: color];
@@ -215,7 +215,7 @@ NSObject
     }
 
   scrollView = [[NSScrollView alloc]
-                initWithFrame: NSMakeRect (0, 0, 150, 300)];
+                initWithFrame: NSMakeRect(0, 0, 150, 300)];
   [scrollView setDocumentView: vbox];
   [vbox release];
   [scrollView setHasHorizontalScroller: NO];
@@ -223,7 +223,7 @@ NSObject
   [scrollView setBorderType: NSBezelBorder];
   [scrollView setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  w = [[NSWindow alloc] initWithContentRect: NSMakeRect (100, 100, 150, 300)
+  w = [[NSWindow alloc] initWithContentRect: NSMakeRect(100, 100, 150, 300)
                                   styleMask: (NSTitledWindowMask
                                     | NSClosableWindowMask
                                     | NSMiniaturizableWindowMask
@@ -244,7 +244,7 @@ NSObject
     return @"Available Color Lists";
   else
     {
-      NSLog (@"Bug: Asking title of column > 0!");
+      NSLog(@"Bug: Asking title of column > 0!");
       return @"Bug: Column > 0!";
     }
 }

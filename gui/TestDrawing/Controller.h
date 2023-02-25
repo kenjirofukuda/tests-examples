@@ -6,9 +6,9 @@
 #import <CoreObject/CoreObject.h>
 #endif
 
-@interface Controller : NSObject 
+@interface Controller : NSObject
 {
-	NSWindow *window;
+  NSWindow *window;
 }
 
 @end

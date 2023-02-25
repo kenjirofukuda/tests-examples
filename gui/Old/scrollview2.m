@@ -31,40 +31,41 @@
 
 @interface Controller : NSObject
 {
-  NSMatrix* matrix;
-  NSScrollView* scrollView;
+  NSMatrix *matrix;
+  NSScrollView *scrollView;
 }
 
 @end
 
 @implementation Controller
 
-- (void)setButtonTitles
+- (void) setButtonTitles
 {
-int i, j, index = 0;
-int numRows = [matrix numberOfRows];
-int numCols = [matrix numberOfColumns];
-id cell;
+  int i, j, index = 0;
+  int numRows = [matrix numberOfRows];
+  int numCols = [matrix numberOfColumns];
+  id cell;
 
   for (i = 0; i < numRows; i++)
-    for (j = 0; j < numCols; j++) {
-      cell = [matrix cellAtRow: i column: j];
-      [cell setTag: index];
-      [cell setTitle: [NSString stringWithFormat: @"button %d, %d (%d)", i, j, index]];
-      [cell setTarget: self];
-      [cell setAction: @selector(handleCellAction: )];
-      index++;
-    }
+    for (j = 0; j < numCols; j++)
+      {
+        cell = [matrix cellAtRow: i column: j];
+        [cell setTag: index];
+        [cell setTitle: [NSString stringWithFormat: @"button %d, %d (%d)", i, j, index]];
+        [cell setTarget: self];
+        [cell setAction: @selector(handleCellAction:)];
+        index++;
+      }
 }
 
 - (void) handleCellAction: sender
 {
-  NSLog (@"handleCellAction: sender = %@", [[sender selectedCell] title]);
+  NSLog(@"handleCellAction: sender = %@", [[sender selectedCell] title]);
 }
 
 - (void) handleDoubleAction: sender
 {
-  NSLog (@"handleDoubleAction");
+  NSLog(@"handleDoubleAction");
 }
 
 - (void) addRow: sender
@@ -108,11 +109,11 @@ id cell;
 
 - (void) setMatrixMode: sender
 {
-  NSLog (@"setMatrixMode: %d", [[sender selectedCell] tag]);
+  NSLog(@"setMatrixMode: %d", [[sender selectedCell] tag]);
   [matrix setMode: [[sender selectedCell] tag]];
 }
 
-- (void) setMatrix: (NSMatrix*)aMatrix
+- (void) setMatrix: (NSMatrix *)aMatrix
 {
   [aMatrix retain];
   [matrix release];
@@ -123,11 +124,11 @@ id cell;
 
 - (void) applicationDidFinishLaunching: (NSNotification *)aNotification
 {
-  NSWindow* window;
-  Controller* controller = self;
-  NSMatrix* newMatrix;
-  NSMatrix* selectionMatrix;
-  NSButtonCell* buttonCell;
+  NSWindow *window;
+  Controller *controller = self;
+  NSMatrix *newMatrix;
+  NSMatrix *selectionMatrix;
+  NSButtonCell *buttonCell;
   NSButton *addRowButton, *removeRowButton, *addColButton, *removeColButton;
   NSRect matrixRect = NSZeroRect;
   NSRect scrollViewRect = {{20, 115}, {350, 235}};
@@ -144,10 +145,10 @@ id cell;
   buttonCell = [[NSButtonCell new] autorelease];
   [buttonCell setButtonType: NSPushOnPushOffButton];
   newMatrix = [[[NSMatrix alloc] initWithFrame: matrixRect
-				       mode: NSRadioModeMatrix
-				  prototype: buttonCell
-			       numberOfRows: 0
-			    numberOfColumns: 0] autorelease];
+                                  mode: NSRadioModeMatrix
+                                  prototype: buttonCell
+                                  numberOfRows: 0
+                                  numberOfColumns: 0] autorelease];
 
   [controller setMatrix: newMatrix];
 
@@ -165,13 +166,13 @@ id cell;
   [buttonCell setImagePosition: NSImageLeft];		// for NS compatibility
 
   selectionMatrix = [[[NSMatrix alloc] initWithFrame: selectionMatrixRect
-						mode: NSRadioModeMatrix
-					   prototype: buttonCell
-					numberOfRows: 4
-				     numberOfColumns: 1] autorelease];
+                                        mode: NSRadioModeMatrix
+                                        prototype: buttonCell
+                                        numberOfRows: 4
+                                        numberOfColumns: 1] autorelease];
   [selectionMatrix setTarget: controller];
   [selectionMatrix setAutosizesCells: YES];		// for NS compatibility
-  [selectionMatrix setAction: @selector(setMatrixMode: )];
+  [selectionMatrix setAction: @selector(setMatrixMode:)];
 
   buttonCell = [selectionMatrix cellAtRow: 0 column: 0];
   [buttonCell setTitle: @"Radio"];
@@ -194,25 +195,25 @@ id cell;
   addRowButton = [[NSButton alloc] initWithFrame: addRowRect];
   [addRowButton setTitle: @"Add row"];
   [addRowButton setTarget: controller];
-  [addRowButton setAction: @selector(addRow: )];
+  [addRowButton setAction: @selector(addRow:)];
   [[window contentView] addSubview: addRowButton];
 
   removeRowButton = [[NSButton alloc] initWithFrame: removeRowRect];
   [removeRowButton setTitle: @"Remove row"];
   [removeRowButton setTarget: controller];
-  [removeRowButton setAction: @selector(removeRow: )];
+  [removeRowButton setAction: @selector(removeRow:)];
   [[window contentView] addSubview: removeRowButton];
 
   addColButton = [[NSButton alloc] initWithFrame: addColRect];
   [addColButton setTitle: @"Add column"];
   [addColButton setTarget: controller];
-  [addColButton setAction: @selector(addColumn: )];
+  [addColButton setAction: @selector(addColumn:)];
   [[window contentView] addSubview: addColButton];
 
   removeColButton = [[NSButton alloc] initWithFrame: removeColRect];
   [removeColButton setTitle: @"Remove column"];
   [removeColButton setTarget: controller];
-  [removeColButton setAction: @selector(removeColumn: )];
+  [removeColButton setAction: @selector(removeColumn:)];
   [[window contentView] addSubview: removeColButton];
 
   [window setFrame: winRect display: YES];
@@ -223,7 +224,7 @@ id cell;
 
 
 int
-main(int argc, char** argv, char** env)
+main(int argc, char **argv, char **env)
 {
   id pool = [NSAutoreleasePool new];
   NSApplication *theApp;
@@ -238,8 +239,8 @@ main(int argc, char** argv, char** env)
     NSMenu	*menu = [NSMenu new];
 
     [menu addItemWithTitle: @"Quit"
-		    action: @selector(terminate:)
-	     keyEquivalent: @"q"];
+                    action: @selector(terminate:)
+             keyEquivalent: @"q"];
     [NSApp setMainMenu: menu];
   }
 

@@ -7,8 +7,8 @@
  * Initialise and go!
  */
 
-int main(int argc, const char *argv[]) 
+int main(int argc, const char *argv[])
 {
   [NSObject enableDoubleReleaseCheck: YES];
-  return NSApplicationMain (argc, argv);
+  return NSApplicationMain(argc, argv);
 }

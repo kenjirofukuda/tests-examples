@@ -1,8 +1,8 @@
 /*
- *  Controller.h: An application to demonstrate GNUstep toolbars 
+ *  Controller.h: An application to demonstrate GNUstep toolbars
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
  *  Date: September 2004
  *

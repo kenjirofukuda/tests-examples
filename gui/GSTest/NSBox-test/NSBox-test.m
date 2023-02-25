@@ -68,7 +68,7 @@ NSObject
   [boxContents setBordered: YES];
   [boxContents setAlignment: NSCenterTextAlignment];
   [boxContents setStringValue: @"Box Contents"];
-  [boxContents setFrameSize: NSMakeSize (140, 140)];
+  [boxContents setFrameSize: NSMakeSize(140, 140)];
   [boxContents setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   box = [NSBox new];
@@ -98,59 +98,59 @@ NSObject
                                 numberOfColumns: 1];
   [cell release];
 
-  [borderMatrix setIntercellSpacing: NSMakeSize (0, 4) ];
+  [borderMatrix setIntercellSpacing: NSMakeSize(0, 4) ];
   [borderMatrix setTarget: self];
   [borderMatrix setAutosizesCells: NO];
 
   cell = [borderMatrix cellAtRow: 0 column: 0];
   [cell setTitle: @"NSNoBorder"];
-  [cell setAction: @selector (setNSNoBorder:)];
+  [cell setAction: @selector(setNSNoBorder:)];
 
   cell = [borderMatrix cellAtRow: 1 column: 0];
   [cell setTitle: @"NSLineBorder"];
-  [cell setAction: @selector (setNSLineBorder:)];
+  [cell setAction: @selector(setNSLineBorder:)];
 
   cell = [borderMatrix cellAtRow: 2 column: 0];
   [cell setTitle: @"NSBezelBorder"];
-  [cell setAction: @selector (setNSBezelBorder:)];
+  [cell setAction: @selector(setNSBezelBorder:)];
 
   cell = [borderMatrix cellAtRow: 3 column: 0];
   [cell setTitle: @"NSGrooveBorder"];
-  [cell setAction: @selector (setNSGrooveBorder:)];
+  [cell setAction: @selector(setNSGrooveBorder:)];
 
   [borderMatrix selectCellAtRow: 3 column: 0];
   [borderMatrix setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin)];
   [borderMatrix sizeToFit];
 
-  [titleMatrix setIntercellSpacing: NSMakeSize (0, 4) ];
+  [titleMatrix setIntercellSpacing: NSMakeSize(0, 4) ];
   [titleMatrix setTarget: self];
   cell = [titleMatrix cellAtRow: 0 column: 0];
   [cell setTitle: @"NSNoTitle"];
-  [cell setAction: @selector (setNSNoTitle:)];
+  [cell setAction: @selector(setNSNoTitle:)];
 
   cell = [titleMatrix cellAtRow: 1 column: 0];
   [cell setTitle: @"NSAboveTop"];
-  [cell setAction: @selector (setNSAboveTop:)];
+  [cell setAction: @selector(setNSAboveTop:)];
 
   cell = [titleMatrix cellAtRow: 2 column: 0];
   [cell setTitle: @"NSAtTop"];
-  [cell setAction: @selector (setNSAtTop:)];
+  [cell setAction: @selector(setNSAtTop:)];
 
   cell = [titleMatrix cellAtRow: 3 column: 0];
   [cell setTitle: @"NSBelowTop"];
-  [cell setAction: @selector (setNSBelowTop:)];
+  [cell setAction: @selector(setNSBelowTop:)];
 
   cell = [titleMatrix cellAtRow: 4 column: 0];
   [cell setTitle: @"NSAboveBottom"];
-  [cell setAction: @selector (setNSAboveBottom:)];
+  [cell setAction: @selector(setNSAboveBottom:)];
 
   cell = [titleMatrix cellAtRow: 5 column: 0];
   [cell setTitle: @"NSAtBottom"];
-  [cell setAction: @selector (setNSAtBottom:)];
+  [cell setAction: @selector(setNSAtBottom:)];
 
   cell = [titleMatrix cellAtRow: 6 column: 0];
   [cell setTitle: @"NSBelowBottom"];
-  [cell setAction: @selector (setNSBelowBottom:)];
+  [cell setAction: @selector(setNSBelowBottom:)];
 
   [titleMatrix selectCellAtRow: 2 column: 0];
   [titleMatrix setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin)];
@@ -186,7 +186,7 @@ NSObject
   [hbox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   winFrame.size = [hbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   // Now we can make the window of the exact size
   win = [[NSWindow alloc] initWithContentRect: winFrame

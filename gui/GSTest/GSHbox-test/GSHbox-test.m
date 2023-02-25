@@ -48,26 +48,26 @@ NSObject
   NSColorWell *wG;
   NSRect winFrame;
 
-  wA = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
+  wA = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
   [wA setAutoresizingMask: NSViewHeightSizable];
 
-  wB = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
+  wB = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
   [wB setAutoresizingMask: NSViewMinYMargin | NSViewMaxYMargin
       | NSViewMinXMargin | NSViewMaxXMargin];
 
-  wC = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
+  wC = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
   [wC setAutoresizingMask: NSViewMaxYMargin];
 
-  wD = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
+  wD = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
   [wD setAutoresizingMask: NSViewMinYMargin];
 
-  wE = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 90, 90)];
+  wE = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 90, 90)];
   [wE setAutoresizingMask: NSViewNotSizable];
 
-  wF = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
+  wF = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
   [wF setAutoresizingMask: NSViewMinXMargin];
 
-  wG = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
+  wG = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 50)];
   [wG setAutoresizingMask: NSViewMinYMargin];
 
   hbox = [GSHbox new];
@@ -101,7 +101,7 @@ NSObject
   [hbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   winFrame.size = [hbox frame].size;
-  winFrame.origin = NSMakePoint (100, 200);
+  winFrame.origin = NSMakePoint(100, 200);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask

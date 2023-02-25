@@ -1,4 +1,4 @@
-/* 
+/*
    windows.m
 
    Multiple windows
@@ -7,14 +7,14 @@
 
    Author:  Scott Christley <scottc@net-community.com>
    Date: March 1997
-   
+
    This file is part of the GNUstep GUI X/RAW Backend.
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
    License as published by the Free Software Foundation; either
    version 2 of the License, or (at your option) any later version.
-   
+
    This library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -24,7 +24,7 @@
    License along with this library; see the file COPYING.LIB.
    If not, write to the Free Software Foundation,
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/ 
+*/
 
 #import <Foundation/NSAutoreleasePool.h>
 #import <AppKit/AppKit.h>
@@ -39,7 +39,7 @@
 @end
 
 @implementation windowsController
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification
 {
   NSWindow *w0, *w1, *w2;
   NSRect wf0 = {{250, 400}, {500, 500}};
@@ -68,11 +68,11 @@
   // Windows
   //
   w0 = [[NSWindow alloc] init];
-  [w0 setTitle:@"Graphics Testing"];
+  [w0 setTitle: @"Graphics Testing"];
 
   v = [[TestView alloc] init];
   [w0 setContentView: v];
-  [w0 setFrame:wf0 display:YES];
+  [w0 setFrame: wf0 display: YES];
 
   w1 = [[NSWindow alloc] init];
   [w1 setTitle: @"Second Window"];
@@ -82,13 +82,13 @@
   [mpush setTitle: @"MomentaryPush"];
 
   ponpoff = [[NSButton alloc] initWithFrame: bf1];
-  [ponpoff setButtonType:NSToggleButton];
+  [ponpoff setButtonType: NSToggleButton];
   [ponpoff setTitle: @"Toggle"];
   [ponpoff setAlternateTitle: @"Alternate"];
-  [ponpoff setImage:[NSImage imageNamed:@"common_SwitchOff"]];
-  [ponpoff setAlternateImage:[NSImage imageNamed:@"common_SwitchOn"]];
-  [ponpoff setImagePosition:NSImageAbove];
-  [ponpoff setAlignment:NSCenterTextAlignment];
+  [ponpoff setImage: [NSImage imageNamed: @"common_SwitchOff"]];
+  [ponpoff setAlternateImage: [NSImage imageNamed: @"common_SwitchOn"]];
+  [ponpoff setImagePosition: NSImageAbove];
+  [ponpoff setAlignment: NSCenterTextAlignment];
 
   toggle = [[NSButton alloc] initWithFrame: bf2];
   [toggle setButtonType: NSToggleButton];
@@ -155,8 +155,8 @@
     NSMenu	*menu = [NSMenu new];
 
     [menu addItemWithTitle: @"Quit"
-		    action: @selector(terminate:)
-	     keyEquivalent: @"q"];
+                    action: @selector(terminate:)
+             keyEquivalent: @"q"];
     [NSApp setMainMenu: menu];
   }
 
@@ -172,13 +172,13 @@
 // my main for the test app
 //
 int
-main(int argc, char **argv, char** env)
+main(int argc, char **argv, char **env)
 {
   id pool = [NSAutoreleasePool new];
   NSApplication *theApp;
 
 #if LIB_FOUNDATION_LIBRARY
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+  [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
   theApp = [NSApplication sharedApplication];

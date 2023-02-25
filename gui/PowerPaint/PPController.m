@@ -16,10 +16,10 @@
   return colorWell;
 }
 
-/* Metodos Accessor para establecer/obtener la 
+/* Metodos Accessor para establecer/obtener la
    herramienta seleccionada por el usuario. */
 - (void) setTool: (id)sender
-{  
+{
   tool = [sender tag];
 }
 

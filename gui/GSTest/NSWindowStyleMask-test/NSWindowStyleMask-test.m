@@ -76,19 +76,19 @@ NSObject
   NSBox *optionsBox;
   NSRect winFrame;
 
-  mainVbox = AUTORELEASE ([GSVbox new]);
+  mainVbox = AUTORELEASE([GSVbox new]);
   [mainVbox setDefaultMinYMargin: 5];
   [mainVbox setBorder: 5];
 
-  newWindowButton = AUTORELEASE ([NSButton new]);
+  newWindowButton = AUTORELEASE([NSButton new]);
   [newWindowButton setTitle: @"Create Window"];
   [newWindowButton sizeToFit];
   [newWindowButton setAutoresizingMask: NSViewMinXMargin];
   [newWindowButton setTarget: self];
-  [newWindowButton setAction: @selector (newWindow:)];
+  [newWindowButton setAction: @selector(newWindow:)];
   [mainVbox addView: newWindowButton  enablingYResizing: NO];
 
-  panelButton = AUTORELEASE ([NSButton new]);
+  panelButton = AUTORELEASE([NSButton new]);
   [panelButton setTitle: @"Create NSPanel"];
   [panelButton setButtonType: NSSwitchButton];
   [panelButton setBordered: NO];
@@ -98,7 +98,7 @@ NSObject
 
   [mainVbox addSeparator];
 
-  styleVbox = AUTORELEASE ([GSVbox new]);
+  styleVbox = AUTORELEASE([GSVbox new]);
   [styleVbox setDefaultMinYMargin: 5];
   [styleVbox setBorder: 5];
 
@@ -109,7 +109,7 @@ NSObject
           [styleVbox addSeparator];
         }
 
-      styleButton[i] = AUTORELEASE ([NSButton new]);
+      styleButton[i] = AUTORELEASE([NSButton new]);
       [styleButton[i] setTitle: styles[i].name];
       [styleButton[i] setButtonType: NSSwitchButton];
       [styleButton[i] setBordered: NO];
@@ -121,7 +121,7 @@ NSObject
 
 
 
-  optionsBox = AUTORELEASE ([NSBox new]);
+  optionsBox = AUTORELEASE([NSBox new]);
   [optionsBox setTitle: @"Window Style Mask"];
   [optionsBox setTitlePosition: NSAtTop];
   [optionsBox addSubview: styleVbox];
@@ -131,7 +131,7 @@ NSObject
   [mainVbox addView: optionsBox];
 
   winFrame.size = [mainVbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -148,7 +148,7 @@ NSObject
 }
 - (void) dealloc
 {
-  RELEASE (win);
+  RELEASE(win);
   [super dealloc];
 }
 - (void) restart
@@ -186,7 +186,7 @@ NSObject
   else
     newWindow = [NSWindow alloc];
 
-  newWindow = [newWindow initWithContentRect: NSMakeRect (100, 100, 300, 200)
+  newWindow = [newWindow initWithContentRect: NSMakeRect(100, 100, 300, 200)
                                    styleMask: styleMask
                                      backing: NSBackingStoreBuffered
                                        defer: NO];

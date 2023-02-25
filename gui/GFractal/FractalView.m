@@ -87,7 +87,7 @@ static id cschemes[] =
           break;
         }
 
-      RETAIN (scheme);
+      RETAIN(scheme);
       cschemes[cs] = scheme;
     }
 

@@ -5,9 +5,9 @@
 {
   NSImage *item_image;
 }
-- (void)setImage:(NSImage *)image;
-- (NSImage *)image;
-- (NSSize)sizeOfLabel:(BOOL)shouldTruncateLabel;
-- (void)drawLabel:(BOOL)shouldTruncateLabel
-           inRect:(NSRect)tabRect;
+- (void) setImage: (NSImage *)image;
+- (NSImage *) image;
+- (NSSize) sizeOfLabel: (BOOL)shouldTruncateLabel;
+- (void) drawLabel: (BOOL)shouldTruncateLabel
+            inRect: (NSRect)tabRect;
 @end

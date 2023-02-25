@@ -8,8 +8,8 @@
 int main(int argc, char *argv[])
 {
 #ifdef ETOILEAPP
-    return ETApplicationMain(argc,  (const char **) argv);
+  return ETApplicationMain(argc, (const char **) argv);
 #else
-    return NSApplicationMain(argc,  (const char **) argv);
+  return NSApplicationMain(argc, (const char **) argv);
 #endif
 }

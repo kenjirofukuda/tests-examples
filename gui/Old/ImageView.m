@@ -1,4 +1,4 @@
-/* 
+/*
    ImageView.m
 
    Simple subclass of NSView to display an NSImage.
@@ -7,14 +7,14 @@
 
    Author:  Scott Christley <scottc@net-community.com>
    Date: June 1996
-   
+
    This file is part of the GNUstep GUI X/RAW Backend.
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
    License as published by the Free Software Foundation; either
    version 2 of the License, or (at your option) any later version.
-   
+
    This library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -24,7 +24,7 @@
    License along with this library; see the file COPYING.LIB.
    If not, write to the Free Software Foundation,
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/ 
+*/
 
 #include <AppKit/AppKit.h>
 #include "ImageView.h"
@@ -39,7 +39,7 @@
   return [self initWithFile: @""];
 }
 
-- initWithFile:(NSString *)str
+- initWithFile: (NSString *)str
 {
   [super init];
 
@@ -57,12 +57,12 @@
   return self;
 }
 
-- (NSSize)imageSize
+- (NSSize) imageSize
 {
   return [image size];
 }
 
-- (void)drawRect:(NSRect)rect
+- (void) drawRect: (NSRect)rect
 {
   [image compositeToPoint: NSZeroPoint operation: NSCompositeCopy];
   NSLog(@"Image has been composited\n");

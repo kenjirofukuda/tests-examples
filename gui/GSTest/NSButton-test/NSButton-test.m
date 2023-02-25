@@ -43,7 +43,7 @@ NSObject
 {
   NSTextField *labelView = [NSTextField new];
   [labelView setStringValue: label];
-  [labelView setFrame: NSMakeRect (0, 0, 250, 16)];
+  [labelView setFrame: NSMakeRect(0, 0, 250, 16)];
   [labelView setEditable: NO];
   [labelView setSelectable: NO];
   [labelView setBezeled: NO];
@@ -55,12 +55,12 @@ NSObject
 - (NSButton *) addButtonWithLabel: (NSString *)label to: (id)box
 {
   NSButton *button = [NSButton new];
-  [button setFrame: NSMakeRect (0, 0, 200, 32)];
+  [button setFrame: NSMakeRect(0, 0, 200, 32)];
   [button setTitle: label];
   [button setAutoresizingMask: NSViewMaxXMargin];
   [button setTarget: self];
   [button setContinuous: YES];
-  [button setAction: @selector (action:)];
+  [button setAction: @selector(action:)];
   [button setToolTip: label];
   [box addView: button];
   return [button autorelease];
@@ -76,7 +76,7 @@ NSObject
 - (NSSegmentedControl *) addSegmentedControlWithLabel: (NSString *)label style: (NSSegmentStyle)style to: (id)box
 {
   NSSegmentedControl *segmented = [NSSegmentedControl new];
-  [segmented setFrame: NSMakeRect (0, 0, 200, 32)];
+  [segmented setFrame: NSMakeRect(0, 0, 200, 32)];
   [segmented setAutoresizingMask: NSViewMaxXMargin];
   [segmented setSegmentCount: 3];
   [segmented setSegmentStyle: style];
@@ -86,7 +86,7 @@ NSObject
   [segmented setLabel: @"Third" forSegment: 2];
 
   [segmented setTarget: self];
-  [segmented setAction: @selector (action:)];
+  [segmented setAction: @selector(action:)];
 
   [segmented setToolTip: label];
 
@@ -100,7 +100,7 @@ NSObject
 - (NSComboBox *) addComboBoxWithLabel: (NSString *)label buttonBordered: (BOOL)button to: (id)box
 {
   NSComboBox *combo = [NSComboBox new];
-  [combo setFrame: NSMakeRect (0, 0, 200, 32)];
+  [combo setFrame: NSMakeRect(0, 0, 200, 32)];
   [combo setAutoresizingMask: NSViewMaxXMargin];
   [combo setButtonBordered: button];
 
@@ -109,7 +109,7 @@ NSObject
   [combo addItemWithObjectValue: @"Third"];
 
   [combo setTarget: self];
-  [combo setAction: @selector (action:)];
+  [combo setAction: @selector(action:)];
 
   [combo setToolTip: label];
 
@@ -124,7 +124,7 @@ NSObject
   NSUInteger i;
   NSPopUpButton *button = [NSPopUpButton new];
 
-  [button setFrame: NSMakeRect (0, 0, 200, 32)];
+  [button setFrame: NSMakeRect(0, 0, 200, 32)];
   [button setPullsDown: pullsDown];
   [button setAutoresizingMask: NSViewMaxXMargin];
 
@@ -132,7 +132,7 @@ NSObject
     [button addItemWithTitle: [items objectAtIndex: i]];
 
   [button setTarget: self];
-  [button setAction: @selector (action:)];
+  [button setAction: @selector(action:)];
 
   [button setToolTip: label];
 
@@ -203,7 +203,7 @@ NSObject
   [vbox setBorder: 5];
 
   scrollView = [[NSScrollView alloc] initWithFrame:
-                                     NSMakeRect (0, 0, 300, 100)];
+                                     NSMakeRect(0, 0, 300, 100)];
   [scrollView setHasHorizontalScroller: NO];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
@@ -214,17 +214,17 @@ NSObject
   [text setDelegate: self];
   [text setHorizontallyResizable: NO];
   [text setVerticallyResizable: YES];
-  [text setMinSize: NSMakeSize (0, 0)];
-  [text setMaxSize: NSMakeSize (1E7, 1E7)];
+  [text setMinSize: NSMakeSize(0, 0)];
+  [text setMaxSize: NSMakeSize(1E7, 1E7)];
   [text setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
-  [[text textContainer] setContainerSize: NSMakeSize ([text frame].size.width,
+  [[text textContainer] setContainerSize: NSMakeSize([text frame].size.width,
                            1e7)];
   [[text textContainer] setWidthTracksTextView: YES];
   [scrollView setDocumentView: text];
   RELEASE(text);
 
   [vbox addView: scrollView];
-  RELEASE (scrollView);
+  RELEASE(scrollView);
 
   [vbox addSeparator];
 
@@ -308,7 +308,7 @@ NSObject
   [vbox setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
 
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -337,14 +337,14 @@ NSObject
 
 - (void) dealloc
 {
-  RELEASE (win);
+  RELEASE(win);
   [super dealloc];
 }
 
 - (void) action: (id)sender
 {
   [text replaceCharactersInRange:
-        NSMakeRange ([[text textStorage] length], 0)
+        NSMakeRange([[text textStorage] length], 0)
                       withString: [NSString stringWithFormat: @"Action sent from %@!\n", sender]];
 }
 

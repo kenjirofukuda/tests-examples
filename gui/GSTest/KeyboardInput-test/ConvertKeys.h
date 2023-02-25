@@ -1,1 +1,1 @@
-NSString *convertCharactersToDisplayable (NSString *characters);
+NSString *convertCharactersToDisplayable(NSString *characters);

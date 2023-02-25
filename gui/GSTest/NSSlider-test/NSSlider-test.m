@@ -73,7 +73,7 @@ NSObject
   [vButton1 setAlternateTitle: @"Enabled"];
   [vButton1 sizeToFit];
   [vButton1 setTarget: self];
-  [vButton1 setAction: @selector (vEnabledChanged:)];
+  [vButton1 setAction: @selector(vEnabledChanged:)];
   [vButton1 setState: YES];
   [vButton1 setAutoresizingMask: NSViewMaxXMargin];
 
@@ -84,7 +84,7 @@ NSObject
   [vButton2 setAlternateTitle: @"Continuous"];
   [vButton2 sizeToFit];
   [vButton2 setTarget: self];
-  [vButton2 setAction: @selector (vContinuousChanged:)];
+  [vButton2 setAction: @selector(vContinuousChanged:)];
   [vButton2 setState: NO];
   [vButton2 setAutoresizingMask: NSViewMaxXMargin];
 
@@ -142,7 +142,7 @@ NSObject
   [hButton1 setAlternateTitle: @"Enabled"];
   [hButton1 sizeToFit];
   [hButton1 setTarget: self];
-  [hButton1 setAction: @selector (hEnabledChanged:)];
+  [hButton1 setAction: @selector(hEnabledChanged:)];
   [hButton1 setState: YES];
   [hButton1 setAutoresizingMask: NSViewMaxXMargin];
 
@@ -153,7 +153,7 @@ NSObject
   [hButton2 setAlternateTitle: @"Continuous"];
   [hButton2 sizeToFit];
   [hButton2 setTarget: self];
-  [hButton2 setAction: @selector (hContinuousChanged:)];
+  [hButton2 setAction: @selector(hContinuousChanged:)];
   [hButton2 setState: NO];
   [hButton2 setAutoresizingMask: NSViewMaxXMargin];
 
@@ -212,25 +212,25 @@ NSObject
   [vboxOne setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   // The sliders themselves
-  hSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 200, 14)];
+  hSlider = [[NSSlider alloc] initWithFrame: NSMakeRect(0, 0, 200, 14)];
   //  [hSlider setFrame: NSMakeRect (0, 0, 200, [hSlider knobThickness])];
   [hSlider setAutoresizingMask: (NSViewWidthSizable)];
   [hSlider setTitle: @"Slider Title"];
   [hSlider setMinValue: 0];
   [hSlider setMaxValue: 1000];
   [hSlider setFloatValue: 500];
-  [hSlider setAction: @selector (takeFloatValueFrom:)];
+  [hSlider setAction: @selector(takeFloatValueFrom:)];
   [hSlider setTarget: hNumber];
   [hSlider setContinuous: NO];
 
-  vSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 14, 200)];
+  vSlider = [[NSSlider alloc] initWithFrame: NSMakeRect(0, 0, 14, 200)];
   //  [vSlider setFrame: NSMakeRect (0, 0, [vSlider knobThickness], 200)];
   [vSlider setAutoresizingMask: (NSViewHeightSizable)];
   //  [vSlider setTitle: @"Number"];
   [vSlider setMinValue: 0];
   [vSlider setMaxValue: 1000];
   [vSlider setFloatValue: 500];
-  [vSlider setAction: @selector (takeFloatValueFrom:)];
+  [vSlider setAction: @selector(takeFloatValueFrom:)];
   [vSlider setTarget: vNumber];
   [vSlider setContinuous: NO];
 
@@ -277,7 +277,7 @@ NSObject
 
 
   winFrame.size = [table frame].size;
-  winFrame.origin = NSMakePoint (150, 150);
+  winFrame.origin = NSMakePoint(150, 150);
 
   // The Window
   win = [[NSWindow alloc] initWithContentRect: winFrame

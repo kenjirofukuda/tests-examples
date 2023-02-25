@@ -1,4 +1,4 @@
-/* 
+/*
  * AppController.h created by phr on 2000-08-27 11:38:59 +0000
  *
  * Project TestApp
@@ -17,23 +17,23 @@
   Resolver *resolver;
 }
 
-+ (void)initialize;
++ (void) initialize;
 
-- (id)init;
-- (void)dealloc;
+- (id) init;
+- (void) dealloc;
 
-- (void)awakeFromNib;
+- (void) awakeFromNib;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notif;
+- (void) applicationDidFinishLaunching: (NSNotification *)notif;
 
-- (BOOL)applicationShouldTerminate:(id)sender;
-- (void)applicationWillTerminate:(NSNotification *)notification;
+- (BOOL) applicationShouldTerminate: (id)sender;
+- (void) applicationWillTerminate: (NSNotification *)notification;
 
-- (BOOL)application:(NSApplication *)application openFile:(NSString *)fileName;
+- (BOOL) application: (NSApplication *)application openFile: (NSString *)fileName;
 
-- (void)showPrefPanel:(id)sender;
-- (void)showInfoPanel:(id)sender;
+- (void) showPrefPanel: (id)sender;
+- (void) showInfoPanel: (id)sender;
 
-- (void)showResolverWindow:(id)sender;
+- (void) showResolverWindow: (id)sender;
 
 @end

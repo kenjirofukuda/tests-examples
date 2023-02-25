@@ -1,8 +1,8 @@
 /*
- *  ButtonWithValidation.m: An application to demonstrate the GNUstep toolbars 
+ *  ButtonWithValidation.m: An application to demonstrate the GNUstep toolbars
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
  *  Date: May 2004
  *
@@ -28,11 +28,11 @@
 @implementation ButtonWithValidation
 
 /* This method is called when ButtonWithValidation instances are set as toolbar
-   item's target. When the toolbar item needs to validate itself, it checks 
+   item's target. When the toolbar item needs to validate itself, it checks
    whether its target adopts this validation protocol or not. If the protocol
-   is adopted, the validation is delegated to the target (otherwise it is 
+   is adopted, the validation is delegated to the target (otherwise it is
    handled automatically).
-   With the code below, the toolbar item is validated in accordance with the 
+   With the code below, the toolbar item is validated in accordance with the
    button state, in our case this is when the check box is checked. We use
    ButtonWithValidation as a superclass for the check box that allows to turn
    on and off this custom toolbar validation. */

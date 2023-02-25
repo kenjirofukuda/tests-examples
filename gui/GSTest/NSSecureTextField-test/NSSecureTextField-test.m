@@ -87,7 +87,7 @@ NSObject
   [vbox addView: box];
 
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 200);
+  winFrame.origin = NSMakePoint(100, 200);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask

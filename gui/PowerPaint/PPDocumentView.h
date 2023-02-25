@@ -8,7 +8,7 @@
   NSPoint locA, locB;
   NSRect selectedRect;
   NSBitmapImageRep *lastFrame;
-  
+
   // Outler
   PPDocumentClass *document;
 }

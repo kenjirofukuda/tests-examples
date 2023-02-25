@@ -52,25 +52,25 @@ NSObject
   NSString *string;
 
   keyColumn = [[NSTableColumn alloc] initWithIdentifier: @"classes"];
-  AUTORELEASE (keyColumn);
+  AUTORELEASE(keyColumn);
   [keyColumn setEditable: NO];
   [[keyColumn headerCell] setStringValue: @"classes"];
   [keyColumn setMinWidth: 100];
 
   valueColumn = [[NSTableColumn alloc] initWithIdentifier: @"outlets"];
-  AUTORELEASE (valueColumn);
+  AUTORELEASE(valueColumn);
   [valueColumn setEditable: NO];
   [[valueColumn headerCell] setStringValue: @"outlets"];
   [valueColumn setMinWidth: 100];
 
   testColumn = [[NSTableColumn alloc] initWithIdentifier: @"actions"];
-  AUTORELEASE (testColumn);
+  AUTORELEASE(testColumn);
   [testColumn setEditable: NO];
   [[testColumn headerCell] setStringValue: @"actions"];
   [testColumn setMinWidth: 100];
 
   outlineView = [[NSOutlineView alloc]
-                 initWithFrame: NSMakeRect (0, 0, 300, 300)];
+                 initWithFrame: NSMakeRect(0, 0, 300, 300)];
   [outlineView addTableColumn: keyColumn];
   [outlineView addTableColumn: valueColumn];
   [outlineView addTableColumn: testColumn];
@@ -85,7 +85,7 @@ NSObject
   for (i = 0; i < 5; i++)
     {
       string = [NSString stringWithFormat: @"Column %d", i];
-      tb = AUTORELEASE ([[NSTableColumn alloc] initWithIdentifier: string]);
+      tb = AUTORELEASE([[NSTableColumn alloc] initWithIdentifier: string]);
       [tb setEditable: NO];
       [[tb headerCell] setStringValue: string];
       [outlineView addTableColumn: tb];
@@ -98,9 +98,9 @@ NSObject
 
 
   scrollView = [[NSScrollView alloc]
-                initWithFrame: NSMakeRect (0, 0, 300, 200)];
+                initWithFrame: NSMakeRect(0, 0, 300, 200)];
   [scrollView setDocumentView: outlineView];
-  RELEASE (outlineView);
+  RELEASE(outlineView);
   [scrollView setHasHorizontalScroller: YES];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];
@@ -113,13 +113,13 @@ NSObject
   [externalBox setTitlePosition: NSNoTitle];
   [externalBox setBorderType: NSNoBorder];
   [externalBox addSubview: scrollView];
-  RELEASE (scrollView);
+  RELEASE(scrollView);
   [externalBox sizeToFit];
   [externalBox setAutoresizingMask: (NSViewWidthSizable
                                      | NSViewHeightSizable)];
 
   winFrame.size = [externalBox frame].size;
-  winFrame.origin = NSMakePoint (100, 200);
+  winFrame.origin = NSMakePoint(100, 200);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -131,7 +131,7 @@ NSObject
 
   [win setReleasedWhenClosed: NO];
   [win setContentView: externalBox];
-  RELEASE (externalBox);
+  RELEASE(externalBox);
   [win setTitle: @"NSOutlineView Test"];
 
   [self restart];

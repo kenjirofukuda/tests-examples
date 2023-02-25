@@ -128,8 +128,8 @@ static NSButton *AddButton(NSString *label, NSRect frame, NSView *dest, id targe
 
 - (void) dealloc
 {
-  RELEASE (testWindow);
-  RELEASE (panel);
+  RELEASE(testWindow);
+  RELEASE(panel);
   [super dealloc];
 }
 

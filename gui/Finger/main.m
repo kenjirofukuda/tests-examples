@@ -2,7 +2,7 @@
  *  main.m: main function of Finger.app
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -28,117 +28,117 @@
 #import "Controller.h"
 
 int
-main (void)
+main(void)
 {
-   NSAutoreleasePool *pool;
-   NSApplication *app;
-   NSMenu *mainMenu;
-   NSMenu *menu;
-   NSMenuItem *menuItem;
-   Controller *controller;
+  NSAutoreleasePool *pool;
+  NSApplication *app;
+  NSMenu *mainMenu;
+  NSMenu *menu;
+  NSMenuItem *menuItem;
+  Controller *controller;
 
-   pool = [NSAutoreleasePool new];
-   app = [NSApplication sharedApplication];
+  pool = [NSAutoreleasePool new];
+  app = [NSApplication sharedApplication];
 
-   //
-   // Create the Menu 
-   //
+  //
+  // Create the Menu
+  //
 
-   // Main Menu
-   mainMenu = AUTORELEASE ([NSMenu new]);
+  // Main Menu
+  mainMenu = AUTORELEASE([NSMenu new]);
 
-   // Info SubMenu
-   menuItem = [mainMenu addItemWithTitle: @"Info" 
-			action: NULL 
-			keyEquivalent: @""];
-   menu = AUTORELEASE ([NSMenu new]);
-   [mainMenu setSubmenu: menu forItem: menuItem];
-   [menu addItemWithTitle: @"Info Panel..." 
-	 action: @selector (orderFrontStandardInfoPanel:) 
-	 keyEquivalent: @""];
-   [menu addItemWithTitle: @"Preferences..." 
-	 action: @selector (runPreferencesPanel:) 
-	 keyEquivalent: @""];
-   [menu addItemWithTitle: @"Help..." 
-	 action: @selector (orderFrontHelpPanel:)
-	 keyEquivalent: @"?"];
+  // Info SubMenu
+  menuItem = [mainMenu addItemWithTitle: @"Info"
+                                 action: NULL
+                          keyEquivalent: @""];
+  menu = AUTORELEASE([NSMenu new]);
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  [menu addItemWithTitle: @"Info Panel..."
+                  action: @selector(orderFrontStandardInfoPanel:)
+           keyEquivalent: @""];
+  [menu addItemWithTitle: @"Preferences..."
+                  action: @selector(runPreferencesPanel:)
+           keyEquivalent: @""];
+  [menu addItemWithTitle: @"Help..."
+                  action: @selector(orderFrontHelpPanel:)
+           keyEquivalent: @"?"];
 
-   // Document Submenu
-   menuItem = [mainMenu addItemWithTitle: @"Document" 
-			action: NULL 
-			keyEquivalent: @""];
-   menu = AUTORELEASE ([NSMenu new]);
-   [mainMenu setSubmenu: menu forItem: menuItem];
-   [menu addItemWithTitle: @"New Finger Window" 
-	 action: @selector (startNewFingerWindow:)
-	 keyEquivalent: @"n"];
-   [menu addItemWithTitle: @"Save Results As..." 
-	 action: @selector (saveResults:)
-	 keyEquivalent: @"s"];
-   [menu addItemWithTitle: @"Reset Results" 
-	 action: @selector (resetResults:)
-	 keyEquivalent: @""];
-   [menu addItemWithTitle: @"Miniaturize"
-	 action: @selector(performMiniaturize:)
-	 keyEquivalent: @"m"];
-   [menu addItemWithTitle: @"Close"
-	 action: @selector(performClose:)
-	 keyEquivalent: @"w"];
-   // Edit SubMenu
-   menuItem = [mainMenu addItemWithTitle: @"Edit" 	
-			action: NULL 
-			keyEquivalent: @""];
-   menu = AUTORELEASE ([NSMenu new]);
-   [mainMenu setSubmenu: menu forItem: menuItem];
-   [menu addItemWithTitle: @"Cut" 
-	 action: @selector (cut:) 
-	 keyEquivalent: @"x"];
-   [menu addItemWithTitle: @"Copy" 
-	 action: @selector (copy:) 
-	 keyEquivalent: @"c"];
-   [menu addItemWithTitle: @"Paste" 
-	 action: @selector (paste:) 
-	 keyEquivalent: @"v"];
-   [menu addItemWithTitle: @"SelectAll" 
-	 action: @selector (selectAll:) 
-	 keyEquivalent: @"a"];
-   // Windows SubMenu
-   menuItem = [mainMenu addItemWithTitle:@"Windows" 
-			action: NULL 
-			keyEquivalent:@""];
-   menu = AUTORELEASE ([NSMenu new]);
-   [mainMenu setSubmenu: menu forItem: menuItem];
-   [menu addItemWithTitle: @"Arrange"
-	 action: @selector(arrangeInFront:)
-	 keyEquivalent: @""];
-   [menu addItemWithTitle: @"Miniaturize"
-	 action: @selector(performMiniaturize:)
-	 keyEquivalent: @"m"];
-   [menu addItemWithTitle: @"Close"
-	 action: @selector(performClose:)
-	 keyEquivalent: @"w"];
-   [app setWindowsMenu: menu];
-   
-   // Hide MenuItem
-   [mainMenu addItemWithTitle: @"Hide" 
-	     action: @selector (hide:)
-	     keyEquivalent: @"h"];	
+  // Document Submenu
+  menuItem = [mainMenu addItemWithTitle: @"Document"
+                                 action: NULL
+                          keyEquivalent: @""];
+  menu = AUTORELEASE([NSMenu new]);
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  [menu addItemWithTitle: @"New Finger Window"
+                  action: @selector(startNewFingerWindow:)
+           keyEquivalent: @"n"];
+  [menu addItemWithTitle: @"Save Results As..."
+                  action: @selector(saveResults:)
+           keyEquivalent: @"s"];
+  [menu addItemWithTitle: @"Reset Results"
+                  action: @selector(resetResults:)
+           keyEquivalent: @""];
+  [menu addItemWithTitle: @"Miniaturize"
+                  action: @selector(performMiniaturize:)
+           keyEquivalent: @"m"];
+  [menu addItemWithTitle: @"Close"
+                  action: @selector(performClose:)
+           keyEquivalent: @"w"];
+  // Edit SubMenu
+  menuItem = [mainMenu addItemWithTitle: @"Edit"
+                                 action: NULL
+                          keyEquivalent: @""];
+  menu = AUTORELEASE([NSMenu new]);
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  [menu addItemWithTitle: @"Cut"
+                  action: @selector(cut:)
+           keyEquivalent: @"x"];
+  [menu addItemWithTitle: @"Copy"
+                  action: @selector(copy:)
+           keyEquivalent: @"c"];
+  [menu addItemWithTitle: @"Paste"
+                  action: @selector(paste:)
+           keyEquivalent: @"v"];
+  [menu addItemWithTitle: @"SelectAll"
+                  action: @selector(selectAll:)
+           keyEquivalent: @"a"];
+  // Windows SubMenu
+  menuItem = [mainMenu addItemWithTitle: @"Windows"
+                                 action: NULL
+                          keyEquivalent: @""];
+  menu = AUTORELEASE([NSMenu new]);
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  [menu addItemWithTitle: @"Arrange"
+                  action: @selector(arrangeInFront:)
+           keyEquivalent: @""];
+  [menu addItemWithTitle: @"Miniaturize"
+                  action: @selector(performMiniaturize:)
+           keyEquivalent: @"m"];
+  [menu addItemWithTitle: @"Close"
+                  action: @selector(performClose:)
+           keyEquivalent: @"w"];
+  [app setWindowsMenu: menu];
 
-   // Quit MenuItem
-   [mainMenu addItemWithTitle: @"Quit" 
-	     action: @selector (terminate:)
-	     keyEquivalent: @"q"];	
+  // Hide MenuItem
+  [mainMenu addItemWithTitle: @"Hide"
+                      action: @selector(hide:)
+               keyEquivalent: @"h"];
 
-   [app setMainMenu: mainMenu];
+  // Quit MenuItem
+  [mainMenu addItemWithTitle: @"Quit"
+                      action: @selector(terminate:)
+               keyEquivalent: @"q"];
 
-   controller = [Controller new];
-   [app setDelegate: controller];
-   [app run];
-   [[NSUserDefaults standardUserDefaults] synchronize];
-   /* Useless anyway, since everything is automatically released on exit. */
-   RELEASE (controller);
-   RELEASE (pool);
-   return 0;
+  [app setMainMenu: mainMenu];
+
+  controller = [Controller new];
+  [app setDelegate: controller];
+  [app run];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  /* Useless anyway, since everything is automatically released on exit. */
+  RELEASE(controller);
+  RELEASE(pool);
+  return 0;
 }
 
 

@@ -90,7 +90,7 @@ NSObject
   [button sizeToFit];
   [button setAutoresizingMask: NSViewMinXMargin];
   [button setTarget: self];
-  [button setAction: @selector (startOpenPanel:)];
+  [button setAction: @selector(startOpenPanel:)];
   [vbox addView: button
   enablingYResizing: NO];
 
@@ -274,7 +274,7 @@ NSObject
   [packageButton setNextKeyView: configureForm];
 
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -376,8 +376,8 @@ static NSArray *tokenize(NSString *string)
 
   if ([filename hasPrefix: @"/"])
     {
-      NSRunAlertPanel (NULL, @"A valid filename can not begin with / !",
-                       @"OK", NULL, NULL);
+      NSRunAlertPanel(NULL, @"A valid filename can not begin with / !",
+                      @"OK", NULL, NULL);
       return;
     }
 
@@ -415,7 +415,7 @@ static NSArray *tokenize(NSString *string)
   [view setBordered: YES];
   [view setAlignment: NSCenterTextAlignment];
   [view setStringValue: @"This is the AccessoryView"];
-  [view setFrameSize: NSMakeSize (400, 70)];
+  [view setFrameSize: NSMakeSize(400, 70)];
   [view setAutoresizingMask: NSViewWidthSizable];
 
   box = [NSBox new];

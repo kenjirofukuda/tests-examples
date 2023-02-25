@@ -8,9 +8,9 @@ indexof(char c, char *string)
   for (i = 0; i < strlen(string); i++)
     {
       if (string[i] == c)
-	{
-	  return i;
-	}
+        {
+          return i;
+        }
     }
   return -1;
 }
@@ -33,30 +33,30 @@ getopt(int argc, char **argv, char *options)
     {
       arg = argv[optind];
       if (strlen(arg) == 2)
-	{
-	  if (arg[0] == '-')
-	    {
-	      if ((index = indexof(arg[1], options)) != -1)
-		{
-		  retval = arg[1];
-		  if (index < strlen(options))
-		    {
-		      if (options[index+1] == ':')
-			{
-			  if (optind < argc-1)
-			    {
-			      optind++;
-			      optarg = argv[optind];
-			    }
-			  else
-			    {
-			      return -1; /* ':' given, but argv exhausted */
-			    }
-			}
-		    }
-		}
-	    }
-	}
+        {
+          if (arg[0] == '-')
+            {
+              if ((index = indexof(arg[1], options)) != -1)
+                {
+                  retval = arg[1];
+                  if (index < strlen(options))
+                    {
+                      if (options[index + 1] == ':')
+                        {
+                          if (optind < argc - 1)
+                            {
+                              optind++;
+                              optarg = argv[optind];
+                            }
+                          else
+                            {
+                              return -1; /* ':' given, but argv exhausted */
+                            }
+                        }
+                    }
+                }
+            }
+        }
       optind++;
       return retval;
     }

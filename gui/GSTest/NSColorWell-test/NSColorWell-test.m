@@ -54,7 +54,7 @@ NSObject
   [label sizeToFit];
   [label setAutoresizingMask: NSViewMinYMargin | NSViewMaxYMargin];
 
-  well = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 40)];
+  well = [[NSColorWell alloc] initWithFrame: NSMakeRect(0, 0, 50, 40)];
   [well setAutoresizingMask: (NSViewMaxXMargin
                               | NSViewMinYMargin | NSViewMaxYMargin)];
   hbox = [GSHbox new];
@@ -68,7 +68,7 @@ NSObject
   [hbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   winFrame.size = [hbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask

@@ -2,7 +2,7 @@
  *  FingerWindow.h: One of Finger.app windows
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -35,21 +35,21 @@
   NSButton *stopButton;
   NSForm *form;
   TrivialTextView *text;
-  
+
   NSPipe *pipe[2];
-  NSTask *task; 
+  NSTask *task;
 }
--(void)resetResults: (id)sender;
--(void)saveResults: (id)sender;
--(void)startFinger: (id)sender;
--(void)startWhois: (id)sender;
--(void)startPing: (id)sender;
--(void)startTraceroute: (id)sender;
--(void)startTask: (NSString *)fullBinaryPath
-    withArgument: (NSString *)argument;
--(void)stopTask: (id)sender;
--(void)taskEnded: (NSNotification *)aNotification;
--(void)readData: (NSNotification *)aNotification;
--(void)controlTextDidEndEditing: (NSNotification *)aNotification;
+- (void) resetResults: (id)sender;
+- (void) saveResults: (id)sender;
+- (void) startFinger: (id)sender;
+- (void) startWhois: (id)sender;
+- (void) startPing: (id)sender;
+- (void) startTraceroute: (id)sender;
+- (void) startTask: (NSString *)fullBinaryPath
+      withArgument: (NSString *)argument;
+- (void) stopTask: (id)sender;
+- (void) taskEnded: (NSNotification *)aNotification;
+- (void) readData: (NSNotification *)aNotification;
+- (void) controlTextDidEndEditing: (NSNotification *)aNotification;
 @end
 

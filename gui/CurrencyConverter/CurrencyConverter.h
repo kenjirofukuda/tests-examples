@@ -2,10 +2,10 @@
  *  CurrencyConverter.h
  *
  *  Copyright (c) 1999 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: November 1999
- * 
+ *
  *  This sample program is part of GNUstep.
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -31,14 +31,14 @@
 @interface CurrencyConverter : NSObject <NSTextFieldDelegate>
 {
   // Instance variables
-  NSTextField* field[3];
-  NSWindow* window;
+  NSTextField *field[3];
+  NSWindow *window;
 }
 // Methods
-- (id)init;
-- (void)dealloc;
-- (void)controlTextDidEndEditing: (NSNotification *)aNotification;
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+- (id) init;
+- (void) dealloc;
+- (void) controlTextDidEndEditing: (NSNotification *)aNotification;
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification;
 @end
 
 

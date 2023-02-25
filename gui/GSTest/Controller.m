@@ -35,7 +35,7 @@ NSComparisonResult nameSort(id path1, id path2, void *context);
       name = [[[tests objectAtIndex: i] lastPathComponent]
                                         stringByDeletingPathExtension];
       menuItem = [testMenu addItemWithTitle: name
-                                     action: @selector (startListedTest:)
+                                     action: @selector(startListedTest:)
                               keyEquivalent: @""];
       [menuItem setTag: i];
     }
@@ -64,19 +64,19 @@ NSComparisonResult nameSort(id path1, id path2, void *context);
       principalClass = [bundle principalClass];
       if (principalClass) // succesfully loaded
         {
-          return AUTORELEASE ([principalClass new]);
+          return AUTORELEASE([principalClass new]);
         }
       else // !principalClass
         {
-          NSRunAlertPanel (NULL, @"Could not load principal class",
-                           @"OK", NULL, NULL);
+          NSRunAlertPanel(NULL, @"Could not load principal class",
+                          @"OK", NULL, NULL);
           return nil;
         }
     }
   else // !bundle
     {
-      NSRunAlertPanel (NULL, @"Could not load Bundle",
-                       @"OK", NULL, NULL);
+      NSRunAlertPanel(NULL, @"Could not load Bundle",
+                      @"OK", NULL, NULL);
       return nil;
     }
 }
@@ -87,7 +87,7 @@ NSComparisonResult nameSort(id path1, id path2, void *context);
   int i;
 
   i = [sender tag];
-  if ( [[loadedTests objectAtIndex: i] conformsToProtocol: @protocol(GSTest)])
+  if ([[loadedTests objectAtIndex: i] conformsToProtocol: @protocol(GSTest)])
     {
       [(id<GSTest>)[loadedTests objectAtIndex: i] restart];
       return;
@@ -141,7 +141,7 @@ NSComparisonResult nameSort(id path1, id path2, void *context);
   stdPaths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory,
              NSUserDomainMask | NSLocalDomainMask | NSSystemDomainMask, YES);
   enm = [stdPaths objectEnumerator];
-  while ( (path = [enm nextObject]) )
+  while ((path = [enm nextObject]))
     {
       [bundlePaths addObject:
                    [[path stringByAppendingPathComponent: @"ApplicationSupport"]
@@ -149,19 +149,19 @@ NSComparisonResult nameSort(id path1, id path2, void *context);
     }
 
   // stow away the bundle paths
-  for ( i = 0; i < [bundlePaths count]; i++ )
+  for (i = 0; i < [bundlePaths count]; i++)
     {
-      if ( [[NSFileManager defaultManager] fileExistsAtPath:
-                                           [bundlePaths objectAtIndex: i]] )
+      if ([[NSFileManager defaultManager] fileExistsAtPath:
+                                          [bundlePaths objectAtIndex: i]])
         {
           enm = [[NSFileManager defaultManager] enumeratorAtPath:
                                                 [bundlePaths objectAtIndex: i]];
-          while ( (path = [enm nextObject]) )
+          while ((path = [enm nextObject]))
             {
               path = [[bundlePaths objectAtIndex: i]
                   stringByAppendingPathComponent: path];
-              if ( [[path pathExtension] isEqualToString: @"bundle"] &&
-                   ![tests containsObject: path] )
+              if ([[path pathExtension] isEqualToString: @"bundle"] &&
+                  ![tests containsObject: path])
                 {
                   [tests addObject: path];
                   [loadedTests insertObject: @"X" atIndex: k];

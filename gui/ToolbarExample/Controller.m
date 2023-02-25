@@ -1,8 +1,8 @@
 /*
- *  Controller.m: An application to demonstrate the GNUstep toolbars 
+ *  Controller.m: An application to demonstrate the GNUstep toolbars
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
  *  Date: August 2004
  *
@@ -40,51 +40,51 @@
 - (BOOL) applicationOpenUntitledFile: (NSApplication *)sender
 {
   NSDocumentController *specialController = [NSDocumentController sharedDocumentController];
-  NSDocument *document = 
+  NSDocument *document =
     [specialController openUntitledDocumentOfType: @"txt" display: YES];
-    
+
   if (document != nil)
     return YES;
-  
+
   return NO;
 }
 
 // Toolbar delegates
 
-- (NSToolbarItem *)toolbar:(NSToolbar *)toolbar
-     itemForItemIdentifier:(NSString*)identifier
- willBeInsertedIntoToolbar:(BOOL)willBeInserted 
+- (NSToolbarItem *) toolbar: (NSToolbar *)toolbar
+      itemForItemIdentifier: (NSString *)identifier
+  willBeInsertedIntoToolbar: (BOOL)willBeInserted
 {
   NSToolbarItem *toolbarItem = [[NSToolbarItem alloc]
-    initWithItemIdentifier: identifier];
-  
+                                initWithItemIdentifier: identifier];
+
   AUTORELEASE(toolbarItem);
 
   NSLog(@"toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar: \
     has been called");
 
-  if ([identifier isEqual: @"First"]) 
+  if ([identifier isEqual: @"First"])
     {
       [toolbarItem setLabel: @"First item"];
       [toolbarItem setImage: [NSImage imageNamed: @"FileIcon_Directory"]];
     }
-  else if ([identifier isEqual:@"Second"]) 
+  else if ([identifier isEqual: @"Second"])
     {
       [toolbarItem setLabel: @"Second item"];
       [toolbarItem setImage: [NSImage imageNamed: @"SecondImage"]];
       [toolbarItem setTarget: nil];
       [toolbarItem setAction: @selector(toggleToolbarShown:)];
     }
-  else if ([identifier isEqual:@"Popup"]) 
+  else if ([identifier isEqual: @"Popup"])
     {
-      NSPopUpButton *popup = [[NSPopUpButton alloc] initWithFrame: 
-      NSMakeRect(0, 0, 150, 22)];
+      NSPopUpButton *popup = [[NSPopUpButton alloc] initWithFrame:
+                                                    NSMakeRect(0, 0, 150, 22)];
       id item;
       NSMenuItem *menuItem;
       NSMenu *submenu;
 
       [popup setAutoenablesItems: NO];
-    
+
       [popup addItemWithTitle: @"Marguerite"];
       [[popup itemWithTitle: @"Marguerite"] setEnabled: YES];
       [popup addItemWithTitle: @"Julie"];
@@ -93,62 +93,64 @@
       [[popup itemWithTitle: @"Liv"] setEnabled: YES];
       [popup addItemWithTitle: @"Juliette"];
       [[popup itemWithTitle: @"Juliette"] setEnabled: YES];
-	
+
       item = [popup itemWithTitle: @"Julies"];
       [popup selectItem: item];
 
       [toolbarItem setLabel: @"Just... popup"];
       [toolbarItem setView: popup];
-    
-      menuItem = [[NSMenuItem alloc] initWithTitle: @"More..." 
+
+      menuItem = [[NSMenuItem alloc] initWithTitle: @"More..."
                                             action: NULL
                                      keyEquivalent: @""];
       submenu = [[NSMenu alloc] initWithTitle: @""];
-      [submenu addItemWithTitle: @"Marguerite" 
-                         action: @selector(reflectMenuSelection:) 
+      [submenu addItemWithTitle: @"Marguerite"
+                         action: @selector(reflectMenuSelection:)
                   keyEquivalent: @""];
-      [submenu addItemWithTitle: @"Julie" 
-                         action: @selector(reflectMenuSelection:) 
+      [submenu addItemWithTitle: @"Julie"
+                         action: @selector(reflectMenuSelection:)
                   keyEquivalent: @""];
-      [submenu addItemWithTitle: @"Liv" 
-                         action: @selector(reflectMenuSelection:) 
+      [submenu addItemWithTitle: @"Liv"
+                         action: @selector(reflectMenuSelection:)
                   keyEquivalent: @""];
-      [submenu addItemWithTitle: @"Juliette" 
-                         action: @selector(reflectMenuSelection:) 
+      [submenu addItemWithTitle: @"Juliette"
+                         action: @selector(reflectMenuSelection:)
                   keyEquivalent: @""];
       [menuItem setSubmenu: AUTORELEASE(submenu)];
       [toolbarItem setMenuFormRepresentation: AUTORELEASE(menuItem)];
     }
-  else if ([identifier isEqual:@"Slider"]) 
+  else if ([identifier isEqual: @"Slider"])
     {
       [toolbarItem setLabel: @"Loulou"];
-      [toolbarItem setView: [[NSSlider alloc] initWithFrame: 
-        NSMakeRect(0, 0, 70, 18)]];
+      [toolbarItem setView: [[NSSlider alloc] initWithFrame:
+                             NSMakeRect(0, 0, 70, 18)]];
     }
 
   return toolbarItem;
 }
 
-- (NSArray *)toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar {
+- (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar
+{
   NSLog(@"toolbarDefaultItemIdentifiers: has been called");
 
-  return [NSArray arrayWithObjects: @"First", 
-                                    NSToolbarFlexibleSpaceItemIdentifier, 
-                                    @"Second", 
-				    @"Popup", 
-                                    NSToolbarFlexibleSpaceItemIdentifier,
-                                    NSToolbarCustomizeToolbarItemIdentifier, nil];
+  return [NSArray arrayWithObjects: @"First",
+                  NSToolbarFlexibleSpaceItemIdentifier,
+                  @"Second",
+                  @"Popup",
+                  NSToolbarFlexibleSpaceItemIdentifier,
+                  NSToolbarCustomizeToolbarItemIdentifier, nil];
 }
 
-- (NSArray *)toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar {
-  NSLog(@"toolbarAllowedItemIdentifiers: has been called"); 
-    
-  return [NSArray arrayWithObjects: @"First", 
-                                    @"Second", 
-                                    @"Popup", 
-                                    @"Slider",
-                                    NSToolbarCustomizeToolbarItemIdentifier, 
-                                    NSToolbarFlexibleSpaceItemIdentifier, nil];
+- (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar
+{
+  NSLog(@"toolbarAllowedItemIdentifiers: has been called");
+
+  return [NSArray arrayWithObjects: @"First",
+                  @"Second",
+                  @"Popup",
+                  @"Slider",
+                  NSToolbarCustomizeToolbarItemIdentifier,
+                  NSToolbarFlexibleSpaceItemIdentifier, nil];
 }
 
 // ---

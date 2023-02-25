@@ -1,8 +1,8 @@
 /*
- *  DocumentOwner.h: An application to demonstrate GNUstep toolbars 
+ *  DocumentOwner.h: An application to demonstrate GNUstep toolbars
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
  *  Date: March 2004
  *
@@ -45,11 +45,11 @@
 - (void) toggleToolbar: (id)sender;
 - (void) setFirstItemLabel: (id)sender;
 - (void) setSecondItemImage: (id)sender;
-- (void) newItem:(id)sender;
+- (void) newItem: (id)sender;
 - (void) popUpMenuDisplayChanged: (id)sender;
 - (void) popUpMenuSizeChanged: (id)sender;
 - (void) reflectMenuSelection: (id)sender;
-- (void) newWindow:(id)sender;
+- (void) newWindow: (id)sender;
 
 // Accessors (not used currently)
 

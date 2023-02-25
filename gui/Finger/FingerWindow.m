@@ -2,7 +2,7 @@
  *  FingerWindow.m: One of Finger.app windows
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -28,15 +28,15 @@
 
 @implementation FingerWindow
 
--(void) dealloc
+- (void) dealloc
 {
   if (task && [task isRunning])
     {
       [task terminate];
     }
-  TEST_RELEASE (task);
-  TEST_RELEASE (pipe[0]);
-  TEST_RELEASE (pipe[1]);
+  TEST_RELEASE(task);
+  TEST_RELEASE(pipe[0]);
+  TEST_RELEASE(pipe[1]);
   [[NSNotificationCenter defaultCenter] removeObserver: self];
   [super dealloc];
 }
@@ -44,19 +44,19 @@
 {
   GSVbox *vbox;
   GSHbox *hbox;
-  NSButton* fingerButton;
-  NSButton* pingButton;
-  NSButton* traceButton;
-  NSButton* whoisButton;
-  NSScrollView* scroll;
+  NSButton *fingerButton;
+  NSButton *pingButton;
+  NSButton *traceButton;
+  NSButton *whoisButton;
+  NSScrollView *scroll;
   NSRect winFrame;
   float f = 0;
   NSSize bs;
   BOOL bigButtons;
   NSFont *font;
-  
+
   if ([[[NSUserDefaults standardUserDefaults] stringForKey: @"ButtonSize"]
-	isEqualToString: @"Small"])
+                                           isEqualToString: @"Small"])
     {
       font = [NSFont systemFontOfSize: SMALL_FONT_SIZE];
       bigButtons = NO;
@@ -66,15 +66,15 @@
       font = [NSFont systemFontOfSize: BIG_FONT_SIZE];
       bigButtons = YES;
     }
-  
-  vbox = AUTORELEASE ([GSVbox new]);
+
+  vbox = AUTORELEASE([GSVbox new]);
   [vbox setBorder: 5];
   [vbox setDefaultMinYMargin: 5];
-  
-  text = AUTORELEASE ([TrivialTextView new]);
-  
-  scroll = AUTORELEASE ([[NSScrollView alloc] 
-			  initWithFrame: NSMakeRect (0, 0, 300, 300)]);
+
+  text = AUTORELEASE([TrivialTextView new]);
+
+  scroll = AUTORELEASE([[NSScrollView alloc]
+                        initWithFrame: NSMakeRect(0, 0, 300, 300)]);
   [scroll setDocumentView: text];
   [scroll setHasHorizontalScroller: YES];
   [scroll setHasVerticalScroller: YES];
@@ -83,23 +83,23 @@
 
   [vbox addView: scroll];
 
-  hbox = AUTORELEASE ([GSHbox new]);
+  hbox = AUTORELEASE([GSHbox new]);
   [hbox setBorder: 0];
   [hbox setDefaultMinXMargin: 8];
 
-  form = AUTORELEASE ([NSForm new]);
+  form = AUTORELEASE([NSForm new]);
   [form addEntry: @"User:"];
   [form addEntry: @"Host:"];
-  [form setAutoresizingMask: (NSViewWidthSizable | NSViewMinYMargin 
-			      | NSViewMaxYMargin)];
+  [form setAutoresizingMask: (NSViewWidthSizable | NSViewMinYMargin
+                              | NSViewMaxYMargin)];
   [form setAutosizesCells: YES];
   [form sizeToFit];
   [form setEntryWidth: 240];
 
   [hbox addView: form];
 
-  whoisButton = AUTORELEASE ([NSButton new]);
-  if (bigButtons) 
+  whoisButton = AUTORELEASE([NSButton new]);
+  if (bigButtons)
     {
       [whoisButton setImage: [NSImage imageNamed: @"whois"]];
     }
@@ -108,7 +108,7 @@
       [whoisButton setImage: [NSImage imageNamed: @"whois32"]];
     }
   [whoisButton setTitle: @"Whois"];
-  [whoisButton setFont: font]; 
+  [whoisButton setFont: font];
   [whoisButton setImagePosition: NSImageAbove];
   [whoisButton setAlignment: NSCenterTextAlignment];
   [whoisButton sizeToFit];
@@ -123,9 +123,9 @@
     }
   [whoisButton setAutoresizingMask: NSViewNotSizable];
   [whoisButton setTarget: self];
-  [whoisButton setAction: @selector (startWhois:)];
+  [whoisButton setAction: @selector(startWhois:)];
 
-  fingerButton = AUTORELEASE ([NSButton new]);
+  fingerButton = AUTORELEASE([NSButton new]);
   if (bigButtons)
     {
       [fingerButton setImage: [NSImage imageNamed: @"finger"]];
@@ -135,7 +135,7 @@
       [fingerButton setImage: [NSImage imageNamed: @"finger32"]];
     }
   [fingerButton setTitle: @"Finger"];
-  [fingerButton setFont: font]; 
+  [fingerButton setFont: font];
   [fingerButton setImagePosition: NSImageAbove];
   [fingerButton setAlignment: NSCenterTextAlignment];
   [fingerButton sizeToFit];
@@ -150,9 +150,9 @@
     }
   [fingerButton setAutoresizingMask: NSViewNotSizable];
   [fingerButton setTarget: self];
-  [fingerButton setAction: @selector (startFinger:)];
+  [fingerButton setAction: @selector(startFinger:)];
 
-  pingButton = AUTORELEASE ([NSButton new]);
+  pingButton = AUTORELEASE([NSButton new]);
   if (bigButtons)
     {
       [pingButton setImage: [NSImage imageNamed: @"ping"]];
@@ -162,7 +162,7 @@
       [pingButton setImage: [NSImage imageNamed: @"ping32"]];
     }
   [pingButton setTitle: @"Ping"];
-  [pingButton setFont: font]; 
+  [pingButton setFont: font];
   [pingButton setImagePosition: NSImageAbove];
   [pingButton setAlignment: NSCenterTextAlignment];
   [pingButton sizeToFit];
@@ -177,19 +177,19 @@
     }
   [pingButton setAutoresizingMask: NSViewNotSizable];
   [pingButton setTarget: self];
-  [pingButton setAction: @selector (startPing:)];
+  [pingButton setAction: @selector(startPing:)];
 
-  traceButton = AUTORELEASE ([NSButton new]);
+  traceButton = AUTORELEASE([NSButton new]);
   if (bigButtons)
     {
       [traceButton setImage: [NSImage imageNamed: @"traceroute"]];
     }
-  else  
+  else
     {
       [traceButton setImage: [NSImage imageNamed: @"traceroute32"]];
     }
   [traceButton setTitle: @"Trace"];
-  [traceButton setFont: font]; 
+  [traceButton setFont: font];
   [traceButton setImagePosition: NSImageAbove];
   [traceButton setAlignment: NSCenterTextAlignment];
   [traceButton sizeToFit];
@@ -204,9 +204,9 @@
     }
   [traceButton setAutoresizingMask: NSViewNotSizable];
   [traceButton setTarget: self];
-  [traceButton setAction: @selector (startTraceroute:)];
+  [traceButton setAction: @selector(startTraceroute:)];
 
-  stopButton = AUTORELEASE ([NSButton new]);
+  stopButton = AUTORELEASE([NSButton new]);
   if (bigButtons)
     {
       [stopButton setImage: [NSImage imageNamed: @"stop"]];
@@ -216,7 +216,7 @@
       [stopButton setImage: [NSImage imageNamed: @"stop32"]];
     }
   [stopButton setTitle: @"Stop"];
-  [stopButton setFont: font]; 
+  [stopButton setFont: font];
   [stopButton setImagePosition: NSImageAbove];
   [stopButton setAlignment: NSCenterTextAlignment];
   [stopButton sizeToFit];
@@ -231,116 +231,116 @@
     }
   [stopButton setAutoresizingMask: NSViewNotSizable];
   [stopButton setTarget: self];
-  [stopButton setAction: @selector (stopTask:)];
+  [stopButton setAction: @selector(stopTask:)];
   [stopButton setEnabled: NO];
 
   /* Make all the buttons of the same square size */
-  bs = NSMakeSize (f, f);
+  bs = NSMakeSize(f, f);
   [fingerButton setFrameSize: bs];
   [whoisButton setFrameSize: bs];
   [pingButton setFrameSize: bs];
   [traceButton setFrameSize: bs];
-  [stopButton setFrameSize: bs];  
-  
+  [stopButton setFrameSize: bs];
+
   [hbox addView: fingerButton enablingXResizing: NO withMinXMargin: 12];
   [hbox addView: whoisButton enablingXResizing: NO];
   [hbox addView: pingButton enablingXResizing: NO];
   [hbox addView: traceButton enablingXResizing: NO];
   [hbox addView: stopButton enablingXResizing: NO];
   [hbox setAutoresizingMask: NSViewWidthSizable];
-  
+
   [vbox addView: hbox enablingYResizing: NO];
-  
+
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
   self = [super initWithContentRect: winFrame
-		styleMask: (NSTitledWindowMask 
-			    | NSClosableWindowMask 
-			    | NSMiniaturizableWindowMask 
-			    | NSResizableWindowMask)
-		backing: NSBackingStoreBuffered
-		defer: YES];
+                          styleMask: (NSTitledWindowMask
+                            | NSClosableWindowMask
+                            | NSMiniaturizableWindowMask
+                            | NSResizableWindowMask)
+                            backing: NSBackingStoreBuffered
+                              defer: YES];
   [self setTitle: @"Finger.app"];
   [self setContentView: vbox];
   [self setMinSize: [NSWindow frameRectForContentRect: winFrame
-			      styleMask: [self styleMask]].size];
+                     styleMask: [self styleMask]].size];
   return self;
 }
 
-- (void)taskEnded: (NSNotification *)aNotification
+- (void) taskEnded: (NSNotification *)aNotification
 {
   [stopButton setEnabled: NO];
 }
 
--(void)startFinger: (id)sender
+- (void) startFinger: (id)sender
 {
   NSString *username;
   NSString *hostname;
   NSString *command;
   NSString *argument;
 
-  command = [[NSUserDefaults standardUserDefaults] stringForKey: 
-						     @"FingerCommand"];
+  command = [[NSUserDefaults standardUserDefaults] stringForKey:
+                                                   @"FingerCommand"];
 
   username = [[form cellAtIndex: 0] stringValue];
   hostname = [[form cellAtIndex: 1] stringValue];
 
   if ([hostname length] > 0)
     hostname = [@"@" stringByAppendingString: hostname];
-  
+
   if (username)
     argument = [username stringByAppendingString: hostname];
   else
     argument = hostname;
 
   [self startTask: command
-	withArgument: argument];
+     withArgument: argument];
 }
 
--(void)startWhois: (id)sender
+- (void) startWhois: (id)sender
 {
   NSString *command;
   NSString *argument;
 
-  command = [[NSUserDefaults standardUserDefaults] stringForKey: 
-						     @"WhoisCommand"];
+  command = [[NSUserDefaults standardUserDefaults] stringForKey:
+                                                   @"WhoisCommand"];
 
   argument = [[form cellAtIndex: 1] stringValue];
 
   [self startTask: command
-	withArgument: argument];
+     withArgument: argument];
 }
 
--(void)startPing: (id)sender
+- (void) startPing: (id)sender
 {
   NSString *command;
   NSString *argument;
 
-  command = [[NSUserDefaults standardUserDefaults] stringForKey: 
-						     @"PingCommand"];
+  command = [[NSUserDefaults standardUserDefaults] stringForKey:
+                                                   @"PingCommand"];
 
   argument = [[form cellAtIndex: 1] stringValue];
 
   [self startTask: command
-	withArgument: argument];
+     withArgument: argument];
 }
 
--(void)startTraceroute: (id)sender
+- (void) startTraceroute: (id)sender
 {
   NSString *command;
   NSString *argument;
 
-  command = [[NSUserDefaults standardUserDefaults] stringForKey: 
-						     @"TracerouteCommand"];
+  command = [[NSUserDefaults standardUserDefaults] stringForKey:
+                                                   @"TracerouteCommand"];
 
   argument = [[form cellAtIndex: 1] stringValue];
 
   [self startTask: command
-	withArgument: argument];
+     withArgument: argument];
 }
 
--(void)startTask: (NSString *)fullBinaryPath
-    withArgument: (NSString *)argument
+- (void) startTask: (NSString *)fullBinaryPath
+      withArgument: (NSString *)argument
 {
   NSArray      *arguments;
   NSFileHandle *fileHandle;
@@ -358,14 +358,14 @@
       NSString *alert;
       int       result;
 
-      alert = [fullBinaryPath stringByAppendingString: 
-				@" is not executable!"];
-      result = NSRunAlertPanel (NULL, alert, @"Cancel", 
-				@"Change command", NULL);
+      alert = [fullBinaryPath stringByAppendingString:
+                              @" is not executable!"];
+      result = NSRunAlertPanel(NULL, alert, @"Cancel",
+                               @"Change command", NULL);
       if (result == NS_ALERTALTERNATE)
-	{
-	  [(Controller *)[NSApp delegate] runPreferencesPanel: self];
-	}
+        {
+          [(Controller *)[NSApp delegate] runPreferencesPanel: self];
+        }
       return;
     }
 
@@ -380,106 +380,106 @@
   stringToShow = [stringToShow stringByAppendingString: @" "];
   stringToShow = [stringToShow stringByAppendingString: argument];
   [self setTitle: stringToShow];
-  
+
   /* Run the task */
-  ASSIGN (task, AUTORELEASE ([NSTask new]));
+  ASSIGN(task, AUTORELEASE([NSTask new]));
   [task setLaunchPath: fullBinaryPath];
-  
-  arguments = [NSArray arrayWithObjects: argument, nil]; 
+
+  arguments = [NSArray arrayWithObjects: argument, nil];
   [task setArguments: arguments];
 
-  ASSIGN (pipe[0], [NSPipe pipe]);
+  ASSIGN(pipe[0], [NSPipe pipe]);
   fileHandle = [pipe[0] fileHandleForReading];
   [task setStandardOutput: pipe[0]];
   [fileHandle readInBackgroundAndNotify];
-  [nc addObserver: self 
-      selector: @selector(readData:) 
-      name: NSFileHandleReadCompletionNotification
-      object: (id) fileHandle];
-  
-  ASSIGN (pipe[1], [NSPipe pipe]);
+  [nc addObserver: self
+         selector: @selector(readData:)
+             name: NSFileHandleReadCompletionNotification
+           object: (id) fileHandle];
+
+  ASSIGN(pipe[1], [NSPipe pipe]);
   fileHandle = [pipe[1] fileHandleForReading];
   [task setStandardError: pipe[1]];
   [fileHandle readInBackgroundAndNotify];
-  [nc addObserver: self 
-      selector: @selector(readData:) 
-      name: NSFileHandleReadCompletionNotification
-      object: (id) fileHandle];
+  [nc addObserver: self
+         selector: @selector(readData:)
+             name: NSFileHandleReadCompletionNotification
+           object: (id) fileHandle];
 
-  [nc addObserver: self 
-      selector: @selector(taskEnded:) 
-      name: NSTaskDidTerminateNotification 
-      object: (id) task];
+  [nc addObserver: self
+         selector: @selector(taskEnded:)
+             name: NSTaskDidTerminateNotification
+           object: (id) task];
 
   [task launch];
-  
+
   [stopButton setEnabled: YES];
 }
 
--(void)stopTask: (id)sender
+- (void) stopTask: (id)sender
 {
   NSFileHandle *fileHandle;
 
   if ([task isRunning])
-    {    
+    {
       /* Be fine so that ping gives us all the statistical infos */
       [task interrupt];
       if ([task isRunning])
-	[task terminate];
-      /* Now wait 0.1 seconds for the ping statistical info */ 
+        [task terminate];
+      /* Now wait 0.1 seconds for the ping statistical info */
       /* [FIXME Some better solution -- or at least make the 0.1
            seconds configurable] */
-      [[NSRunLoop currentRunLoop] 
-	runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.1]];
+      [[NSRunLoop currentRunLoop]
+       runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.1]];
       /* Then discard the remaining data */
       fileHandle = [pipe[0] fileHandleForReading];
-      [fileHandle closeFile];    
+      [fileHandle closeFile];
       fileHandle = [pipe[1] fileHandleForReading];
       [fileHandle closeFile];
       /* Remove us from notifications */
-      [[NSNotificationCenter defaultCenter] 
-	removeObserver: self 
-	name: NSFileHandleReadCompletionNotification
-	object: nil];
-      [[NSNotificationCenter defaultCenter] 
-	removeObserver: self 
-	name: NSTaskDidTerminateNotification
-	object: nil];
+      [[NSNotificationCenter defaultCenter]
+       removeObserver: self
+                 name: NSFileHandleReadCompletionNotification
+               object: nil];
+      [[NSNotificationCenter defaultCenter]
+       removeObserver: self
+                 name: NSTaskDidTerminateNotification
+               object: nil];
     }
 }
 
--(void)readData: (NSNotification *)aNotification
+- (void) readData: (NSNotification *)aNotification
 {
   NSData   *readData;
   NSString *readString;
   NSFileHandle *fileHandle;
-  
-  readData = [[aNotification userInfo] 
-	       objectForKey: NSFileHandleNotificationDataItem];
+
+  readData = [[aNotification userInfo]
+              objectForKey: NSFileHandleNotificationDataItem];
   readString = [[NSString alloc] initWithData: readData
-				 encoding:  NSNonLossyASCIIStringEncoding];
-  AUTORELEASE (readString);
+                                     encoding: NSNonLossyASCIIStringEncoding];
+  AUTORELEASE(readString);
   [text appendString: readString];
-  
+
   if ([task isRunning])
     {
       fileHandle = [pipe[0] fileHandleForReading];
       if ([fileHandle readInProgress] == NO)
-	[fileHandle readInBackgroundAndNotify];
+        [fileHandle readInBackgroundAndNotify];
 
       fileHandle = [pipe[1] fileHandleForReading];
       if ([fileHandle readInProgress] == NO)
-	[fileHandle readInBackgroundAndNotify];
+        [fileHandle readInBackgroundAndNotify];
     }
 }
 
-- (void)resetResults: (id)sender
+- (void) resetResults: (id)sender
 {
   [self stopTask: self];
   [text setString: nil];
 }
 
-- (void)saveResults: (id)sender
+- (void) saveResults: (id)sender
 {
   NSSavePanel *savePanel;
   int result;
@@ -491,13 +491,13 @@
   if (result == NSOKButton)
     {
       /* TODO: Ask before overwriting file ?*/
-      [[text string] writeToFile: [savePanel filename] 
-		     atomically: YES];
+      [[text string] writeToFile: [savePanel filename]
+                      atomically: YES];
     }
 }
 
 /* Not used now */
-- (void)controlTextDidEndEditing: (NSNotification *)aNotification
+- (void) controlTextDidEndEditing: (NSNotification *)aNotification
 {
   [self startFinger: self];
 }

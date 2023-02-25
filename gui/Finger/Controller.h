@@ -2,7 +2,7 @@
  *  Controller.h: Main Object of Finger.app
  *
  *  Copyright (c) 2000 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: February 2000
  *
@@ -32,9 +32,9 @@
   /* Preferences Panel */
   PreferencesController *pref;
 }
-+(void)initialize;
--(void)applicationDidFinishLaunching: (NSNotification *)aNotification;
--(void)runPreferencesPanel: (id)sender;
--(void)startNewFingerWindow: (id)sender;
++ (void) initialize;
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification;
+- (void) runPreferencesPanel: (id)sender;
+- (void) startNewFingerWindow: (id)sender;
 @end
 

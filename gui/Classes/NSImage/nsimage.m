@@ -1,4 +1,4 @@
-/* 
+/*
    nsimage.m
 
    Simple application to test NSImage classes.
@@ -7,14 +7,14 @@
 
    Author:  Scott Christley <scottc@net-community.com>
    Date: August 1996
-   
+
    This file is part of the GNUstep GUI X/RAW Backend.
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
    License as published by the Free Software Foundation; either
    version 2 of the License, or (at your option) any later version.
-   
+
    This library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -24,14 +24,14 @@
    License along with this library; see the file COPYING.LIB.
    If not, write to the Free Software Foundation,
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-*/ 
+*/
 
 #include <AppKit/AppKit.h>
 #include <Foundation/NSAutoreleasePool.h>
 #include <Foundation/NSProcessInfo.h>
 
 int
-write_image (NSImage *image)
+write_image(NSImage *image)
 {
   NSBitmapImageRep *rep;
   NSData *data;
@@ -44,7 +44,7 @@ write_image (NSImage *image)
     }
 
   data = [image TIFFRepresentationUsingCompression: NSTIFFCompressionJPEG
-	   factor: 128];
+                                            factor: 128];
   if (data == nil)
     {
       NSLog(@"error making tiff rep");
@@ -74,11 +74,11 @@ write_image (NSImage *image)
 {
   NSOpenPanel *openPanel;
   int result;
-  
+
   openPanel = [NSOpenPanel openPanel];
   result = [openPanel runModalForDirectory: nil
-                      file: nil
-                      types: [NSImage imageUnfilteredFileTypes]];
+                                      file: nil
+                                     types: [NSImage imageUnfilteredFileTypes]];
   if (result == NSOKButton)
     {
       NSEnumerator *e = [[openPanel filenames] objectEnumerator];
@@ -86,8 +86,8 @@ write_image (NSImage *image)
 
       while ((file = (NSString *)[e nextObject]))
         {
-	  [self readImage: file];
-	}
+          [self readImage: file];
+        }
     }
   return self;
 }
@@ -106,13 +106,13 @@ write_image (NSImage *image)
   [mview setImage: image];
 
   style = NSTitledWindowMask | NSClosableWindowMask
-    | NSMiniaturizableWindowMask | NSResizableWindowMask;
+          | NSMiniaturizableWindowMask | NSResizableWindowMask;
   win = [[NSWindow alloc] initWithContentRect: wf0
-			  styleMask: style
-			  backing: NSBackingStoreBuffered
-			  defer: NO];
+                                    styleMask: style
+                                      backing: NSBackingStoreBuffered
+                                        defer: NO];
   [win setContentView: mview];
-  [win setTitle:file];
+  [win setTitle: file];
   [win orderFrontRegardless];
   return self;
 }
@@ -129,23 +129,23 @@ write_image (NSImage *image)
       NSRect wf1 = {{300, 300}, {100, 100}};
       int style;
       style = NSTitledWindowMask | NSClosableWindowMask
-	| NSMiniaturizableWindowMask | NSResizableWindowMask;
+              | NSMiniaturizableWindowMask | NSResizableWindowMask;
       mwin = [[NSWindow alloc] initWithContentRect: wf1
-			      styleMask: style
-			      backing: NSBackingStoreBuffered
-			      defer: NO];
+                                         styleMask: style
+                                           backing: NSBackingStoreBuffered
+                                             defer: NO];
       v2 = [[NSImageView alloc] initWithFrame: wf1];
       [mwin setContentView: v2];
-      [mwin setTitle:@"Image Destination"];
+      [mwin setTitle: @"Image Destination"];
     }
   [mwin orderFront: sender];
 
-  wf0 = NSMakeRect((200.0*rand()/RAND_MAX),(200.0*rand()/RAND_MAX),100,100);
+  wf0 = NSMakeRect((200.0 * rand() / RAND_MAX), (200.0 * rand() / RAND_MAX), 100, 100);
   NSLog(@"Lock on %@ in rect %@", mview, NSStringFromRect(wf0));
   [mview lockFocus];
   PSsetgray(0);
-  PSmoveto(20,20);
-  PSlineto(100,100);
+  PSmoveto(20, 20);
+  PSlineto(100, 100);
   rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: wf0];
   [mview  unlockFocus];
   image = [[NSImage alloc] initWithSize: wf0.size];
@@ -153,39 +153,41 @@ write_image (NSImage *image)
   [[mwin contentView] setImage: image];
   [mwin flushWindow];
   [[mview window] flushWindow];
-  
+
   return self;
 }
 
-- (void) applicationDidFinishLaunching: (NSNotification *)not {
+- (void) applicationDidFinishLaunching: (NSNotification *)not
+{
 //	[self openImage:nil];
 }
 
-- (void) menuSet {
+- (void) menuSet
+{
   NSMenu	*menu = [NSMenu new];
 
 
   [menu addItemWithTitle: @"Open"
-	action: @selector(openImage:)
-	keyEquivalent: @"o"];
+                  action: @selector(openImage:)
+           keyEquivalent: @"o"];
   [menu addItemWithTitle: @"Copy Image"
-	action: @selector(copyImage:)
-	keyEquivalent: @""];
+                  action: @selector(copyImage:)
+           keyEquivalent: @""];
   [menu addItemWithTitle: @"Quit"
-	action: @selector(terminate:)
-	keyEquivalent: @"q"];
+                  action: @selector(terminate:)
+           keyEquivalent: @"q"];
   [NSApp setMainMenu: menu];
 }
 @end
 
 int
-main(int argc, char **argv, char** env)
+main(int argc, char **argv, char **env)
 {
   MyController *controller;
   id pool;
 
 #if LIB_FOUNDATION_LIBRARY
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+  [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
   pool = [NSAutoreleasePool new];
 

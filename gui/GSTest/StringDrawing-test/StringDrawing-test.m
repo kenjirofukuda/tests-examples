@@ -52,12 +52,12 @@
 @implementation TrivialTextView
 - (void) dealloc
 {
-  TEST_RELEASE (attr);
+  TEST_RELEASE(attr);
   [super dealloc];
 }
 - (void) setAttributedString: (NSAttributedString *)s
 {
-  ASSIGN (attr, s);
+  ASSIGN(attr, s);
 }
 - (void) sizeToFit
 {
@@ -99,7 +99,7 @@ NSObject
 
   /* Minimum size we want it to have */
   scrollView = [[NSScrollView alloc]
-                initWithFrame: NSMakeRect (0, 0, 60, 60)];
+                initWithFrame: NSMakeRect(0, 0, 60, 60)];
   [scrollView setDocumentView: text];
   [text release];
   [scrollView setHasHorizontalScroller: YES];
@@ -113,7 +113,7 @@ NSObject
   [button sizeToFit];
   [button setAutoresizingMask: NSViewMinXMargin];
   [button setTarget: self];
-  [button setAction: @selector (chooseTextFile:)];
+  [button setAction: @selector(chooseTextFile:)];
 
   vbox = [GSVbox new];
   [vbox setBorder: 5];
@@ -123,7 +123,7 @@ NSObject
   [vbox addView: scrollView];
   [vbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
-  win = [[NSWindow alloc] initWithContentRect: NSMakeRect (100, 100, 500, 250)
+  win = [[NSWindow alloc] initWithContentRect: NSMakeRect(100, 100, 500, 250)
                                     styleMask: (NSTitledWindowMask
                                       | NSClosableWindowMask
                                       | NSMiniaturizableWindowMask
@@ -162,7 +162,7 @@ NSObject
   [openPanel setTreatsFilePackagesAsDirectories: YES];
   [openPanel setAllowsMultipleSelection: NO];
 
-  result = [openPanel runModalForDirectory: NSHomeDirectory ()
+  result = [openPanel runModalForDirectory: NSHomeDirectory()
                                       file: nil
                                      types: nil];
 

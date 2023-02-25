@@ -43,7 +43,7 @@
   [comp lockFocus];
 
   [[NSColor clearColor] set];
-  NSRectFill (frame);
+  NSRectFill(frame);
 
   PSsetlinewidth(4);
   PSsetrgbcolor(0.6, 0.3, 0);
@@ -65,7 +65,7 @@
 {
   NSPoint origin;
 
-  origin = NSMakePoint (50, 50);
+  origin = NSMakePoint(50, 50);
   PSsetrgbcolor(0, 0.5, 0.6);
   NSRectFill(rect);
   [[self compositeImage] compositeToPoint: origin operation: NSCompositeSourceOver];

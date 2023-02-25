@@ -7,12 +7,12 @@
 - (id) init
 {
   self = [super init];
-  
+
   if (self)
     {
       rep = nil;
     }
-  
+
   return self;
 }
 
@@ -25,7 +25,7 @@
 {
   NSData *data = [NSData dataWithContentsOfFile: fileName];
   rep = [[NSBitmapImageRep imageRepWithData: data] retain];
-  
+
   if (rep != nil)
     {
       return YES;
@@ -39,8 +39,8 @@
 - (BOOL) writeToFile: (NSString *)fileName ofType: (NSString *)fileType
 {
   NSData *file = [[view currentContent] representationUsingType: NSJPEGFileType
-                                                                      properties: nil];
-                                                                      
+                                                     properties: nil];
+
   return [file writeToFile: fileName atomically: YES];
 }
 

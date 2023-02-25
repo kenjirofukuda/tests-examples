@@ -1,8 +1,8 @@
 /*
- *  CurrencyConverter.m: A mini over-commented sample GNUstep app 
+ *  CurrencyConverter.m: A mini over-commented sample GNUstep app
  *
  *  Copyright (c) 1999 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Nicola Pero
  *  Date: November 1999
  *
@@ -24,16 +24,16 @@
  */
 
 /*
- * This mini sample program documents using text fields. 
+ * This mini sample program documents using text fields.
  *
- * Layout is done with GSHbox, GSVbox.  
- * See Calculator.app for an example of window layout done without 
+ * Layout is done with GSHbox, GSVbox.
+ * See Calculator.app for an example of window layout done without
  * using GSVbox & GSHbox.
  */
 
 /*
- *  I took the idea of writing this example code from an old GNUstep project 
- *  by Michael S. Hanni, but everything was coded from scratch. 
+ *  I took the idea of writing this example code from an old GNUstep project
+ *  by Michael S. Hanni, but everything was coded from scratch.
  */
 
 // Include the definition of our custom class.
@@ -45,49 +45,50 @@
 
 
 // Text to be displayed in the labels
-static NSString* fieldString[3] = {
+static NSString *fieldString[3] =
+{
   @"Amount in other currency:",
-  @"EUROs to convert:", 
+  @"EUROs to convert:",
   @"Exchange rate per 1 EURO:"
 };
 
 // Implementation of our custom class.
 @implementation CurrencyConverter
 {
-  // See the @interface declaration in CurrencyConverter.h 
+  // See the @interface declaration in CurrencyConverter.h
   // for the listing of instance variables
 }
 //
 // Methods implementation
 //
 
-// Initialize an instance object of our class. 
+// Initialize an instance object of our class.
 - (id) init
 {
-  GSVbox* windowVbox;
-  GSVbox* formVbox;
-  GSHbox* hbox;
-  NSTextField* label;
+  GSVbox *windowVbox;
+  GSVbox *formVbox;
+  GSHbox *hbox;
+  NSTextField *label;
   NSRect winFrame;
   int i;
   NSSize size;
 
   self = [super init];
 
-  // Create a vertical box (NB: Things are packed in the box 
+  // Create a vertical box (NB: Things are packed in the box
   // from bottom to top)
-  windowVbox = AUTORELEASE ([GSVbox new]);
+  windowVbox = AUTORELEASE([GSVbox new]);
   [windowVbox setBorder: 0];
   [windowVbox setDefaultMinYMargin: 0];
-  
+
   //
   // Result field
   //
-  hbox = AUTORELEASE ([GSHbox new]);
+  hbox = AUTORELEASE([GSHbox new]);
   [hbox setDefaultMinXMargin: 10];
   [hbox setBorder: 10];
 
-  label = AUTORELEASE ([NSTextField new]);
+  label = AUTORELEASE([NSTextField new]);
   [label setSelectable: NO];
   [label setBezeled: NO];
   [label setDrawsBackground: NO];
@@ -95,9 +96,9 @@ static NSString* fieldString[3] = {
   [label sizeToFit];
   [label setAutoresizingMask: NSViewHeightSizable];
   [hbox addView: label
-	enablingXResizing: NO];
-  
-  field[0] = AUTORELEASE ([NSTextField new]);
+  enablingXResizing: NO];
+
+  field[0] = AUTORELEASE([NSTextField new]);
   [field[0] setSelectable: YES];
   [field[0] setEditable: NO];
   [field[0] setBezeled: YES];
@@ -120,11 +121,11 @@ static NSString* fieldString[3] = {
   // Separator
   //
   [windowVbox addSeparator];
-  
+
   //
   // Upper part of the window
   //
-  formVbox = AUTORELEASE ([GSVbox new]);
+  formVbox = AUTORELEASE([GSVbox new]);
   [formVbox setBorder: 10];
   [formVbox setDefaultMinYMargin: 10];
 
@@ -133,10 +134,10 @@ static NSString* fieldString[3] = {
     {
       // We are doing it the hard way, without NSForm, to show how to do
       // more generally to pack things and objects
-      hbox = AUTORELEASE ([GSHbox new]);
+      hbox = AUTORELEASE([GSHbox new]);
       [hbox setDefaultMinXMargin: 10];
 
-      label = AUTORELEASE ([NSTextField new]);
+      label = AUTORELEASE([NSTextField new]);
       [label setSelectable: NO];
       [label setBezeled: NO];
       [label setDrawsBackground: NO];
@@ -144,9 +145,9 @@ static NSString* fieldString[3] = {
       [label sizeToFit];
       [label setAutoresizingMask: NSViewHeightSizable];
       [hbox addView: label
-	    enablingXResizing: NO];
+      enablingXResizing: NO];
 
-      field[i] = AUTORELEASE ([NSTextField new]);
+      field[i] = AUTORELEASE([NSTextField new]);
       [field[i] setEditable: YES];
       [field[i] setBezeled: YES];
       [field[i] setDrawsBackground: YES];
@@ -169,7 +170,7 @@ static NSString* fieldString[3] = {
   [field[1] setNextText: field[2]];
   [field[2] setNextText: field[1]];
 
-  // Ask to receive interesting messages concerning what's happening 
+  // Ask to receive interesting messages concerning what's happening
   // to the fields.  We are interested only in [-controlTextDidEndEditing:]
   [field[1] setDelegate: self];
   [field[2] setDelegate: self];
@@ -181,34 +182,34 @@ static NSString* fieldString[3] = {
   // Window
   //
   winFrame.size = [windowVbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
-  // Now we can make the window of the exact size  
+  // Now we can make the window of the exact size
   // NB: Note that we do not autorelease the window
-  window = [[NSWindow alloc] 
-	     initWithContentRect: winFrame
-	     styleMask: (NSTitledWindowMask | NSMiniaturizableWindowMask 
-			 | NSResizableWindowMask)
-	     backing: NSBackingStoreBuffered
-	     defer: YES];
+  window = [[NSWindow alloc]
+            initWithContentRect: winFrame
+                      styleMask: (NSTitledWindowMask | NSMiniaturizableWindowMask
+                        | NSResizableWindowMask)
+                        backing: NSBackingStoreBuffered
+                          defer: YES];
   [window setTitle: @"CurrencyConverter.app"];
   [window setContentView: windowVbox];
   [window setMinSize: [NSWindow frameRectForContentRect: winFrame
-				styleMask: [window styleMask]].size];
+                       styleMask: [window styleMask]].size];
 
   // Trick to forbid vertical resizing
-  [window setResizeIncrements: NSMakeSize (1, 100000)];
+  [window setResizeIncrements: NSMakeSize(1, 100000)];
   return self;
 }
-- (void)dealloc
+- (void) dealloc
 {
   // Releasing the window releases all its views in cascade
-  RELEASE (window);
+  RELEASE(window);
   [super dealloc];
 }
 
 // Received upon ending of editing in one of the two fields.
-- (void)controlTextDidEndEditing: (NSNotification *)aNotification
+- (void) controlTextDidEndEditing: (NSNotification *)aNotification
 {
   float euros, rate, total;
 
@@ -218,19 +219,19 @@ static NSString* fieldString[3] = {
 
   // Compute total
   total = euros * rate;
-  
+
   // Display total
   [field[0] setFloatValue: total];
 }
 
 // As app delegate, we receive this message from the app
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+- (void) applicationDidFinishLaunching: (NSNotification *)aNotification;
 {
   [window orderFront: self];
 }
 
-// Execution starts from here. 
-int main (void)
+// Execution starts from here.
+int main(void)
 {
   ENTER_POOL
   NSApplication *app;
@@ -241,59 +242,59 @@ int main (void)
 
   // Get the object representing our application.
   app = [NSApplication sharedApplication];
-  
+
   //
-  // Create the Menu 
+  // Create the Menu
   //
 
   // Main Menu
-  mainMenu = AUTORELEASE ([NSMenu new]);
-  
+  mainMenu = AUTORELEASE([NSMenu new]);
+
   // Info Item
   // The object receiving this message is determined at run time;
   // it will be the NSApplication
-  [mainMenu addItemWithTitle: @"Info..." 
-                      action: @selector (orderFrontStandardInfoPanel:) 
+  [mainMenu addItemWithTitle: @"Info..."
+                      action: @selector(orderFrontStandardInfoPanel:)
                keyEquivalent: @""];
-  
+
   // Edit Submenu
-  menuItem = [mainMenu addItemWithTitle: @"Edit" 
-                                 action: NULL 
+  menuItem = [mainMenu addItemWithTitle: @"Edit"
+                                 action: NULL
                           keyEquivalent: @""];
-  menu = AUTORELEASE ([NSMenu new]);
+  menu = AUTORELEASE([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
-  
-  // The object which should receive the messages cut:, copy:, paste: is not 
-  // specified, so that the library will have to determine it at run time. 
-  // At first, it will (try to) send them to the 'first responder' 
-  // -- the object which is receiving keyboard input.  
-  // In our case that is precisely what we want, since the first responder 
-  // is the NSText being edited (which knows how to handle cut:, copy:, 
-  // paste:), if any.  
-  [menu addItemWithTitle: @"Cut" 
-                  action: @selector (cut:) 
+
+  // The object which should receive the messages cut:, copy:, paste: is not
+  // specified, so that the library will have to determine it at run time.
+  // At first, it will (try to) send them to the 'first responder'
+  // -- the object which is receiving keyboard input.
+  // In our case that is precisely what we want, since the first responder
+  // is the NSText being edited (which knows how to handle cut:, copy:,
+  // paste:), if any.
+  [menu addItemWithTitle: @"Cut"
+                  action: @selector(cut:)
            keyEquivalent: @"x"];
 
-  [menu addItemWithTitle: @"Copy" 
-                  action: @selector (copy:) 
+  [menu addItemWithTitle: @"Copy"
+                  action: @selector(copy:)
            keyEquivalent: @"c"];
 
-  [menu addItemWithTitle: @"Paste" 
-                  action: @selector (paste:) 
+  [menu addItemWithTitle: @"Paste"
+                  action: @selector(paste:)
            keyEquivalent: @"v"];
 
-  [menu addItemWithTitle: @"SelectAll" 
-                  action: @selector (selectAll:) 
+  [menu addItemWithTitle: @"SelectAll"
+                  action: @selector(selectAll:)
            keyEquivalent: @"a"];
 
   // Hide MenuItem
-  [mainMenu addItemWithTitle: @"Hide" 
-                      action: @selector (hide:) 
+  [mainMenu addItemWithTitle: @"Hide"
+                      action: @selector(hide:)
                keyEquivalent: @""];
   // Quit MenuItem
-  [mainMenu addItemWithTitle: @"Quit" 
-                      action: @selector (terminate:)
-               keyEquivalent: @"q"];	
+  [mainMenu addItemWithTitle: @"Quit"
+                      action: @selector(terminate:)
+               keyEquivalent: @"q"];
 
   [app setMainMenu: mainMenu];
   // The default title @"Currency Converter" is a bit too long
@@ -302,12 +303,12 @@ int main (void)
 
   // Create and initializes an instance of our custom object.
   converter = [[CurrencyConverter alloc] init];
- 
-  // Set our custom object instance as the application delegate. 
-  // This means that 'converter' will receive certain messages 
-  // (documented in the doc) before/after important events for the app 
+
+  // Set our custom object instance as the application delegate.
+  // This means that 'converter' will receive certain messages
+  // (documented in the doc) before/after important events for the app
   // life, such as starting, ending, closing last window, etc.
-  // In this context, we are interested in receiving the 
+  // In this context, we are interested in receiving the
   // [-applicationDidFinishLaunching:] message.
   [app setDelegate: converter];
 

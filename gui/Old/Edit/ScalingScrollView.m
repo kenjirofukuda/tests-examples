@@ -28,7 +28,7 @@
     NSLocalizedString(@"400%", @"Zoom popup entry")
     NSLocalizedString(@"800%", @"Zoom popup entry")
     NSLocalizedString(@"1600%", @"Zoom popup entry")
-*/   
+*/
 static NSString *_NSDefaultScaleMenuLabels[] = {/* @"Set...", */ @"10%", @"25%", @"50%", @"75%", @"100%", @"128%", @"200%", @"400%", @"800%", @"1600%"};
 static float _NSDefaultScaleMenuFactors[] = {/* 0.0, */ 0.1, 0.25, 0.5, 0.75, 1.0, 1.28, 2.0, 4.0, 8.0, 16.0};
 static unsigned _NSDefaultScaleMenuSelectedItemIndex = 4;
@@ -37,115 +37,133 @@ static float _NSScaleMenuFontSize = 10.0;
 
 @implementation ScalingScrollView
 
-- (id)initWithFrame:(NSRect)rect {
-    if (self = [super initWithFrame:rect]) {
-        scaleFactor = 1.0;
+- (id) initWithFrame: (NSRect)rect
+{
+  if (self = [super initWithFrame: rect])
+    {
+      scaleFactor = 1.0;
     }
-    return self;
+  return self;
 }
 
-- (void)_makeScalePopUpButton {
-    if (_scalePopUpButton == nil) {
-        unsigned cnt, numberOfDefaultItems = (sizeof(_NSDefaultScaleMenuLabels) / sizeof(NSString *));
-        NSButtonCell *curItem;
+- (void) _makeScalePopUpButton
+{
+  if (_scalePopUpButton == nil)
+    {
+      unsigned cnt, numberOfDefaultItems = (sizeof(_NSDefaultScaleMenuLabels) / sizeof(NSString *));
+      NSButtonCell *curItem;
 
-        // create it
-        _scalePopUpButton = [[NSPopUpButton allocWithZone:[self zone]] initWithFrame:NSMakeRect(0.0, 0.0, 1.0, 1.0) pullsDown:NO];
+      // create it
+      _scalePopUpButton = [[NSPopUpButton allocWithZone: [self zone]] initWithFrame: NSMakeRect(0.0, 0.0, 1.0, 1.0) pullsDown: NO];
 
-        // fill it
-        for (cnt = 0; cnt < numberOfDefaultItems; cnt++) {
-            [_scalePopUpButton addItemWithTitle:NSLocalizedString(_NSDefaultScaleMenuLabels[cnt], nil)];
-            curItem = [_scalePopUpButton itemAtIndex:cnt];
-            if (_NSDefaultScaleMenuFactors[cnt] != 0.0) {
-                [curItem setRepresentedObject:[NSNumber numberWithFloat:_NSDefaultScaleMenuFactors[cnt]]];
+      // fill it
+      for (cnt = 0; cnt < numberOfDefaultItems; cnt++)
+        {
+          [_scalePopUpButton addItemWithTitle: NSLocalizedString(_NSDefaultScaleMenuLabels[cnt], nil)];
+          curItem = [_scalePopUpButton itemAtIndex: cnt];
+          if (_NSDefaultScaleMenuFactors[cnt] != 0.0)
+            {
+              [curItem setRepresentedObject: [NSNumber numberWithFloat: _NSDefaultScaleMenuFactors[cnt]]];
             }
         }
-        [_scalePopUpButton selectItemAtIndex:_NSDefaultScaleMenuSelectedItemIndex];
+      [_scalePopUpButton selectItemAtIndex: _NSDefaultScaleMenuSelectedItemIndex];
 
-        // hook it up
-        [_scalePopUpButton setTarget:self];
-        [_scalePopUpButton setAction:@selector(scalePopUpAction:)];
+      // hook it up
+      [_scalePopUpButton setTarget: self];
+      [_scalePopUpButton setAction: @selector(scalePopUpAction:)];
 
-        // set a suitable font
-        [_scalePopUpButton setFont:[NSFont systemFontOfSize:_NSScaleMenuFontSize]];
+      // set a suitable font
+      [_scalePopUpButton setFont: [NSFont systemFontOfSize: _NSScaleMenuFontSize]];
 
-        // Make sure the popup is big enough to fit the cells.
-        [_scalePopUpButton sizeToFit];
+      // Make sure the popup is big enough to fit the cells.
+      [_scalePopUpButton sizeToFit];
 
-	// don't let it become first responder
-	[_scalePopUpButton setRefusesFirstResponder:YES];
+      // don't let it become first responder
+      [_scalePopUpButton setRefusesFirstResponder: YES];
 
-        // put it in the scrollview
-        [self addSubview:_scalePopUpButton];
-        [_scalePopUpButton release];
+      // put it in the scrollview
+      [self addSubview: _scalePopUpButton];
+      [_scalePopUpButton release];
     }
 }
 
-- (void)tile {
-    // Let the superclass do most of the work.
-    [super tile];
+- (void) tile
+{
+  // Let the superclass do most of the work.
+  [super tile];
 
-    if (![self hasHorizontalScroller]) {
-        if (_scalePopUpButton) [_scalePopUpButton removeFromSuperview];
-        _scalePopUpButton = nil;
-    } else {
-	NSScroller *horizScroller;
-	NSRect horizScrollerFrame, buttonFrame, incrementLineFrame;
-	
-        if (!_scalePopUpButton) [self _makeScalePopUpButton];
+  if (![self hasHorizontalScroller])
+    {
+      if (_scalePopUpButton) [_scalePopUpButton removeFromSuperview];
+      _scalePopUpButton = nil;
+    }
+  else
+    {
+      NSScroller *horizScroller;
+      NSRect horizScrollerFrame, buttonFrame, incrementLineFrame;
 
-        horizScroller = [self horizontalScroller];
-        horizScrollerFrame = [horizScroller frame];
-	incrementLineFrame = [horizScroller rectForPart:NSScrollerIncrementLine];
-        buttonFrame = [_scalePopUpButton frame];
+      if (!_scalePopUpButton) [self _makeScalePopUpButton];
 
-        // Now we'll just adjust the horizontal scroller size and set the button size and location.
-        horizScrollerFrame.size.width = horizScrollerFrame.size.width - buttonFrame.size.width - _NSButtonPadding;
-        [horizScroller setFrameSize:horizScrollerFrame.size];
+      horizScroller = [self horizontalScroller];
+      horizScrollerFrame = [horizScroller frame];
+      incrementLineFrame = [horizScroller rectForPart: NSScrollerIncrementLine];
+      buttonFrame = [_scalePopUpButton frame];
 
-        buttonFrame.origin.x = NSMaxX(horizScrollerFrame);
-	buttonFrame.size.height = incrementLineFrame.size.height;
-        buttonFrame.origin.y = horizScrollerFrame.origin.y + incrementLineFrame.origin.y;
-        [_scalePopUpButton setFrame:buttonFrame];
+      // Now we'll just adjust the horizontal scroller size and set the button size and location.
+      horizScrollerFrame.size.width = horizScrollerFrame.size.width - buttonFrame.size.width - _NSButtonPadding;
+      [horizScroller setFrameSize: horizScrollerFrame.size];
+
+      buttonFrame.origin.x = NSMaxX(horizScrollerFrame);
+      buttonFrame.size.height = incrementLineFrame.size.height;
+      buttonFrame.origin.y = horizScrollerFrame.origin.y + incrementLineFrame.origin.y;
+      [_scalePopUpButton setFrame: buttonFrame];
     }
 }
 
-- (void)scalePopUpAction:(id)sender {
-    NSNumber *selectedFactorObject = [[sender selectedCell] representedObject];
-    
-    if (selectedFactorObject == nil) {
-        NSLog(@"Scale popup action: setting arbitrary zoom factors is not yet supported.");
-        return;
-    } else {
-        [self setScaleFactor:[selectedFactorObject floatValue]];
+- (void) scalePopUpAction: (id)sender
+{
+  NSNumber *selectedFactorObject = [[sender selectedCell] representedObject];
+
+  if (selectedFactorObject == nil)
+    {
+      NSLog(@"Scale popup action: setting arbitrary zoom factors is not yet supported.");
+      return;
+    }
+  else
+    {
+      [self setScaleFactor: [selectedFactorObject floatValue]];
     }
 }
 
-- (float)scaleFactor {
-    return scaleFactor;
+- (float) scaleFactor
+{
+  return scaleFactor;
 }
 
-- (void)setScaleFactor:(float)newScaleFactor {
-    if (scaleFactor != newScaleFactor) {
-	NSSize curDocFrameSize, newDocBoundsSize;
-	NSView *clipView = [[self documentView] superview];
-	
-	scaleFactor = newScaleFactor;
-	
-	// Get the frame.  The frame must stay the same.
-	curDocFrameSize = [clipView frame].size;
-	
-	// The new bounds will be frame divided by scale factor
-	newDocBoundsSize.width = curDocFrameSize.width / newScaleFactor;
-	newDocBoundsSize.height = curDocFrameSize.height / newScaleFactor;
-	
-	[clipView setBoundsSize:newDocBoundsSize];
+- (void) setScaleFactor: (float)newScaleFactor
+{
+  if (scaleFactor != newScaleFactor)
+    {
+      NSSize curDocFrameSize, newDocBoundsSize;
+      NSView *clipView = [[self documentView] superview];
+
+      scaleFactor = newScaleFactor;
+
+      // Get the frame.  The frame must stay the same.
+      curDocFrameSize = [clipView frame].size;
+
+      // The new bounds will be frame divided by scale factor
+      newDocBoundsSize.width = curDocFrameSize.width / newScaleFactor;
+      newDocBoundsSize.height = curDocFrameSize.height / newScaleFactor;
+
+      [clipView setBoundsSize: newDocBoundsSize];
     }
 }
 
-- (void)setHasHorizontalScroller:(BOOL)flag {
-    if (!flag) [self setScaleFactor:1.0];
-    [super setHasHorizontalScroller:flag];
+- (void) setHasHorizontalScroller: (BOOL)flag
+{
+  if (!flag) [self setScaleFactor: 1.0];
+  [super setHasHorizontalScroller: flag];
 }
 
 @end

@@ -1,23 +1,23 @@
 /*
    nsimagecell.m
-   
+
    Copyright (C) 1999 Free Software Foundation, Inc.
-   
+
    Author: Jonathan Gapen <jagapen@smithlab.chem.wisc.edu>
    Date: May 1999
-  
+
    This file is part of the GNUstep GUI X/RAW Library.
-   
+
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public
    License as published by the Free Software Foundation; either
    version 2 of the License, or (at your option) any later version.
-   
+
    This library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
    Library General Public License for more details.
-   
+
    You should have received a copy of the GNU Library General Public
    License along with this library; if not, write to the Free
    Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02111, USA.
@@ -29,13 +29,13 @@
 
 @interface matrixController : NSObject
 {
-  NSMatrix* matrix;
+  NSMatrix *matrix;
 }
 
 @end
 @implementation matrixController
 
-- (void) setMatrix: (NSMatrix*)anObject
+- (void) setMatrix: (NSMatrix *)anObject
 {
   matrix = anObject;
 }
@@ -68,11 +68,11 @@
   [imageCell setImage: [NSImage imageNamed: @"NSRadioButton"]];
 
   theMatrix = [[[NSMatrix alloc] initWithFrame: matrixRect
-				  mode: NSRadioModeMatrix
-				  prototype: imageCell
-				  numberOfRows: 3
-				  numberOfColumns: 4]
-				  autorelease];
+                                  mode: NSRadioModeMatrix
+                                  prototype: imageCell
+                                  numberOfRows: 3
+                                  numberOfColumns: 4]
+                                 autorelease];
   [theMatrix setCellSize: cellSize];
   [[window contentView] addSubview: theMatrix];
 
@@ -113,7 +113,7 @@
 
   imageCell = [theMatrix cellAtRow: 2 column: 3];
   [imageCell setImageScaling: NSScaleNone];
-  
+
   [window setTitle: @"NSImageCell Test"];
   [window setFrame: winRect display: YES];
   [window orderFront: nil];
@@ -122,7 +122,7 @@
 @end
 
 int
-main(int argc, char** argv, char** env)
+main(int argc, char **argv, char **env)
 {
   id pool = [NSAutoreleasePool new];
   NSApplication *theApp;
@@ -132,20 +132,20 @@ main(int argc, char** argv, char** env)
 #endif
 
   theApp = [NSApplication sharedApplication];
-  [theApp setDelegate: [matrixController new]];	
+  [theApp setDelegate: [matrixController new]];
   {
     NSMenu	*menu = [NSMenu new];
 
     [menu addItemWithTitle: @"Quit"
-		    action: @selector(terminate:)
-	     keyEquivalent: @"q"];
+                    action: @selector(terminate:)
+             keyEquivalent: @"q"];
     [NSApp setMainMenu: menu];
   }
 
   [theApp run];
-  
+
   [pool release];
-  
+
   return 0;
 }
 

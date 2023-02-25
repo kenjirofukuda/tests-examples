@@ -34,7 +34,7 @@
 #import "Controller.h"
 
 int
-main (void)
+main(void)
 {
   NSApplication *app;
   NSMenu *mainMenu, *subMenu;
@@ -52,49 +52,49 @@ main (void)
   //
 
   // Main Menu
-  mainMenu = AUTORELEASE ([NSMenu new]);
+  mainMenu = AUTORELEASE([NSMenu new]);
 
   // Info SubMenu
   menuItem = [mainMenu addItemWithTitle: @"Info"
                                  action: NULL
                           keyEquivalent: @""];
-  menu = AUTORELEASE ([NSMenu new]);
+  menu = AUTORELEASE([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
   [menu addItemWithTitle: @"Info Panel..."
-                  action: @selector (orderFrontStandardInfoPanel:)
+                  action: @selector(orderFrontStandardInfoPanel:)
            keyEquivalent: @""];
   [menu addItemWithTitle: @"Preferences..."
-                  action: @selector (runPreferencesPanel:)
+                  action: @selector(runPreferencesPanel:)
            keyEquivalent: @""];
   [menu addItemWithTitle: @"Help..."
-                  action: @selector (orderFrontHelpPanel:)
+                  action: @selector(orderFrontHelpPanel:)
            keyEquivalent: @"?"];
 
   // Document Submenu
   menuItem = [mainMenu addItemWithTitle: @"Document"
                                  action: NULL
                           keyEquivalent: @""];
-  menu = AUTORELEASE ([NSMenu new]);
+  menu = AUTORELEASE([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
   subMenuItem =
     [menu addItemWithTitle: @"New Fractal Window"
                     action: NULL
              keyEquivalent: @""];
 
-  subMenu = AUTORELEASE ([NSMenu new]);
+  subMenu = AUTORELEASE([NSMenu new]);
   [menu setSubmenu: subMenu forItem: subMenuItem];
   [[subMenu addItemWithTitle: [FractalWindow typeToString: ZSQUARED]
-                       action: @selector (startNewFractalWindow:)
+                       action: @selector(startNewFractalWindow:)
                 keyEquivalent: @"n"] setTag: ZSQUARED];
   for (ft = 1; ft < FTYPE_COUNT; ft++)
     {
       [[subMenu addItemWithTitle: [FractalWindow typeToString: ft]
-                            action: @selector (startNewFractalWindow:)
+                            action: @selector(startNewFractalWindow:)
                      keyEquivalent: @""] setTag: ft];
     }
 
   [menu addItemWithTitle: @"Save As..."
-                  action: @selector (saveAs:)
+                  action: @selector(saveAs:)
            keyEquivalent: @"s"];
   [menu addItemWithTitle: @"Miniaturize"
                   action: @selector(performMiniaturize:)
@@ -107,34 +107,34 @@ main (void)
   menuItem = [mainMenu addItemWithTitle: @"Fractal"
                                  action: NULL
                           keyEquivalent: @""];
-  menu = AUTORELEASE ([NSMenu new]);
+  menu = AUTORELEASE([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
   subMenuItem = [menu addItemWithTitle: @"Resolution"
                                 action: NULL
                          keyEquivalent: @""];
 
-  subMenu = AUTORELEASE ([NSMenu new]);
+  subMenu = AUTORELEASE([NSMenu new]);
   [menu setSubmenu: subMenu forItem: subMenuItem];
   [[subMenu addItemWithTitle: @"200"
-                      action: @selector (resolution:)
+                      action: @selector(resolution:)
                keyEquivalent: @""] setTag: 200];
   [[subMenu addItemWithTitle: @"400"
-                      action: @selector (resolution:)
+                      action: @selector(resolution:)
                keyEquivalent: @""] setTag: 400];
   [[subMenu addItemWithTitle: @"600"
-                      action: @selector (resolution:)
+                      action: @selector(resolution:)
                keyEquivalent: @""] setTag: 600];
 
 
   subMenuItem = [menu addItemWithTitle: @"Color Scheme"
                                 action: NULL
                          keyEquivalent: @""];
-  subMenu = AUTORELEASE ([NSMenu new]);
+  subMenu = AUTORELEASE([NSMenu new]);
   [menu setSubmenu: subMenu forItem: subMenuItem];
   for (cs = 0; cs < CSCHEME_COUNT; cs++)
     {
       [[subMenu addItemWithTitle: [FractalWindow schemeToString: cs]
-                            action: @selector (colorScheme:)
+                            action: @selector(colorScheme:)
                      keyEquivalent: @""] setTag: cs];
     }
 
@@ -142,41 +142,41 @@ main (void)
                                 action: NULL
                          keyEquivalent: @""];
 
-  subMenu = AUTORELEASE ([NSMenu new]);
+  subMenu = AUTORELEASE([NSMenu new]);
   [menu setSubmenu: subMenu forItem: subMenuItem];
   [[subMenu addItemWithTitle: @"Zoom in"
-                      action: @selector (zoomOp:)
+                      action: @selector(zoomOp:)
                keyEquivalent: @""] setTag: ZOOM_IN];
   [[subMenu addItemWithTitle: @"Zoom out"
-                      action: @selector (zoomOp:)
+                      action: @selector(zoomOp:)
                keyEquivalent: @""] setTag: ZOOM_OUT];
   [[subMenu addItemWithTitle: @"Restore"
-                      action: @selector (zoomOp:)
+                      action: @selector(zoomOp:)
                keyEquivalent: @""] setTag: ZOOM_RESTORE];
 
   // Edit SubMenu
   menuItem = [mainMenu addItemWithTitle: @"Edit"
                                  action: NULL
                           keyEquivalent: @""];
-  menu = AUTORELEASE ([NSMenu new]);
+  menu = AUTORELEASE([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
   [menu addItemWithTitle: @"Cut"
-                  action: @selector (cut:)
+                  action: @selector(cut:)
            keyEquivalent: @"x"];
   [menu addItemWithTitle: @"Copy"
-                  action: @selector (copy:)
+                  action: @selector(copy:)
            keyEquivalent: @"c"];
   [menu addItemWithTitle: @"Paste"
-                  action: @selector (paste:)
+                  action: @selector(paste:)
            keyEquivalent: @"v"];
   [menu addItemWithTitle: @"SelectAll"
-                  action: @selector (selectAll:)
+                  action: @selector(selectAll:)
            keyEquivalent: @"a"];
   // Windows SubMenu
   menuItem = [mainMenu addItemWithTitle: @"Windows"
                                  action: NULL
                           keyEquivalent: @""];
-  menu = AUTORELEASE ([NSMenu new]);
+  menu = AUTORELEASE([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
   [menu addItemWithTitle: @"Arrange"
                   action: @selector(arrangeInFront:)
@@ -191,12 +191,12 @@ main (void)
 
   // Hide MenuItem
   [mainMenu addItemWithTitle: @"Hide"
-                      action: @selector (hide:)
+                      action: @selector(hide:)
                keyEquivalent: @"h"];
 
   // Quit MenuItem
   [mainMenu addItemWithTitle: @"Quit"
-                      action: @selector (terminate:)
+                      action: @selector(terminate:)
                keyEquivalent: @"q"];
 
   [app setMainMenu: mainMenu];
@@ -206,7 +206,7 @@ main (void)
   [app run];
   [[NSUserDefaults standardUserDefaults] synchronize];
 
-  RELEASE (controller);
+  RELEASE(controller);
   LEAVE_POOL
   return 0;
 }

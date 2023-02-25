@@ -1,8 +1,8 @@
 /*
- *  SecondWindowOwner.h: An application to demonstrate the GNUstep toolbars 
+ *  SecondWindowOwner.h: An application to demonstrate the GNUstep toolbars
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
  *  Date: March 2004
  *

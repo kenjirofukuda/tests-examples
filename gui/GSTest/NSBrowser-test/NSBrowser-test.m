@@ -67,7 +67,7 @@ NSObject
   hbox = [GSHbox new];
   [hbox setBorder: 5];
 
-  b1 = [[NSBrowser alloc] initWithFrame: NSMakeRect (0, 0, 150, 300)];
+  b1 = [[NSBrowser alloc] initWithFrame: NSMakeRect(0, 0, 150, 300)];
   [b1 setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [b1 setDelegate: self];
   [b1 setMaxVisibleColumns: 1];
@@ -82,7 +82,7 @@ NSObject
   [b1 sizeToFit];
   [hbox addView: b1];
 
-  b2 = [[NSBrowser alloc] initWithFrame: NSMakeRect (0, 0, 150, 300)];
+  b2 = [[NSBrowser alloc] initWithFrame: NSMakeRect(0, 0, 150, 300)];
   [b2 setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [b2 setDelegate: self];
   [b2 setMaxVisibleColumns: 1];
@@ -98,7 +98,7 @@ NSObject
   [hbox addView: b2];
 
   winFrame.size = [hbox frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask

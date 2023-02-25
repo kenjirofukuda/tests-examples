@@ -3,7 +3,7 @@
 @interface PPDocumentClass : NSDocument
 {
   NSBitmapImageRep *rep;
-  
+
   // Outlet
   id view;
 }

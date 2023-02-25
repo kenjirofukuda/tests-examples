@@ -1,8 +1,8 @@
 /*
- *  SecondWindowOwner.m: An application to demonstrate the GNUstep toolbars 
+ *  SecondWindowOwner.m: An application to demonstrate the GNUstep toolbars
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
- *  
+ *
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
  *  Date: March 2004
  *
@@ -31,44 +31,44 @@
 - (void) awakeFromNib
 {
   NSToolbar *otherToolbar;
-  
+
   //NSLog(@"Nib loaded with window");
-  
+
   otherToolbar = [[NSToolbar alloc] initWithIdentifier: @"blablaToolbar"];
   //NSLog(@"Mini controller delegate %@", self);
-  
+
   [otherToolbar setDelegate: self];
-  
-  [otherToolbarView setBorderMask: GSToolbarViewTopBorder 
+
+  [otherToolbarView setBorderMask: GSToolbarViewTopBorder
                     | GSToolbarViewBottomBorder
                     | GSToolbarViewRightBorder
                     | GSToolbarViewLeftBorder];
   // We do a cast to eliminate a warning...
   [otherToolbar _setToolbarView: (GSToolbarView *)otherToolbarView];
-  
-  // We leak the toolbar! It should rather be an instance variable and 
+
+  // We leak the toolbar! It should rather be an instance variable and
   // freed when this object gets deallocated.
-  //RELEASE(otherToolbar);  
+  //RELEASE(otherToolbar);
 }
 
 // Toolbar delegates
 
-- (NSToolbarItem *) toolbar: (NSToolbar *)toolbar 
-      itemForItemIdentifier: (NSString *)identifier 
-  willBeInsertedIntoToolbar: (BOOL)willBeInserted 
+- (NSToolbarItem *) toolbar: (NSToolbar *)toolbar
+      itemForItemIdentifier: (NSString *)identifier
+  willBeInsertedIntoToolbar: (BOOL)willBeInserted
 {
   NSToolbarItem *toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: identifier];
 
   //NSLog(@"toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar: has been called");
-  
+
   if ([identifier isEqual: @"Third"])
     {
       [toolbarItem setLabel: @"Validation example"];
-      [toolbarItem setImage: [NSImage imageNamed:@"RecyclerFull"]];
+      [toolbarItem setImage: [NSImage imageNamed: @"RecyclerFull"]];
       [toolbarItem setTarget: buttonWithValidation];
       [toolbarItem setAction: @selector(performClick:)];
     }
-  else if ([identifier isEqual: @"Four"]) 
+  else if ([identifier isEqual: @"Four"])
     {
       [toolbarItem setLabel: @"Yet another item"];
       [toolbarItem setImage: [NSImage imageNamed: @"RecyclerFull"]];
@@ -84,30 +84,30 @@
   //NSLog(@"toolbarDefaultItemIdentifiers: has been called");
 
   return [NSArray arrayWithObjects: @"Third",
-                                    @"Four", 
-                                    NSToolbarShowFontsItemIdentifier, 
-				    NSToolbarShowColorsItemIdentifier,  
-				    nil];
+                  @"Four",
+                  NSToolbarShowFontsItemIdentifier,
+                  NSToolbarShowColorsItemIdentifier,
+                  nil];
 }
 
 - (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar
 {
-  //NSLog(@"toolbarAllowedItemIdentifiers: has been called"); 
-    
-  return [NSArray arrayWithObjects: @"Third", 
-                                    @"Four",
-                                    NSToolbarShowFontsItemIdentifier,
-	                            NSToolbarShowColorsItemIdentifier,  
-				    nil];
+  //NSLog(@"toolbarAllowedItemIdentifiers: has been called");
+
+  return [NSArray arrayWithObjects: @"Third",
+                  @"Four",
+                  NSToolbarShowFontsItemIdentifier,
+                  NSToolbarShowColorsItemIdentifier,
+                  nil];
 }
 
 - (NSArray *) toolbarSelectableItemIdentifiers: (NSToolbar *)toolbar
 {
   //NSLog(@"toolbarSelectableItemIdentifiers: has been called");
-  
-  return [NSArray arrayWithObjects: @"Third", 
-                                    NSToolbarShowFontsItemIdentifier,  
-				    nil];
+
+  return [NSArray arrayWithObjects: @"Third",
+                  NSToolbarShowFontsItemIdentifier,
+                  nil];
 }
 
 // ---
@@ -117,7 +117,7 @@
   [[otherToolbarView toolbar] removeItemAtIndex: [itemIndexField intValue]];
 }
 
-- (NSWindow *) window 
+- (NSWindow *) window
 {
   return window;
 }

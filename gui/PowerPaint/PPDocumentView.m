@@ -31,19 +31,19 @@
 - (void) setContent: (NSBitmapImageRep *)data
 {
   ASSIGN(lastFrame, data);
-  
+
   [[document undoManager] registerUndoWithTarget: self
-                                                        selector: @selector(setContent:)
-                                                          object: [self currentContent]];
+                                        selector: @selector(setContent:)
+                                          object: [self currentContent]];
   [self setNeedsDisplay: YES];
 }
 
 - (NSBitmapImageRep *) currentContent
 {
   NSBitmapImageRep *bitmap;
-  
+
   bitmap = [self bitmapImageRepForCachingDisplayInRect: [self frame]];
-  
+
   return bitmap;
 }
 
@@ -52,19 +52,19 @@
   BOOL click = YES;
   NSEvent *event;
   NSBitmapImageRep *bitmap = [self currentContent];
-  
+
   [[document undoManager] registerUndoWithTarget: self
                                                         selector: @selector(setContent:)
                                                           object: bitmap];
   ASSIGN(lastFrame, bitmap);
-  
+
   locA = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 
   while (click)
     {
       event = [[self window] nextEventMatchingMask:
                         NSLeftMouseUpMask | NSLeftMouseDraggedMask];
-                        
+
       switch ([event type])
         {
         case NSLeftMouseDragged:
@@ -74,7 +74,7 @@
             selectedRect.origin = locA;
             selectedRect.size = size;
             selection = YES;
-            
+
             if ([[NSApp delegate] tool] == 0)
               {
                 [self setNeedsDisplayInRect: NSMakeRect(locB.x - 2, locB.y - 2, 4, 4)];
@@ -98,16 +98,16 @@
 - (void) mouseDown: (NSEvent *)theEvent
 {
   NSBitmapImageRep *bitmap = [self currentContent];
-  
+
   [[document undoManager] registerUndoWithTarget: self
-                                                        selector: @selector(setContent:)
-                                                          object: bitmap];
+                                        selector: @selector(setContent:)
+                                          object: bitmap];
   ASSIGN(lastFrame, bitmap);
-  
+
   locA = [self convertPoint: [theEvent locationInWindow] fromView: nil];
   selectedRect.origin = locA;
   selection = YES;
-  
+
   switch ([[NSApp delegate] tool])
     {
     case 0:
@@ -130,7 +130,7 @@
   locB = [self convertPoint: [theEvent locationInWindow] fromView: nil];
   NSSize size = NSMakeSize(locB.x - locA.x, locB.y - locA.y);
   selectedRect.size = size;
-      
+
   if ([[NSApp delegate] tool] == 0)
     {
       [self setNeedsDisplayInRect: NSMakeRect(locB.x - 2, locB.y - 2, 4, 4)];
@@ -141,7 +141,7 @@
     }
 }
 
-- (void) mouseUp: (NSEvent*)theEvent
+- (void) mouseUp: (NSEvent *)theEvent
 {
   ASSIGN(lastFrame, [self currentContent]);
   selection = NO;
@@ -158,7 +158,7 @@
       [[NSColor whiteColor] set];
       [[NSBezierPath bezierPathWithRect: rect] fill];
     }
-  
+
   if (selection)
     {
       NSBezierPath *path;
@@ -167,32 +167,32 @@
       switch ([[NSApp delegate] tool])
         {
         case 0:
-          {
-            path = [NSBezierPath bezierPathWithRect: NSMakeRect(locB.x - 2, locB.y - 2, 4, 4)];
-            [path fill];
-          }
-          break;
+        {
+          path = [NSBezierPath bezierPathWithRect: NSMakeRect(locB.x - 2, locB.y - 2, 4, 4)];
+          [path fill];
+        }
+        break;
         case 1:
-          {
-            path = [NSBezierPath bezierPath];
-            [path moveToPoint: locA];
-            [path lineToPoint: locB];
-            [path setLineWidth: 2];
-            [path stroke];
-          }
-          break;
+        {
+          path = [NSBezierPath bezierPath];
+          [path moveToPoint: locA];
+          [path lineToPoint: locB];
+          [path setLineWidth: 2];
+          [path stroke];
+        }
+        break;
         case 2:
-          {
-            path = [NSBezierPath bezierPathWithOvalInRect: selectedRect];
-            [path fill];
-          }
-          break;
+        {
+          path = [NSBezierPath bezierPathWithOvalInRect: selectedRect];
+          [path fill];
+        }
+        break;
         case 3:
-          {
-            path = [NSBezierPath bezierPathWithRect: selectedRect];
-            [path fill];
-          }
-          break;
+        {
+          path = [NSBezierPath bezierPathWithRect: selectedRect];
+          [path fill];
+        }
+        break;
         }
     }
 }

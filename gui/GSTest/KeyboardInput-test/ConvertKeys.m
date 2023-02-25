@@ -115,7 +115,7 @@ character_table[CHARACTER_TABLE_SIZE] =
   { @"CarriageReturn", NSCarriageReturnCharacter }
 };
 
-NSString *convertCharactersToDisplayable (NSString *characters)
+NSString *convertCharactersToDisplayable(NSString *characters)
 {
   if ([characters length] == 1)
     {

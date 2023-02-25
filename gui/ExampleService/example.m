@@ -1,4 +1,4 @@
-/* 
+/*
    example.m
 
    GNUstep example services facility
@@ -7,20 +7,20 @@
 
    Author:  Richard Frith-Macdonald <richard@brainstorm.co.uk>
    Date: November 1998
-   
+
    This file is part of the GNUstep Project
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU General Public License
    as published by the Free Software Foundation; either version 2
    of the License, or (at your option) any later version.
-    
-   You should have received a copy of the GNU General Public  
+
+   You should have received a copy of the GNU General Public
    License along with this library; see the file COPYING.LIB.
    If not, write to the Free Software Foundation,
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-*/ 
+*/
 
 #import <Foundation/Foundation.h>
 #import <AppKit/NSApplication.h>
@@ -37,18 +37,18 @@
 #endif
 
 @interface ExampleServices : NSObject
-- (void) md5: (NSPasteboard*)bp
-    userData: (NSString*)ud
-       error: (NSString**)err;
-- (void) openURL: (NSPasteboard*)bp
-	userData: (NSString*)ud
-	   error: (NSString**)err;
-- (void) tolower: (NSPasteboard*)bp
-	userData: (NSString*)ud
-	   error: (NSString**)err;
-- (void) toupper: (NSPasteboard*)bp
-	userData: (NSString*)ud
-	   error: (NSString**)err;
+- (void) md5: (NSPasteboard *)bp
+    userData: (NSString *)ud
+       error: (NSString **)err;
+- (void) openURL: (NSPasteboard *)bp
+        userData: (NSString *)ud
+           error: (NSString **)err;
+- (void) tolower: (NSPasteboard *)bp
+        userData: (NSString *)ud
+           error: (NSString **)err;
+- (void) toupper: (NSPasteboard *)bp
+        userData: (NSString *)ud
+           error: (NSString **)err;
 @end
 
 @implementation ExampleServices
@@ -56,9 +56,9 @@
 /**
  * Filter a string to an md5 digest of its utf8 value.
  */
-- (void) md5: (NSPasteboard*)pb
-    userData: (NSString*)ud
-       error: (NSString**)err
+- (void) md5: (NSPasteboard *)pb
+    userData: (NSString *)ud
+       error: (NSString **)err
 {
   NSArray	*types;
   NSString	*val;
@@ -85,9 +85,9 @@
   [pb setData: data forType: @"md5Digest"];
 }
 
-- (void) openURL: (NSPasteboard*)pb
-	userData: (NSString*)ud
-	   error: (NSString**)err
+- (void) openURL: (NSPasteboard *)pb
+        userData: (NSString *)ud
+           error: (NSString **)err
 {
   NSString	*url;
   NSArray	*types;
@@ -111,25 +111,25 @@
       return;
     }
 
-  browser = [defs objectForKey:@"NSWebBrowser"];
-  if(!browser || [browser isEqualToString:@""])
-  {
-    browser = @"mozilla -remote \"openURL(%@,new-window)\"";
-  }
+  browser = [defs objectForKey: @"NSWebBrowser"];
+  if (!browser || [browser isEqualToString: @""])
+    {
+      browser = @"mozilla -remote \"openURL(%@,new-window)\"";
+    }
 
   path = @"/bin/sh";
   args = [NSArray arrayWithObjects:
-    @"-c",
-    [NSString stringWithFormat: browser, url],
-    nil];
+                  @"-c",
+                  [NSString stringWithFormat: browser, url],
+                  nil];
 
   [NSTask launchedTaskWithLaunchPath: path
                            arguments: args];
 }
 
-- (void) tolower: (NSPasteboard*)pb
-	userData: (NSString*)ud
-	   error: (NSString**)err
+- (void) tolower: (NSPasteboard *)pb
+        userData: (NSString *)ud
+           error: (NSString **)err
 {
   NSString	*in;
   NSString	*out;
@@ -157,9 +157,9 @@
 
 }
 
-- (void) toupper: (NSPasteboard*)pb
-	userData: (NSString*)ud
-	   error: (NSString**)err
+- (void) toupper: (NSPasteboard *)pb
+        userData: (NSString *)ud
+           error: (NSString **)err
 {
   NSString	*in;
   NSString	*out;
@@ -225,13 +225,13 @@ ihandler(int sig)
   if (e != 0)
     {
       if (strcasecmp(e, "yes") == 0 || strcasecmp(e, "true") == 0)
-	action = YES;
+        action = YES;
       else if (strcasecmp(e, "no") == 0 || strcasecmp(e, "false") == 0)
-	action = NO;
+        action = NO;
       else if (isdigit(*e) && *e != '0')
-	action = YES;
+        action = YES;
       else
-	action = NO;
+        action = NO;
     }
 
   if (action == YES)
@@ -246,7 +246,7 @@ ihandler(int sig)
 }
 
 static void
-init(int argc, char** argv)
+init(int argc, char **argv)
 {
   const char  *options = "Hdv";
   int	  sym;
@@ -254,28 +254,28 @@ init(int argc, char** argv)
   progName = argv[0];
   while ((sym = getopt(argc, argv, options)) != -1)
     {
-      switch(sym)
-	{
-	  case 'H':
-	    printf("%s -[%s]\n", argv[0], options);
-	    printf("GNU Services example server\n");
-	    printf("-H\tfor help\n");
-	    printf("-d\tavoid fork() to make debugging easy\n");
-	    exit(EXIT_SUCCESS);
+      switch (sym)
+        {
+        case 'H':
+          printf("%s -[%s]\n", argv[0], options);
+          printf("GNU Services example server\n");
+          printf("-H\tfor help\n");
+          printf("-d\tavoid fork() to make debugging easy\n");
+          exit(EXIT_SUCCESS);
 
-	  case 'd':
-	    debug++;
-	    break;
+        case 'd':
+          debug++;
+          break;
 
-	  case 'v':
-	    verbose++;
-	    break;
+        case 'v':
+          verbose++;
+          break;
 
-	  default:
-	    printf("%s - filter server\n", argv[0]);
-	    printf("-H	for help\n");
-	    exit(EXIT_SUCCESS);
-	}
+        default:
+          printf("%s - filter server\n", argv[0]);
+          printf("-H	for help\n");
+          exit(EXIT_SUCCESS);
+        }
     }
 
   for (sym = 0; sym < NSIG; sym++)
@@ -297,35 +297,35 @@ init(int argc, char** argv)
        */
 #ifndef __MINGW__
       switch (fork())
-	{
-	  case -1:
-	    NSLog(@"gpbs - fork failed - bye.\n");
-	    exit(EXIT_FAILURE);
+        {
+        case -1:
+          NSLog(@"gpbs - fork failed - bye.\n");
+          exit(EXIT_FAILURE);
 
-	  case 0:
-	    /*
-	     *	Try to run in background.
-	     */
+        case 0:
+          /*
+           *	Try to run in background.
+           */
 #ifdef	NeXT
-	    setpgrp(0, getpid());
+          setpgrp(0, getpid());
 #else
-	    setsid();
+          setsid();
 #endif
-	    break;
+          break;
 
-	  default:
-	    if (verbose)
-	      {
-		NSLog(@"Process backgrounded (running as daemon)\r\n");
-	      }
-	    exit(EXIT_SUCCESS);
-	}
+        default:
+          if (verbose)
+            {
+              NSLog(@"Process backgrounded (running as daemon)\r\n");
+            }
+          exit(EXIT_SUCCESS);
+        }
 #endif
     }
 }
 
 int
-main(int argc, char** argv, char **env)
+main(int argc, char **argv, char **env)
 {
   ENTER_POOL
   ExampleServices *server;

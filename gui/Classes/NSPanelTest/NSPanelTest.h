@@ -40,37 +40,37 @@ LEGAL
 
 @interface NSPanelTest : NSObject
 {
-    id      constructor;
+  id      constructor;
 }
 
-    -(id)init;
-    -(void)applicationWillFinishLaunching:(NSNotification*)notification;
+- (id) init;
+- (void) applicationWillFinishLaunching: (NSNotification *)notification;
 
 // actions:
 
-    -testHighMessagePanel:sender;
-    -testLargeMessagePanel:sender;
-    -testSmallPanel:sender;
-    -testLargeTitlePanel:sender;
-    -testGettingPanel:sender;
-    -testLocalizedPanel:sender;
-    -testMultilineBtnPanel:sender;
-    -testTitleLessPanel:sender;
-    -testMissingBtnRunPanel:sender;
-    -testMissingBtnGetPanel:sender;
-    -testAll:sender;
-    -useAlertPanels:sender;
-    -useCriticalPanels:sender;
-    -useInformationalPanels:sender;
-    -useRandomPanels:sender;
+- testHighMessagePanel: sender;
+- testLargeMessagePanel: sender;
+- testSmallPanel: sender;
+- testLargeTitlePanel: sender;
+- testGettingPanel: sender;
+- testLocalizedPanel: sender;
+- testMultilineBtnPanel: sender;
+- testTitleLessPanel: sender;
+- testMissingBtnRunPanel: sender;
+- testMissingBtnGetPanel: sender;
+- testAll: sender;
+- useAlertPanels: sender;
+- useCriticalPanels: sender;
+- useInformationalPanels: sender;
+- useRandomPanels: sender;
 
 
 @end // NSPanelTest;
 
 
 @interface NSPanelTest(Protected)
-  
-	-(NSMenu*)makeMenu;
+
+- (NSMenu *) makeMenu;
 
 @end // NSPanelTest(Protected).
 /*** NSPanelTest.h                    -- 2000-03-10 13:11:30 -- PJB ***/

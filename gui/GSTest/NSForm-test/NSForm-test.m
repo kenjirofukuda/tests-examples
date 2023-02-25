@@ -123,7 +123,7 @@ NSObject
   [formTwo setNextText: field];
 
   winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (150, 150);
+  winFrame.origin = NSMakePoint(150, 150);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask

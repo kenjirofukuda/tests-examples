@@ -105,7 +105,7 @@ NSObject
   }
 
   winFrame.size = NSMakeSize(662, 401);
-  winFrame.origin = NSMakePoint (100, 200);
+  winFrame.origin = NSMakePoint(100, 200);
 
   label = [[NSTextField alloc] initWithFrame: NSMakeRect(0, 301, 662, 100)];
   [label setStringValue: @"The four text views on the left share a layout manager, as do the two columns on the right. All six text views share the same underlying text storage."];
@@ -113,7 +113,7 @@ NSObject
   [label setDrawsBackground: NO];
   [label setEditable: NO];
   [container addSubview: label];
-  RELEASE (label);
+  RELEASE(label);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -124,7 +124,7 @@ NSObject
                                         defer: NO];
   [win setReleasedWhenClosed: NO];
   [win setContentView: container];
-  RELEASE (container);
+  RELEASE(container);
   [win setTitle: @"NSTextView Test"];
 
   [self restart];
@@ -132,8 +132,8 @@ NSObject
 }
 - (void) dealloc
 {
-  RELEASE (win);
-  RELEASE (storage);
+  RELEASE(win);
+  RELEASE(storage);
   [super dealloc];
 }
 - (void) restart

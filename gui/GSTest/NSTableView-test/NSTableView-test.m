@@ -145,25 +145,25 @@ NSObject
                                                 count: 20];
 
   keyColumn = [[NSTableColumn alloc] initWithIdentifier: @"key"];
-  AUTORELEASE (keyColumn);
+  AUTORELEASE(keyColumn);
   [keyColumn setEditable: NO];
   [[keyColumn headerCell] setStringValue: @"key"];
   [keyColumn setMinWidth: 100];
 
   valueColumn = [[NSTableColumn alloc] initWithIdentifier: @"value"];
-  AUTORELEASE (valueColumn);
+  AUTORELEASE(valueColumn);
   [valueColumn setEditable: NO];
   [[valueColumn headerCell] setStringValue: @"value"];
   [valueColumn setMinWidth: 100];
 
   testColumn = [[NSTableColumn alloc] initWithIdentifier: @"test"];
-  AUTORELEASE (testColumn);
+  AUTORELEASE(testColumn);
   [testColumn setEditable: NO];
   [[testColumn headerCell] setStringValue: @"test"];
   [testColumn setMinWidth: 70];
 
   tableView = [[NSTableView alloc]
-               initWithFrame: NSMakeRect (0, 0, 300, 300)];
+               initWithFrame: NSMakeRect(0, 0, 300, 300)];
   [tableView addTableColumn: keyColumn];
   [tableView addTableColumn: valueColumn];
   [tableView addTableColumn: testColumn];
@@ -172,7 +172,7 @@ NSObject
 
   /* column with selectable but not editable cell */
   string = @"Selectable";
-  tb = AUTORELEASE ([[NSTableColumn alloc] initWithIdentifier: string]);
+  tb = AUTORELEASE([[NSTableColumn alloc] initWithIdentifier: string]);
   [tb setEditable: YES];
   [tb setMinWidth: 50];
   [tb setMaxWidth: 400];
@@ -189,7 +189,7 @@ NSObject
   for (i = 1; i < 5; i++)
     {
       string = [NSString stringWithFormat: @"Column %d", i];
-      tb = AUTORELEASE ([[NSTableColumn alloc] initWithIdentifier: string]);
+      tb = AUTORELEASE([[NSTableColumn alloc] initWithIdentifier: string]);
       [tb setEditable: NO];
       [tb setMinWidth: 50];
       [tb setMaxWidth: 400];
@@ -204,9 +204,9 @@ NSObject
   //[tableView setCornerView: nil];
 
   scrollView = [[NSScrollView alloc]
-                initWithFrame: NSMakeRect (0, 0, 300, 200)];
+                initWithFrame: NSMakeRect(0, 0, 300, 200)];
   [scrollView setDocumentView: tableView];
-  RELEASE (tableView);
+  RELEASE(tableView);
   [scrollView setHasHorizontalScroller: YES];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];
@@ -218,13 +218,13 @@ NSObject
   [externalBox setTitlePosition: NSNoTitle];
   [externalBox setBorderType: NSNoBorder];
   [externalBox addSubview: scrollView];
-  RELEASE (scrollView);
+  RELEASE(scrollView);
   [externalBox sizeToFit];
   [externalBox setAutoresizingMask: (NSViewWidthSizable
                                      | NSViewHeightSizable)];
 
   winFrame.size = [externalBox frame].size;
-  winFrame.origin = NSMakePoint (100, 200);
+  winFrame.origin = NSMakePoint(100, 200);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
@@ -236,7 +236,7 @@ NSObject
 
   [win setReleasedWhenClosed: NO];
   [win setContentView: externalBox];
-  RELEASE (externalBox);
+  RELEASE(externalBox);
   [win setTitle: @"NSTableView Test"];
 
   [win orderFront: nil];
@@ -275,13 +275,13 @@ NSObject
 {
   if (rowIndex < 0 || rowIndex >= (int)[keysArray count])
     {
-      NSLog (@"BUG: We were asked for rowIndex: %d", rowIndex);
+      NSLog(@"BUG: We were asked for rowIndex: %d", rowIndex);
       return nil;
     }
 
   if (aTableColumn == nil)
     {
-      NSLog (@"BUG: We were asked with nil tableColumn");
+      NSLog(@"BUG: We were asked with nil tableColumn");
       return nil;
     }
 
@@ -387,7 +387,7 @@ NSObject
                                              NSTableViewTestPboardType];
     NSUInteger count = [pl count];
 
-    for ( i = count - 1; i >= 0; i-- )
+    for (i = count - 1; i >= 0; i--)
       {
         [keysArray insertObject:
              [[pl objectAtIndex: i] objectAtIndex: 0]
@@ -405,7 +405,7 @@ NSObject
 
     if (dragOperation == NSDragOperationGeneric)
       {
-        for ( i = count - 1; i >= 0; i-- )
+        for (i = count - 1; i >= 0; i--)
           {
             j = [[draggedRows objectAtIndex: i] intValue];
             if (j >= row)

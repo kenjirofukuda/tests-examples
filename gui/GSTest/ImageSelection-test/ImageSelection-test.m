@@ -102,7 +102,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       }
 
       {
-        scalingModesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect (0, 200, 220, 32)] autorelease];
+        scalingModesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect(0, 200, 220, 32)] autorelease];
         [scalingModesPopUp addItemWithTitle: @"NSImageScaleProportionallyDown"];
         [[scalingModesPopUp lastItem] setTag: NSImageScaleProportionallyDown];
         [scalingModesPopUp addItemWithTitle: @"NSImageScaleAxesIndependently"];
@@ -118,7 +118,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       }
 
       {
-        classesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect (0, 240, 220, 32)] autorelease];
+        classesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect(0, 240, 220, 32)] autorelease];
         [classesPopUp addItemWithTitle: @"NSButton"];
         [classesPopUp addItemWithTitle: @"NSImageView"];
         [classesPopUp setTarget: self];
@@ -274,7 +274,7 @@ NSObject
 
 - (void) dealloc
 {
-  RELEASE (win);
+  RELEASE(win);
   [super dealloc];
 }
 

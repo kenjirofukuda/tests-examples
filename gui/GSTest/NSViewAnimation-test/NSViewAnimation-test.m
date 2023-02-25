@@ -58,15 +58,15 @@
   animations = [[NSArray alloc] initWithObjects:
                                 [NSDictionary dictionaryWithObjectsAndKeys:
                                  win[0], NSViewAnimationTargetKey,
-                                 [NSValue valueWithRect: NSMakeRect( 50, 50, 50, 100 )], NSViewAnimationEndFrameKey,
+                                 [NSValue valueWithRect: NSMakeRect(50, 50, 50, 100)], NSViewAnimationEndFrameKey,
                                  nil],
                                 [NSDictionary dictionaryWithObjectsAndKeys:
                                  win[1], NSViewAnimationTargetKey,
-                                 [NSValue valueWithRect: NSMakeRect( 110, 50, 120, 120 )], NSViewAnimationEndFrameKey,
+                                 [NSValue valueWithRect: NSMakeRect(110, 50, 120, 120)], NSViewAnimationEndFrameKey,
                                  nil],
                                 [NSDictionary dictionaryWithObjectsAndKeys:
                                  win[2], NSViewAnimationTargetKey,
-                                 [NSValue valueWithRect: NSMakeRect( 50, 180, 150, 180 )], NSViewAnimationEndFrameKey,
+                                 [NSValue valueWithRect: NSMakeRect(50, 180, 150, 180)], NSViewAnimationEndFrameKey,
                                  nil],
                                 nil];
 

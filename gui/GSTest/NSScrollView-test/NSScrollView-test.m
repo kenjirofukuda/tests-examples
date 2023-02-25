@@ -54,7 +54,7 @@ NSObject
   [view setBordered: YES];
   [view setAlignment: NSCenterTextAlignment];
   [view setStringValue: @"This is the DocumentView"];
-  [view setFrameSize: NSMakeSize (400, 400)];
+  [view setFrameSize: NSMakeSize(400, 400)];
   [view setAutoresizingMask: NSViewNotSizable];
 
   box = [NSBox new];
@@ -75,7 +75,7 @@ NSObject
   [borderBox setAutoresizingMask: NSViewNotSizable];
 
   scrollView = [[NSScrollView alloc]
-                initWithFrame: NSMakeRect (0, 0, 200, 200)];
+                initWithFrame: NSMakeRect(0, 0, 200, 200)];
   [scrollView setDocumentView: borderBox];
   [borderBox release];
   [scrollView setHasHorizontalScroller: YES];
@@ -93,7 +93,7 @@ NSObject
   [externalBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   winFrame.size = [externalBox frame].size;
-  winFrame.origin = NSMakePoint (100, 200);
+  winFrame.origin = NSMakePoint(100, 200);
 
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask

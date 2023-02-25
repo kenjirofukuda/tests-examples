@@ -52,7 +52,7 @@ static NSString *modifierTitle[8] =
 };
 
 static void
-set_standard_properties (NSTextField *tf, NSTextAlignment align)
+set_standard_properties(NSTextField *tf, NSTextAlignment align)
 {
   [tf setEditable: NO];
   [tf setSelectable: NO];
@@ -109,8 +109,8 @@ GSVbox
   /* Start from 7 so that mod[0] is the uppest entry */
   for (i = 7; i > -1; i--)
     {
-      mod[i] = AUTORELEASE ([ModifierEntry new]);
-      set_standard_properties (mod[i], NSLeftTextAlignment);
+      mod[i] = AUTORELEASE([ModifierEntry new]);
+      set_standard_properties(mod[i], NSLeftTextAlignment);
       /* setStringValue just to compute dimension */
       [mod[i] setStringValue: modifierTitle[i]];
       [mod[i] sizeToFit];
@@ -168,8 +168,8 @@ GSVbox
   [super init];
 
   // The little results table
-  table = AUTORELEASE ([[GSTable alloc] initWithNumberOfRows: 4
-                                             numberOfColumns: 2]);
+  table = AUTORELEASE([[GSTable alloc] initWithNumberOfRows: 4
+                                            numberOfColumns: 2]);
   // Set resizing properties
   [table setXResizingEnabled: NO  forColumn: 0];
   [table setXResizingEnabled: YES forColumn: 1];
@@ -182,54 +182,54 @@ GSVbox
   [table setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
 
   //Add entries in the table
-  entry = AUTORELEASE ([NSTextField new]);
-  set_standard_properties (entry, NSRightTextAlignment);
+  entry = AUTORELEASE([NSTextField new]);
+  set_standard_properties(entry, NSRightTextAlignment);
   [entry setStringValue: @"keyCode:"];
   [entry sizeToFit];
   [table putView: entry atRow: 3 column: 0 withMargins: 2];
 
-  entry = AUTORELEASE ([NSTextField new]);
-  set_standard_properties (entry, NSRightTextAlignment);
+  entry = AUTORELEASE([NSTextField new]);
+  set_standard_properties(entry, NSRightTextAlignment);
   [entry setStringValue: @"characters:"];
   [entry sizeToFit];
   [table putView: entry atRow: 2 column: 0 withMargins: 2];
 
-  entry = AUTORELEASE ([NSTextField new]);
-  set_standard_properties (entry, NSRightTextAlignment);
+  entry = AUTORELEASE([NSTextField new]);
+  set_standard_properties(entry, NSRightTextAlignment);
   [entry setStringValue: @"charactersIgnoringModifiers:"];
   [entry sizeToFit];
   [table putView: entry atRow: 1 column: 0 withMargins: 2];
 
-  entry = AUTORELEASE ([NSTextField new]);
-  set_standard_properties (entry, NSRightTextAlignment);
+  entry = AUTORELEASE([NSTextField new]);
+  set_standard_properties(entry, NSRightTextAlignment);
   [entry setStringValue: @"modifiers:"];
   [entry sizeToFit];
   [table putView: entry atRow: 0 column: 0 withMargins: 2];
 
-  keyCodeField = AUTORELEASE ([NSTextField new]);
-  set_standard_properties (keyCodeField, NSLeftTextAlignment);
+  keyCodeField = AUTORELEASE([NSTextField new]);
+  set_standard_properties(keyCodeField, NSLeftTextAlignment);
   [keyCodeField setStringValue: @" "];
   [keyCodeField sizeToFit];
   [table putView: keyCodeField atRow: 3 column: 1 withMargins: 2];
 
-  charactersField = AUTORELEASE ([NSTextField new]);
-  set_standard_properties (charactersField, NSLeftTextAlignment);
+  charactersField = AUTORELEASE([NSTextField new]);
+  set_standard_properties(charactersField, NSLeftTextAlignment);
   [charactersField setStringValue: @" "];
   [charactersField sizeToFit];
   [table putView: charactersField atRow: 2 column: 1 withMargins: 2];
 
-  charactersIgnoringModifiersField = AUTORELEASE ([NSTextField new]);
-  set_standard_properties (charactersIgnoringModifiersField,
-                           NSLeftTextAlignment);
+  charactersIgnoringModifiersField = AUTORELEASE([NSTextField new]);
+  set_standard_properties(charactersIgnoringModifiersField,
+                          NSLeftTextAlignment);
   [charactersIgnoringModifiersField setStringValue: @" "];
   [charactersIgnoringModifiersField sizeToFit];
   [table putView: charactersIgnoringModifiersField
            atRow: 1 column: 1 withMargins: 2];
 
-  modifiersList = AUTORELEASE ([ModifiersList new]);
+  modifiersList = AUTORELEASE([ModifiersList new]);
   [table putView: modifiersList atRow: 0 column: 1 withMargins: 2];
 
-  box = AUTORELEASE ([NSBox new]);
+  box = AUTORELEASE([NSBox new]);
   [box setTitle: @"Information On Latest Key Event"];
   [box setTitlePosition: NSAtTop];
   [box setBorderType: NSGrooveBorder];
@@ -237,7 +237,7 @@ GSVbox
   [box sizeToFit];
   [box setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  borderBox = AUTORELEASE ([NSBox new]);
+  borderBox = AUTORELEASE([NSBox new]);
   [borderBox setTitlePosition: NSNoTitle];
   [borderBox setBorderType: NSNoBorder];
   [borderBox addSubview: box];
@@ -245,7 +245,7 @@ GSVbox
   [borderBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   [self setFrameSize: [borderBox frame].size];
-  [borderBox setFrameOrigin: NSMakePoint (0, 0)];
+  [borderBox setFrameOrigin: NSMakePoint(0, 0)];
   [self addSubview: borderBox];
   enabled = NO;
   return self;
@@ -285,11 +285,11 @@ GSVbox
       [modifiersList setModifiers: [theEvent modifierFlags]];
       [keyCodeField setIntValue: [theEvent keyCode]];
 
-      s = convertCharactersToDisplayable ([theEvent characters]);
+      s = convertCharactersToDisplayable([theEvent characters]);
       [charactersField setStringValue: s];
 
-      s = convertCharactersToDisplayable ([theEvent
-                                           charactersIgnoringModifiers]);
+      s = convertCharactersToDisplayable([theEvent
+                                          charactersIgnoringModifiers]);
       [charactersIgnoringModifiersField setStringValue: s];
     }
   else
@@ -316,9 +316,9 @@ NSObject
 {
   NSRect winFrame;
 
-  v = AUTORELEASE ([InputTestView new]);
+  v = AUTORELEASE([InputTestView new]);
   winFrame.size = [v frame].size;
-  winFrame.origin = NSMakePoint (100, 100);
+  winFrame.origin = NSMakePoint(100, 100);
   win = [[NSWindow alloc] initWithContentRect: winFrame
                                     styleMask: (NSTitledWindowMask
                                       | NSClosableWindowMask

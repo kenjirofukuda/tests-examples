@@ -3,7 +3,7 @@
 @interface PPController : NSObject
 {
   NSInteger tool;
-  
+
   // Outlet
   id colorWell;
 }
