@@ -14,12 +14,13 @@ NSComparisonResult nameSort(id path1, id path2, void *context);
 
 - (id) init
 {
-  [super init];
+  if (self = [super init])
+    {
 
-  loadedTests = [[NSMutableArray alloc] init];
-  tests = [[NSMutableArray alloc] init];
-  [self _findBundles];
-
+      loadedTests = [[NSMutableArray alloc] init];
+      tests = [[NSMutableArray alloc] init];
+      [self _findBundles];
+    }
   return self;
 }
 

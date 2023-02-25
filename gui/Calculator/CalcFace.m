@@ -198,7 +198,7 @@ NSWindow
   for (i = 0; i < 18; i++)
     {
       [[self contentView] addSubview: buttons[i]];
-      [buttons[i] release];
+      RELEASE(buttons[i]);
     }
   [[self contentView] addSubview: display];
   RELEASE(display);

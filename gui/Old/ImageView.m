@@ -41,19 +41,20 @@
 
 - initWithFile: (NSString *)str
 {
-  [super init];
-
-  file_name = str;
-  image = [[NSImage alloc] initWithContentsOfFile: file_name];
-  [image setBackgroundColor: [NSColor whiteColor]];
-
-  if (image == nil)
+  if (self = [super init])
     {
-      NSLog(@"Failed to load image %s\n", [file_name cString]);
-      RELEASE(self);
-      return nil;
+      file_name = str;
+      image = [[NSImage alloc] initWithContentsOfFile: file_name];
+      [image setBackgroundColor: [NSColor whiteColor]];
+
+      if (image == nil)
+        {
+          NSLog(@"Failed to load image %s\n", [file_name cString]);
+          RELEASE(self);
+          return nil;
+        }
+      NSLog(@"Loaded image %s\n", [file_name cString]);
     }
-  NSLog(@"Loaded image %s\n", [file_name cString]);
   return self;
 }
 

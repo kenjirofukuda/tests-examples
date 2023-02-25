@@ -34,12 +34,14 @@
 @implementation TableEntry
 - (id) initWithFrame: (NSRect)frameRect
 {
-  [super initWithFrame: frameRect];
-  [self setEditable: NO];
-  [self setSelectable: NO];
-  [self setBezeled: NO];
-  [self setDrawsBackground: NO];
-  [self setAutoresizingMask: NSViewWidthSizable];
+  if ([super initWithFrame: frameRect])
+    {
+      [self setEditable: NO];
+      [self setSelectable: NO];
+      [self setBezeled: NO];
+      [self setDrawsBackground: NO];
+      [self setAutoresizingMask: NSViewWidthSizable];
+    }
   return self;
 }
 @end

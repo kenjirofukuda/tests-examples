@@ -29,9 +29,11 @@
 
 - (id) init
 {
-  [super init];
+  if (self = [super init])
+    {
 
-  ts = [[NSMutableAttributedString alloc] init];
+      ts = [[NSMutableAttributedString alloc] init];
+    }
   return self;
 }
 

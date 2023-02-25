@@ -109,33 +109,35 @@ static id cschemes[] =
              region: (double *)reg
 {
   NSRect iframe = {{0, 0}, {rval, rval}};
-  [super initWithFrame: iframe];
+  if (self = [super initWithFrame: iframe])
+    {
 
-  ftype = ft;
-  res = rval;
-  cscheme = cs;
+      ftype = ft;
+      res = rval;
+      cscheme = cs;
 
-  minre = reg[0];
-  maxre = reg[1];
-  minim = reg[2];
-  maxim = reg[3];
+      minre = reg[0];
+      maxre = reg[1];
+      minim = reg[2];
+      maxim = reg[3];
 
-  image = [[NSImage alloc] initWithSize: iframe.size];
-  rep = [[NSBitmapImageRep alloc]
-         initWithBitmapDataPlanes: NULL
-                       pixelsWide: res
-                       pixelsHigh: res
-                    bitsPerSample: 8
-                  samplesPerPixel: 3
-                         hasAlpha: NO
-                         isPlanar: NO
-                   colorSpaceName: NSDeviceRGBColorSpace
-                      bytesPerRow: res * 3
-                     bitsPerPixel: 24];
-  [image addRepresentation: rep];
+      image = [[NSImage alloc] initWithSize: iframe.size];
+      rep = [[NSBitmapImageRep alloc]
+             initWithBitmapDataPlanes: NULL
+                           pixelsWide: res
+                           pixelsHigh: res
+                        bitsPerSample: 8
+                      samplesPerPixel: 3
+                             hasAlpha: NO
+                             isPlanar: NO
+                       colorSpaceName: NSDeviceRGBColorSpace
+                          bytesPerRow: res * 3
+                         bitsPerPixel: 24];
+      [image addRepresentation: rep];
 
-  [self update];
-  [self setNeedsDisplay: YES];
+      [self update];
+      [self setNeedsDisplay: YES];
+    }
 
   return self;
 }

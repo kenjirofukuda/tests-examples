@@ -72,10 +72,12 @@ static Preferences *sharedInstance = nil;
     }
   else
     {
-      [super init];
-      curValues = [[[self class] preferencesFromDefaults] copyWithZone: [self zone]];
-      [self discardDisplayedValues];
-      sharedInstance = self;
+      if (self = [super init])
+        {
+          curValues = [[[self class] preferencesFromDefaults] copyWithZone: [self zone]];
+          [self discardDisplayedValues];
+          sharedInstance = self;
+        }
     }
   return sharedInstance;
 }

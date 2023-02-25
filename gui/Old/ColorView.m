@@ -36,10 +36,11 @@
 // Instance methods
 - initWithFrame: (NSRect)rect
 {
-  [super initWithFrame: rect];
-
-  ASSIGN(the_color, [NSColor blackColor]);
-  ASSIGN(the_cursor, [NSCursor IBeamCursor]);
+  if (self = [super initWithFrame: rect])
+    {
+      ASSIGN(the_color, [NSColor blackColor]);
+      ASSIGN(the_cursor, [NSCursor IBeamCursor]);
+    }
 
   return self;
 }

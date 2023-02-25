@@ -30,14 +30,16 @@
 NSObject
 - (id) init
 {
-  [super init];
-  result = 0;
-  enteredNumber = 0;
-  operation = none;
-  fractionalDigits = 0;
-  decimalSeparator = NO;
-  editing = YES;
-  face = nil;
+  if (self = [super init])
+    {
+      result = 0;
+      enteredNumber = 0;
+      operation = none;
+      fractionalDigits = 0;
+      decimalSeparator = NO;
+      editing = YES;
+      face = nil;
+    }
   return self;
 }
 

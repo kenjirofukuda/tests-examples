@@ -47,15 +47,17 @@
 }
 - (id) initWithText: (NSString *)aText
 {
-  [super initWithFrame: NSZeroRect];
-  [self setEditable: NO];
-  [self setSelectable: NO];
-  [self setBezeled: NO];
-  [self setBordered: NO];
-  [self setDrawsBackground: NO];
-  [self setAlignment: NSCenterTextAlignment];
-  [self setStringValue: aText];
-  [self sizeToFit];
+  if (self = [super initWithFrame: NSZeroRect])
+    {
+      [self setEditable: NO];
+      [self setSelectable: NO];
+      [self setBezeled: NO];
+      [self setBordered: NO];
+      [self setDrawsBackground: NO];
+      [self setAlignment: NSCenterTextAlignment];
+      [self setStringValue: aText];
+      [self sizeToFit];
+    }
   return self;
 }
 @end
