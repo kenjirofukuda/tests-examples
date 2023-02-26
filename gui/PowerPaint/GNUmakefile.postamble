@@ -6,7 +6,7 @@
 
 # Things to do before installing
 # before-install::
-  
+
 # Things to do after installing
 # after-install::
 
@@ -27,7 +27,7 @@
 
 # Things to do after distcleaning
 # after-distclean::
-  
+
 # Things to do before checking
 # before-check::
 

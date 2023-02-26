@@ -26,14 +26,14 @@ HostAddress_APPLICATION_ICON=
 # Additional libraries
 #
 
-ADDITIONAL_GUI_LIBS += 
+ADDITIONAL_GUI_LIBS +=
 
 #
 
 # Resource files
 #
 
-HostAddress_RESOURCE_FILES= 
+HostAddress_RESOURCE_FILES=
 
 #
 
@@ -42,7 +42,7 @@ HostAddress_RESOURCE_FILES=
 
 HostAddress_HEADERS= \
 AppController.h \
-Resolver.h 
+Resolver.h
 
 #
 
@@ -52,14 +52,14 @@ Resolver.h
 HostAddress_OBJC_FILES= \
 main.m \
 AppController.m \
-Resolver.m 
+Resolver.m
 
 #
 
 # C files
 #
 
-HostAddress_C_FILES= 
+HostAddress_C_FILES=
 
 -include GNUmakefile.preamble
 -include GNUmakefile.local

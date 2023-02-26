@@ -1,6 +1,6 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
-OBJCFLAGS += -Wall
+OBJCFLAGS += -Wall -fobjc-arc
 PACKAGE_NAME = GFractal
 VERSION = 0.1
 

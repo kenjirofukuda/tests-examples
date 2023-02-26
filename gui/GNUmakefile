@@ -36,7 +36,7 @@ SUBPROJECTS =             \
 
 # MyGL commented out because it required OpenGL which some people
 # don't have.
-#	MyGL		  
+#	MyGL
 
 
 include GNUmakefile.preamble

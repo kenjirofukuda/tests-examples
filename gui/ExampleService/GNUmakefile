@@ -29,9 +29,9 @@ md5Digest_APPLICATION_ICON = hash.png
 md5Digest_RESOURCE_FILES = hash.png
 
 # The source files to be compiled
-md5Digest_OBJC_FILES = md5Digest.m 
+md5Digest_OBJC_FILES = md5Digest.m
 
-example_OBJC_FILES = example.m 
+example_OBJC_FILES = example.m
 
 include GNUmakefile.preamble
 

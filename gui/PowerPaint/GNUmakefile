@@ -6,7 +6,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 VERSION = 0.1
 PACKAGE_NAME = PowerPaint
 APP_NAME = PowerPaint
-PowerPaint_APPLICATION_ICON = 
+PowerPaint_APPLICATION_ICON =
 PowerPaint_MAIN_MODEL_FILE = PowerPaint.gorm
 
 
