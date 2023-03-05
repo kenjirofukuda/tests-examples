@@ -68,7 +68,7 @@ static Preferences *sharedInstance = nil;
 {
   if (sharedInstance)
     {
-      [self dealloc];
+      RELAESE(self); // dealloc -> RELEASE
     }
   else
     {

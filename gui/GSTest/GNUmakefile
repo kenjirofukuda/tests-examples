@@ -23,7 +23,7 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-OBJCFLAGS += -Wall -fobjc-arc
+OBJCFLAGS += -Wall
 
 #
 # Each test is a bundle subproject, in its own dir

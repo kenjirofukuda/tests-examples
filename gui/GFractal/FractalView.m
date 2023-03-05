@@ -150,8 +150,8 @@ static id cschemes[] =
   res = rval;
 
   [image removeRepresentation: rep];
-  [rep dealloc];
-  [image dealloc];
+  RELAESE(rep); // dealloc -> RELEASE
+  RELAESE(image); // dealloc -> RELEASE
 
   image = [[NSImage alloc] initWithSize: size];
   rep = [[NSBitmapImageRep alloc]
@@ -455,7 +455,7 @@ static id cschemes[] =
 
 - (void) dealloc
 {
-  [image dealloc];
+  RELAESE(image); // dealloc -> RELEASE
   DEALLOC
 }
 

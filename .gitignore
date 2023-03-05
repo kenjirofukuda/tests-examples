@@ -1,7 +1,22 @@
+# Build products
 obj
+config.*
 *.log
 *.sum
 *.app
-*.bundle
-*.service
+*.backup
+
+# Editor byproducts
+*.orig
+*.swp
 *~
+.*#
+
+# ccls
+.ccls-cache/
+.ccls_root
+.ccls
+compile_commands.json
+
+# MacOS Desktop Services Store
+.DS_Store

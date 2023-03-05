@@ -23,7 +23,7 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-OBJCFLAGS += -Wall -fobjc-arc
+OBJCFLAGS += -Wall
 
 BUNDLE_NAME = NSViewAnimation-test
 BUNDLE_INSTALL_DIR = $(GNUSTEP_LIBRARY)/ApplicationSupport/GSTest

@@ -23,7 +23,7 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-OBJCFLAGS += -Wall -fobjc-arc
+OBJCFLAGS += -Wall
 
 #
 # We are creating a bundle

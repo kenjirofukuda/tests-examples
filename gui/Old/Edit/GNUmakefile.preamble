@@ -42,7 +42,7 @@
 # ADDITIONAL_CPPFLAGS +=
 
 # Additional flags to pass to the Objective-C compiler
-ADDITIONAL_OBJCFLAGS += -Wall -fobjc-arc
+ADDITIONAL_OBJCFLAGS += -Wall
 
 # Additional flags to pass to the C compiler
 # ADDITIONAL_CFLAGS +=

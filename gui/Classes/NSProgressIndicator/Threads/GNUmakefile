@@ -19,7 +19,7 @@
 #
 include $(GNUSTEP_MAKEFILES)/common.make
 
-OBJCFLAGS += -Wall -fobjc-arc
+OBJCFLAGS += -Wall
 
 APP_NAME = NSProgressIndicator
 
